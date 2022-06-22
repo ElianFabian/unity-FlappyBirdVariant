@@ -4,6 +4,8 @@
 namespace Assets.Scripts
 {
     [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(SpriteRenderer))]
+
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(PlayerAction))]
     [RequireComponent(typeof(PlayerMovement))]
@@ -16,11 +18,13 @@ namespace Assets.Scripts
         public PlayerAction   action;
         public PlayerMovement movement;
 
-        public Rigidbody2D rigidbody;
+        public Rigidbody2D     rigidbody;
 
         public float maxJumpHeight = 2f;
 
         public bool isJumpPressed = false;
+
+        private SpriteRenderer _spriteRenderer;
 
 
 
@@ -30,7 +34,8 @@ namespace Assets.Scripts
             action   = GetComponent<PlayerAction>();
             movement = GetComponent<PlayerMovement>();
 
-            rigidbody = GetComponent<Rigidbody2D>();
+            rigidbody      = GetComponent<Rigidbody2D>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
         }
     }
 }
