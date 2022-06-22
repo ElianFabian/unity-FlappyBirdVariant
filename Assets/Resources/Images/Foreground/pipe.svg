@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="297mm"
-   height="420mm"
-   viewBox="0 0 297 420"
+   width="265mm"
+   height="800mm"
+   viewBox="0 0 265 800"
    version="1.1"
    id="svg5"
    inkscape:version="1.1 (c68e22c387, 2021-05-23)"
@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.25"
-     inkscape:cx="198"
-     inkscape:cy="322"
+     inkscape:zoom="0.5"
+     inkscape:cx="149"
+     inkscape:cy="161"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="1358"
@@ -39,24 +39,24 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:#24e367;fill-opacity:1;stroke:#000000;stroke-width:2.49897;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#24e367;fill-opacity:1;stroke:#000000;stroke-width:3.44978;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect15648"
-       width="124.19144"
-       height="384.51523"
-       x="86.404282"
-       y="-418.72806"
+       width="124.26422"
+       height="732.35071"
+       x="70.367889"
+       y="-798.27985"
        ry="0"
        transform="scale(1,-1)" />
     <rect
-       style="fill:#24a984;fill-opacity:1;stroke:#000000;stroke-width:2.58692;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#24a984;fill-opacity:1;stroke:#000000;stroke-width:2.76897;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect874"
-       width="226.14836"
-       height="64.37912"
-       x="35.425819"
-       y="-65.668579"
-       ry="18.529951"
+       width="259.83298"
+       height="64.197067"
+       x="2.5835114"
+       y="-65.577553"
+       ry="18.477552"
        transform="scale(1,-1)"
-       inkscape:transform-center-x="-10.335847"
-       inkscape:transform-center-y="-22.560206" />
+       inkscape:transform-center-x="-11.875364"
+       inkscape:transform-center-y="-22.49641" />
   </g>
 </svg>
