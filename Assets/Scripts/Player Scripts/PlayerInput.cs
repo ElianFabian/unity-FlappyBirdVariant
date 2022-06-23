@@ -9,7 +9,7 @@ namespace Assets.Scripts.PlayerScripts
     {
         public KeyCode jumpKey = KeyCode.Space;
 
-        void Update()
+        private void Update()
         {
             player.isJumpPressed = Input.GetKeyDown(jumpKey);
         }

@@ -6,14 +6,16 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class GameManager : SingletonPersistent<GameManager>
 {
-    public Action OnGameOver;
-    public Action<int> OnIncrementScore;
+    public event Action OnGameOver;
+    public event Action<int> OnIncrementScore;
 
     int score;
 
+
+
     private void Awake()
     {
-
+        OnGameOver -= SetGameOver;
         score = 0;
     }
 

@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI txtScore;
 
+
+
     private void OnEnable()
     {
         GameManager.Instance.OnIncrementScore += OnIncrementScore;
