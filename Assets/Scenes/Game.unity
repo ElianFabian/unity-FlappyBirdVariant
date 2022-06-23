@@ -468,7 +468,6 @@ MonoBehaviour:
   gameOverMenu: {fileID: 1876531279}
   btnGoToMenu: {fileID: 422912845}
   btnTryAgain: {fileID: 1089396925}
-  pauseKey: 27
 --- !u!4 &578752557
 Transform:
   m_ObjectHideFlags: 0
@@ -544,6 +543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae446631923d00344a2ca4cec8f5c531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseKey: 27
 --- !u!4 &632674630
 Transform:
   m_ObjectHideFlags: 0
@@ -849,7 +849,7 @@ GameObject:
   m_Component:
   - component: {fileID: 897838541}
   m_Layer: 0
-  m_Name: =====CAMERA=====
+  m_Name: =====CAMERAS=====
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -2,7 +2,7 @@
 
 
 
-// Page to get the pics
+// Pages to get the pics
 https://www.flaticon.com
 https://www.freepik.es
 
@@ -12,5 +12,9 @@ https://chir.ag/projects/name-that-color
 https://www.color-blindness.com/color-name-hue
 
 
-// Page to extract colors pallete from image
+// Pages to extract colors pallete from image
 https://brandfolder.com/workbench/color-palette
+
+
+// Pages to get the sounds
+https://freesound.org
