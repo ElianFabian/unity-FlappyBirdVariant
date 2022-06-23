@@ -2,8 +2,9 @@
 
 
 
-namespace Assets.Scripts
+namespace Assets.Scripts.PlayerScripts
 {
+    [DisallowMultipleComponent]
     public class PlayerAction : BasePlayerComponent
     {
         public void Jump()

@@ -2,11 +2,12 @@ using UnityEngine;
 
 
 
-namespace Assets.Scripts
+namespace Assets.Scripts.PlayerScripts
 {
+    [DisallowMultipleComponent]
     public class PlayerInput : BasePlayerComponent
     {
-        public readonly KeyCode jumpKey = KeyCode.Space;
+        public KeyCode jumpKey = KeyCode.Space;
 
         void Update()
         {

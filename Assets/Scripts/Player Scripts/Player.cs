@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 
 
-namespace Assets.Scripts
+namespace Assets.Scripts.PlayerScripts
 {
+    [DisallowMultipleComponent]
+
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(SpriteRenderer))]
 
@@ -14,15 +16,15 @@ namespace Assets.Scripts
     {
         public const float GRAVITY = -9.81f;
 
-        public PlayerInput    input;
-        public PlayerAction   action;
-        public PlayerMovement movement;
+        [HideInInspector] public PlayerInput    input;
+        [HideInInspector] public PlayerAction   action;
+        [HideInInspector] public PlayerMovement movement;
 
-        public Rigidbody2D     rigidbody;
+        [HideInInspector] public Rigidbody2D     rigidbody;
+
+        [HideInInspector] public bool isJumpPressed = false;
 
         public float maxJumpHeight = 2f;
-
-        public bool isJumpPressed = false;
 
         private SpriteRenderer _spriteRenderer;
 

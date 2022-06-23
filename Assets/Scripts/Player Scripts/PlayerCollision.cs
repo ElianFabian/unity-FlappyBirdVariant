@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.PlayerScripts
 {
+    [DisallowMultipleComponent]
     public class PlayerCollision : MonoBehaviour
     {
 

@@ -3,36 +3,40 @@ using UnityEngine.SceneManagement;
 
 
 
-// Be carefull, avoid making this GameObject a child of another
-// if that object is destroyed this one will be too.
-
-/// <summary>
-/// The GameObject won't be destroyed when reloading but it will
-/// when changing to a different scene.
-/// </summary>
-public class DontDestroyOnReload : MonoBehaviour
+namespace Assets.Scripts.Util
 {
-    static DontDestroyOnReload Instance;
+    // Be carefull, avoid making this GameObject a child of another
+    // if that object is destroyed this one will be too.
 
-    Scene initialScene;
-
-    private void Awake()
+    /// <summary>
+    /// The GameObject won't be destroyed when reloading but it will
+    /// when changing to a different scene.
+    /// </summary>
+    [DisallowMultipleComponent]
+    public class DontDestroyOnReload : MonoBehaviour
     {
-        initialScene = SceneManager.GetActiveScene();
+        static DontDestroyOnReload Instance;
 
-        DontDestroyOnLoad(gameObject);
+        Scene initialScene;
 
-        if (Instance == null)
+        private void Awake()
         {
-            Instance = this;
+            initialScene = SceneManager.GetActiveScene();
+
+            DontDestroyOnLoad(gameObject);
+
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else Destroy(gameObject);
         }
-        else Destroy(gameObject);
-    }
 
-    private void OnLevelWasLoaded(int level)
-    {
-        var currentScene = SceneManager.GetActiveScene();
+        private void OnLevelWasLoaded(int level)
+        {
+            var currentScene = SceneManager.GetActiveScene();
 
-        if (currentScene != initialScene) Destroy(gameObject);
+            if (currentScene != initialScene) Destroy(gameObject);
+        }
     }
 }

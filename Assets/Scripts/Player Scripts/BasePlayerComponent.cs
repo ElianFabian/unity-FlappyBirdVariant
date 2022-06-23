@@ -2,9 +2,9 @@
 
 
 
-namespace Assets.Scripts
+namespace Assets.Scripts.PlayerScripts
 {
-    public class BasePlayerComponent : MonoBehaviour
+    public abstract class BasePlayerComponent : MonoBehaviour
     {
         protected Player player;
 

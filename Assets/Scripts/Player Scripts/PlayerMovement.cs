@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.PlayerScripts
 {
+    [DisallowMultipleComponent]
     public class PlayerMovement : BasePlayerComponent
     {
         void Update()
