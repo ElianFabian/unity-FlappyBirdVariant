@@ -129,7 +129,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2.4
+  m_Radius: 2.3
 --- !u!114 &4720838179805794524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 983fbf4c1b558b54f91db01082857330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxJumpHeight: 2
 --- !u!114 &7457285317763243711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,10 +207,9 @@ MonoBehaviour:
   input: {fileID: 4720838179805794524}
   action: {fileID: 3975788982048650911}
   movement: {fileID: 7457285317763243711}
+  collision: {fileID: 2541942460758527690}
   audio: {fileID: 2165669738991784198}
   data: {fileID: 11400000, guid: 35e87c16a3cd975419aa59c3367cb586, type: 2}
-  maxJumpHeight: 1
-  rigidbody: {fileID: 0}
   isJumpPressed: 0
 --- !u!82 &629968048780119525
 AudioSource:

@@ -24,11 +24,6 @@ namespace Assets.Scripts.PlayerScripts
             player.action.OnJump += OnJump;
         }
 
-        private void OnDisable()
-        {
-            player.action.OnJump -= OnJump;
-        }
-
 
 
         void OnJump()

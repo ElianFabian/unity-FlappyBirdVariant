@@ -14,16 +14,19 @@ public class GameManager : SingletonPersistent<GameManager>
     public event Action      OnGameResumed;
     public event Action<int> OnScoreChanged;
 
-    int score;
+    int score = 0;
     bool isGamePaused = false;
 
 
 
-    private void Start()
+    private void OnEnable()
     {
         OnGameOver -= SetGameOver;
+    }
 
-        score = 0;
+    private void OnDisable()
+    {
+        OnGameOver -= SetGameOver;
     }
 
     private void Update()
@@ -51,9 +54,15 @@ public class GameManager : SingletonPersistent<GameManager>
         OnScoreChanged?.Invoke(score);
     }
 
+    void ResetScore()
+    {
+        score = 0;
+    }
+
     public void SetGameOver()
     {
         Pause();
+        ResetScore();
 
         OnGameOver?.Invoke();
     }

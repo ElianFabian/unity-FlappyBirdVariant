@@ -17,39 +17,28 @@ namespace Assets.Scripts.PlayerScripts
     [RequireComponent(typeof(PlayerAction))]
     [RequireComponent(typeof(PlayerMovement))]
     [RequireComponent(typeof(PlayerCollision))]
+    [RequireComponent(typeof(PlayerAction))]
     public class Player : MonoBehaviour
     {
         public const float GRAVITY = -9.81f;
 
-        [SerializeField] internal PlayerInput    input;
-        [SerializeField] internal PlayerAction   action;
-        [SerializeField] internal PlayerMovement movement;
-        [SerializeField] internal PlayerAudio    audio;
+        [SerializeField] internal PlayerInput     input;
+        [SerializeField] internal PlayerAction    action;
+        [SerializeField] internal PlayerMovement  movement;
+        [SerializeField] internal PlayerCollision collision;
+        [SerializeField] internal PlayerAudio     audio;
 
         [OnValueChanged(nameof(LoadPlayerData))]
         public PlayerDataSO data;
 
-        public float maxJumpHeight = 2;
-
-        [HideInInspector] public Rigidbody2D rigidbody;
-
         [HideInInspector] public bool isJumpPressed = false;
 
-        SpriteRenderer   _spriteRenderer;
-        CircleCollider2D _circleCollider2D;
+        SpriteRenderer _spriteRenderer;
 
 
 
         void Awake()
         {
-            rigidbody         = GetComponent<Rigidbody2D>();
-            _circleCollider2D = GetComponent<CircleCollider2D>();
-
-
-            _circleCollider2D.isTrigger = true;
-            _circleCollider2D.radius    = 2.4f;
-
-
             LoadPlayerData();
         }
 

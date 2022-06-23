@@ -15,9 +15,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] Button          btnTryAgain;
 
 
-    bool isGamePaused = false;
-
-
 
     private void Awake()
     {
@@ -32,7 +29,7 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.Instance.OnScoreChanged += OnIncrementScore;
+        GameManager.Instance.OnScoreChanged += OnScoreChanged;
         GameManager.Instance.OnGameOver     += OnGameOver;
         GameManager.Instance.OnGamePaused   += OnGamePause;
         GameManager.Instance.OnGameResumed  += OnGameResumed;
@@ -40,7 +37,7 @@ public class UIManager : MonoBehaviour
 
     private void OnDisable()
     {
-        GameManager.Instance.OnScoreChanged -= OnIncrementScore;
+        GameManager.Instance.OnScoreChanged -= OnScoreChanged;
         GameManager.Instance.OnGameOver     -= OnGameOver;
         GameManager.Instance.OnGamePaused   -= OnGamePause;
         GameManager.Instance.OnGameResumed  -= OnGameResumed;
@@ -48,7 +45,7 @@ public class UIManager : MonoBehaviour
 
 
 
-    void OnIncrementScore(int newScore)
+    void OnScoreChanged(int newScore)
     {
         txtScore.text = $"Score: {newScore}";
     }
@@ -67,7 +64,6 @@ public class UIManager : MonoBehaviour
     {
         HidePauseMenu();
     }
-
 
     void GoToMenu()
     {
