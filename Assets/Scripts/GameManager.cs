@@ -3,19 +3,21 @@ using System;
 using UnityEngine;
 
 
+
 [DisallowMultipleComponent]
 public class GameManager : SingletonPersistent<GameManager>
 {
-    public event Action OnGameOver;
-    public event Action<int> OnIncrementScore;
+    public event Action      OnGameOver;
+    public event Action<int> OnScoreChanged;
 
     int score;
 
 
 
-    private void Awake()
+    private void Start()
     {
         OnGameOver -= SetGameOver;
+
         score = 0;
     }
 
@@ -23,7 +25,7 @@ public class GameManager : SingletonPersistent<GameManager>
     {
         score++;
 
-        OnIncrementScore?.Invoke(score);
+        OnScoreChanged?.Invoke(score);
     }
 
     public void SetGameOver()

@@ -10,6 +10,7 @@ namespace Assets.Scripts.PlayerScripts
 
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(SpriteRenderer))]
+    [RequireComponent(typeof(CircleCollider2D))]
 
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(PlayerAction))]
@@ -22,7 +23,7 @@ namespace Assets.Scripts.PlayerScripts
         [OnValueChanged(nameof(LoadPlayerData))]
         [SerializeField] PlayerDataSO _playerData;
 
-        public float maxJumpHeight = 2f;
+        public float maxJumpHeight = 2;
 
         [HideInInspector] public PlayerInput    input;
         [HideInInspector] public PlayerAction   action;
@@ -32,7 +33,9 @@ namespace Assets.Scripts.PlayerScripts
 
         [HideInInspector] public bool isJumpPressed = false;
 
-        private SpriteRenderer _spriteRenderer;
+        SpriteRenderer   _spriteRenderer;
+        CircleCollider2D _circleCollider2D;
+
 
 
 
@@ -42,7 +45,10 @@ namespace Assets.Scripts.PlayerScripts
             action   = GetComponent<PlayerAction>();
             movement = GetComponent<PlayerMovement>();
 
-            rigidbody = GetComponent<Rigidbody2D>();
+            rigidbody         = GetComponent<Rigidbody2D>();
+            _circleCollider2D = GetComponent<CircleCollider2D>();
+
+            _circleCollider2D.isTrigger = true;
 
             LoadPlayerData();
         }

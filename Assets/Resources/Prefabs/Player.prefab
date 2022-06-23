@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8199134691106986880}
   - component: {fileID: 8199134691106986887}
-  - component: {fileID: 8199134691106986886}
   - component: {fileID: 8199134691106986909}
+  - component: {fileID: 1979824620032549073}
   - component: {fileID: 4720838179805794524}
   - component: {fileID: 3975788982048650911}
   - component: {fileID: 7457285317763243711}
@@ -91,32 +91,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &8199134691106986886
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8199134691106986885}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 5.12}
-    newSize: {x: 5.12, y: 5.12}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.9, y: 4.4}
-  m_EdgeRadius: 0
 --- !u!50 &8199134691106986909
 Rigidbody2D:
   serializedVersion: 4
@@ -138,6 +112,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &1979824620032549073
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8199134691106986885}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.56
 --- !u!114 &4720838179805794524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,9 +189,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd5ec60fa6e05c42b5b0aba333ece53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerData: {fileID: 0}
+  maxJumpHeight: 2
   input: {fileID: 0}
   action: {fileID: 0}
   movement: {fileID: 0}
   rigidbody: {fileID: 0}
   isJumpPressed: 0
-  maxJumpHeight: 2
