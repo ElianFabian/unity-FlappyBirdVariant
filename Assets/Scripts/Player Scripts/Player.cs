@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Assets.Scripts.Data;
 using NaughtyAttributes;
+using System;
 
 
 
@@ -20,14 +21,15 @@ namespace Assets.Scripts.PlayerScripts
     {
         public const float GRAVITY = -9.81f;
 
+        [SerializeField] internal PlayerInput    input;
+        [SerializeField] internal PlayerAction   action;
+        [SerializeField] internal PlayerMovement movement;
+        [SerializeField] internal PlayerAudio    audio;
+
         [OnValueChanged(nameof(LoadPlayerData))]
-        [SerializeField] PlayerDataSO _playerData;
+        public PlayerDataSO data;
 
         public float maxJumpHeight = 2;
-
-        [HideInInspector] public PlayerInput    input;
-        [HideInInspector] public PlayerAction   action;
-        [HideInInspector] public PlayerMovement movement;
 
         [HideInInspector] public Rigidbody2D rigidbody;
 
@@ -40,17 +42,12 @@ namespace Assets.Scripts.PlayerScripts
 
         void Awake()
         {
-            input    = GetComponent<PlayerInput>();
-            action   = GetComponent<PlayerAction>();
-            movement = GetComponent<PlayerMovement>();
-
-
             rigidbody         = GetComponent<Rigidbody2D>();
             _circleCollider2D = GetComponent<CircleCollider2D>();
 
 
             _circleCollider2D.isTrigger = true;
-            _circleCollider2D.radius = 2.4f;
+            _circleCollider2D.radius    = 2.4f;
 
 
             LoadPlayerData();
@@ -62,7 +59,7 @@ namespace Assets.Scripts.PlayerScripts
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
 
-            _spriteRenderer.sprite = _playerData.playerSprite;
+            _spriteRenderer.sprite = data.playerSprite;
         }
     }
 }

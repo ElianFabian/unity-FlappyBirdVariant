@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 
-namespace Assets.Scripts.Pipe_Scripts
+namespace Assets.Scripts.PipeScripts
 {
     [RequireComponent(typeof(BoxCollider2D))]
     public class PipeDeadZone : MonoBehaviour

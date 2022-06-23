@@ -10,5 +10,7 @@ namespace Assets.Scripts.Data
     {
         [ShowAssetPreview]
         public Sprite playerSprite;
+
+        public AudioClip jumpClip;
     }
 }

@@ -8,7 +8,7 @@ namespace Assets.Scripts.PlayerScripts
     {
         protected Player player;
 
-        protected virtual void Start()
+        protected virtual void Awake()
         {
             player = GetComponent<Player>();
         }
