@@ -14,7 +14,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] Button          btnGoToMenu;
     [SerializeField] Button          btnTryAgain;
 
-    [SerializeField] KeyCode pauseKey = KeyCode.Escape;
 
     bool isGamePaused = false;
 
@@ -31,21 +30,20 @@ public class UIManager : MonoBehaviour
         HideShowGameOverMenu();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(pauseKey)) HandleGamePause();
-    }
-
     private void OnEnable()
     {
         GameManager.Instance.OnScoreChanged += OnIncrementScore;
         GameManager.Instance.OnGameOver     += OnGameOver;
+        GameManager.Instance.OnGamePaused   += OnGamePause;
+        GameManager.Instance.OnGameResumed  += OnGameResumed;
     }
 
     private void OnDisable()
     {
         GameManager.Instance.OnScoreChanged -= OnIncrementScore;
         GameManager.Instance.OnGameOver     -= OnGameOver;
+        GameManager.Instance.OnGamePaused   -= OnGamePause;
+        GameManager.Instance.OnGameResumed  -= OnGameResumed;
     }
 
 
@@ -57,10 +55,19 @@ public class UIManager : MonoBehaviour
 
     void OnGameOver()
     {
-        Time.timeScale = 0;
-
         ShowGameOverMenu();
     }
+
+    void OnGamePause()
+    {
+        ShowPauseMenu();
+    }
+
+    void OnGameResumed()
+    {
+        HidePauseMenu();
+    }
+
 
     void GoToMenu()
     {
@@ -93,31 +100,6 @@ public class UIManager : MonoBehaviour
         gameOverMenu.gameObject.SetActive(false);
         btnGoToMenu.gameObject.SetActive(false);
         btnTryAgain.gameObject.SetActive(false);
-    }
-
-    void HandleGamePause()
-    {
-        isGamePaused = !isGamePaused;
-
-        if (isGamePaused)
-        {
-            PauseGame();
-        }
-        else ResumeGame();
-    }
-
-    void PauseGame()
-    {
-        Time.timeScale = 0;
-
-        ShowPauseMenu();
-    }
-
-    void ResumeGame()
-    {
-        Time.timeScale = 1;
-
-        HidePauseMenu();
     }
 
     void RestartGame()
