@@ -3,15 +3,16 @@ using System.Collections;
 
 
 
-
 namespace Assets.Scripts.PipeScripts
 {
     [DisallowMultipleComponent]
     public class PipeGroupSpawner : MonoBehaviour
     {
         [SerializeField] PipeGroup pipeGroupPrefab;
-        [SerializeField] float spawnDelayInSeconds      = 1f;
+
+        [SerializeField] float spawnDelayInSeconds      = 1.5f;
         [SerializeField] float spawnedGroupPipeVelocity = 5f;
+        [SerializeField] float heightOffset             = 2f;
 
         WaitForSeconds waitForSpawnDelay;
 
@@ -33,7 +34,10 @@ namespace Assets.Scripts.PipeScripts
             {
                 yield return waitForSpawnDelay;
 
-                GameObject newPipeGroup = Instantiate(pipeGroupPrefab, transform.position, Quaternion.identity).gameObject;
+                var randomFactor = Random.Range(-heightOffset, heightOffset);
+                var randomHeight = transform.position + Vector3.up * randomFactor;
+
+                var newPipeGroup = Instantiate(pipeGroupPrefab, randomHeight, Quaternion.identity).gameObject;
                 
                 var pipeGroupRigidBody = newPipeGroup.AddComponent<Rigidbody2D>();
 
