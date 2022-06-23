@@ -1,4 +1,7 @@
 ﻿using UnityEngine;
+using Assets.Scripts.Data;
+using NaughtyAttributes;
+
 
 
 namespace Assets.Scripts.PlayerScripts
@@ -16,15 +19,18 @@ namespace Assets.Scripts.PlayerScripts
     {
         public const float GRAVITY = -9.81f;
 
+        [OnValueChanged(nameof(LoadPlayerData))]
+        [SerializeField] PlayerDataSO _playerData;
+
+        public float maxJumpHeight = 2f;
+
         [HideInInspector] public PlayerInput    input;
         [HideInInspector] public PlayerAction   action;
         [HideInInspector] public PlayerMovement movement;
 
-        [HideInInspector] public Rigidbody2D     rigidbody;
+        [HideInInspector] public Rigidbody2D rigidbody;
 
         [HideInInspector] public bool isJumpPressed = false;
-
-        public float maxJumpHeight = 2f;
 
         private SpriteRenderer _spriteRenderer;
 
@@ -36,8 +42,18 @@ namespace Assets.Scripts.PlayerScripts
             action   = GetComponent<PlayerAction>();
             movement = GetComponent<PlayerMovement>();
 
-            rigidbody      = GetComponent<Rigidbody2D>();
+            rigidbody = GetComponent<Rigidbody2D>();
+
+            LoadPlayerData();
+        }
+
+
+
+        void LoadPlayerData()
+        {
             _spriteRenderer = GetComponent<SpriteRenderer>();
+
+            _spriteRenderer.sprite = _playerData.playerSprite;
         }
     }
 }
