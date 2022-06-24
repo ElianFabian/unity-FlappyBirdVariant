@@ -19,10 +19,9 @@ namespace Assets.Scripts.PlayerScripts
 
         private void Update()
         {
-            if (player.isJumpPressed) player.action.Jump();
-
             HandleRotation();
         }
+
 
 
         void HandleRotation()

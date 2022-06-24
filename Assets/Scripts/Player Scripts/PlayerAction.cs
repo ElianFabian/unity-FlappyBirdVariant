@@ -20,10 +20,26 @@ namespace Assets.Scripts.PlayerScripts
 
 
 
-
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
+        }
+
+        private void OnEnable()
+        {
+            PlayerInput.OnJumpKeyDown += OnJumpKeyDown;
+        }
+
+        private void OnDisable()
+        {
+            PlayerInput.OnJumpKeyDown -= OnJumpKeyDown;
+        }
+
+
+
+        void OnJumpKeyDown()
+        {
+            Jump();
         }
 
 

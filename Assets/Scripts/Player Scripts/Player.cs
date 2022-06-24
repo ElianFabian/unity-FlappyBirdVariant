@@ -31,8 +31,6 @@ namespace Assets.Scripts.PlayerScripts
         [OnValueChanged(nameof(LoadPlayerData))]
         public PlayerDataSO data;
 
-        [HideInInspector] public bool isJumpPressed = false;
-
         SpriteRenderer _spriteRenderer;
 
 
