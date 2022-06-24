@@ -18,21 +18,21 @@ namespace Assets.Scripts.PipeScripts
             _boxCollider2D = GetComponent<BoxCollider2D>();
             _rigidbody2D   = GetComponent<Rigidbody2D>();
 
-            _boxCollider2D.isTrigger = true;
 
             var newColliderSize = _boxCollider2D.size;
             newColliderSize.x = 2.4f;
 
+            _boxCollider2D.isTrigger = true;
             _boxCollider2D.size = newColliderSize;
+
             _rigidbody2D.isKinematic = true;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.TryGetComponent(out Player _))
-            {
-                GameManager.Instance.SetGameOver();
-            }
+            if (!collision.TryGetComponent(out Player _)) return;
+
+            GameManager.Instance.SetGameOver();
         }
     }
 }
