@@ -9,12 +9,18 @@ namespace Assets.Scripts.PlayerScripts
 
         float _jumpVelocity;
 
+        Quaternion _fordwardRotation;
+        Quaternion _downRotation;
+
 
 
         private void Start()
         {
             _rigidBody = GetComponent<Rigidbody2D>();
             _jumpVelocity = player.action.JumpVelocity;
+
+            _fordwardRotation = Quaternion.identity;
+            _downRotation     = Quaternion.Euler(0, 0, 90);
         }
 
         private void Update()
@@ -28,30 +34,14 @@ namespace Assets.Scripts.PlayerScripts
         {
             var velocity = _rigidBody.velocity;
 
-            var playerBottom = transform.position + Vector3.down;
-
-            var newRotation = LookAt2D(playerBottom);
-
             var rotationRate = Mathf.InverseLerp(_jumpVelocity, -_jumpVelocity, velocity.y);
 
             transform.rotation = Quaternion.Lerp
             (
-                Quaternion.identity,
-                newRotation,
+                _fordwardRotation,
+                _downRotation,
                 rotationRate
             );
-        }
-
-        Quaternion LookAt2D(Vector3 targetPosition)
-        {
-            var previousRight = transform.right;
-            transform.right = targetPosition - transform.position;
-
-            var lookAt2DRotation = transform.rotation;
-
-            transform.right = previousRight;
-
-            return lookAt2DRotation;
         }
     }
 }
