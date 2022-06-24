@@ -8,25 +8,22 @@ namespace Assets.Scripts.Util
     public abstract class SingletonPersistent<T> : MonoBehaviour where T : Component
     {
         private static T _instance;
+        public static T Instance { get => _instance; }
 
-        public static T Instance
+        protected virtual void Awake()
         {
-            get
+            if (_instance == null)
             {
-                if (_instance == null)
-                {
-                    _instance = new GameObject
-                    {
-                        name = typeof(T).Name,
-                        hideFlags = HideFlags.HideAndDontSave
-                    }
-                    .AddComponent<T>();
+                _instance = this as T;
 
-                    DontDestroyOnLoad(_instance);
-                }
-
-                return _instance;
+                DontDestroyOnLoad(gameObject);
             }
+            else Destroy(gameObject);
+        }
+
+        protected virtual void OnDestroy()
+        {
+            if (_instance == this) _instance = null;
         }
     }
 }

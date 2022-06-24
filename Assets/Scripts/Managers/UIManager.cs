@@ -20,13 +20,11 @@ public class UIManager : MonoBehaviour
 
 
 
-    private void Awake()
+    private void Start()
     {
         _btnGoToMenu.onClick.AddListener(GoToMenu);
         _btnTryAgain.onClick.AddListener(GameManager.Instance.RestartGame);
 
-
-        // This is in case they're not hidden in the editor.
         HidePauseMenu();
         HideShowGameOverMenu();
     }
