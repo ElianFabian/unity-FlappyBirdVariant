@@ -1,13 +1,18 @@
 ﻿using UnityEngine;
 using Assets.Scripts.PlayerScripts;
+using System;
+
+
 
 namespace Assets.Scripts.PipeScripts
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(BoxCollider2D))]
     [RequireComponent(typeof(Rigidbody2D))]
-    public class Pipe : MonoBehaviour
+    public class DeadZone : MonoBehaviour
     {
+        public static event Action<Player, Collider2D> OnPlayerCollided;
+
         BoxCollider2D _boxCollider2D;
         Rigidbody2D   _rigidbody2D;
 
@@ -19,20 +24,16 @@ namespace Assets.Scripts.PipeScripts
             _rigidbody2D   = GetComponent<Rigidbody2D>();
 
 
-            var newColliderSize = _boxCollider2D.size;
-            newColliderSize.x = 2.4f;
-
             _boxCollider2D.isTrigger = true;
-            _boxCollider2D.size = newColliderSize;
 
             _rigidbody2D.isKinematic = true;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!collision.TryGetComponent(out Player _)) return;
+            if (!collision.TryGetComponent(out Player player)) return;
 
-            GameManager.Instance.SetGameOver();
+            OnPlayerCollided?.Invoke(player, collision);
         }
     }
 }
