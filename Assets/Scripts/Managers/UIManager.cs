@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
-using NaughtyAttributes;
+using System;
 
 
 
@@ -15,15 +14,16 @@ public class UIManager : MonoBehaviour
     [SerializeField] Button          _btnGoToMenu;
     [SerializeField] Button          _btnTryAgain;
 
-    [Scene]
-    [SerializeField] string _menuSceneName;
+
+    public static event Action BtnGoToMenu_Click;
+    public static event Action BtnTryAgain_Click;
 
 
 
     private void Start()
     {
-        _btnGoToMenu.onClick.AddListener(GoToMenu);
-        _btnTryAgain.onClick.AddListener(GameManager.Instance.RestartGame);
+        _btnGoToMenu.onClick.AddListener(BtnGoToMenu_Click.Invoke);
+        _btnTryAgain.onClick.AddListener(BtnTryAgain_Click.Invoke);
 
         HidePauseMenu();
         HideShowGameOverMenu();
@@ -65,11 +65,6 @@ public class UIManager : MonoBehaviour
     void OnGameResumed()
     {
         HidePauseMenu();
-    }
-
-    void GoToMenu()
-    {
-        GameManager.Instance.ChangeScene(_menuSceneName);
     }
 
     void ShowPauseMenu()

@@ -483,7 +483,6 @@ MonoBehaviour:
   _gameOverMenu: {fileID: 1876531279}
   _btnGoToMenu: {fileID: 422912845}
   _btnTryAgain: {fileID: 1089396925}
-  _menuSceneName: Menu
 --- !u!1 &629844661
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,6 +559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pauseKey: 27
+  _menuSceneName: Menu
 --- !u!1 &676796062
 GameObject:
   m_ObjectHideFlags: 0

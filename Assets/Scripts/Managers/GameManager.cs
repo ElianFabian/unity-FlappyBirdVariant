@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Assets.Scripts.PipeScripts;
 using Assets.Scripts.PlayerScripts;
+using NaughtyAttributes;
 
 
 
@@ -13,6 +14,9 @@ using Assets.Scripts.PlayerScripts;
 public class GameManager : SingletonPersistent<GameManager>
 {
     [SerializeField] KeyCode _pauseKey = KeyCode.Escape;
+
+    [Scene]
+    [SerializeField] string _menuSceneName;
 
     public event Action         OnGameOver;
     public event Action         OnGamePaused;
@@ -31,12 +35,18 @@ public class GameManager : SingletonPersistent<GameManager>
     {
         DeathZone.OnPlayerCollided += OnPlayerCollidedWithDeathZone;
         ScoreZone.OnPlayerCollided += OnPlayerCollidedWithScoreArea;
+
+        UIManager.BtnGoToMenu_Click += BtnGoToMenu_Click;
+        UIManager.BtnTryAgain_Click += BtnTryAgain_Click;
     }
 
     private void OnDisable()
     {
-        DeathZone.OnPlayerCollided += OnPlayerCollidedWithDeathZone;
-        ScoreZone.OnPlayerCollided += OnPlayerCollidedWithScoreArea;
+        DeathZone.OnPlayerCollided -= OnPlayerCollidedWithDeathZone;
+        ScoreZone.OnPlayerCollided -= OnPlayerCollidedWithScoreArea;
+
+        UIManager.BtnGoToMenu_Click -= BtnGoToMenu_Click;
+        UIManager.BtnTryAgain_Click -= BtnTryAgain_Click;
     }
 
     private void Update()
@@ -71,7 +81,21 @@ public class GameManager : SingletonPersistent<GameManager>
         IncrementScore();
     }
 
-    private void IncrementScore()
+    public void BtnGoToMenu_Click()
+    {
+        SceneManager.LoadSceneAsync(_menuSceneName);
+
+        OnSceneChanged?.Invoke(_menuSceneName);
+    }
+
+    public void BtnTryAgain_Click()
+    {
+        RestartGame();
+    }
+
+
+
+    void IncrementScore()
     {
         _score++;
 
@@ -91,14 +115,7 @@ public class GameManager : SingletonPersistent<GameManager>
         OnGameRestarted?.Invoke();
     }
 
-    public void ChangeScene(string sceneName)
-    {
-        SceneManager.LoadSceneAsync(sceneName);
-
-        OnSceneChanged?.Invoke(sceneName);
-    }
-
-    public void SetGameOver()
+    void SetGameOver()
     {
         Pause();
         ResetScore();
