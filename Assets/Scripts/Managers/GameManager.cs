@@ -8,8 +8,6 @@ using NaughtyAttributes;
 
 
 
-// To make the Game Manager work properly I had to added to the
-// Script Execution Order settings.
 [DisallowMultipleComponent]
 public class GameManager : SingletonPersistent<GameManager>
 {
@@ -20,12 +18,12 @@ public class GameManager : SingletonPersistent<GameManager>
     [Scene]
     [SerializeField] string _menuSceneName;
 
-    public event Action         OnGameOver;
-    public event Action         OnGamePaused;
-    public event Action         OnGameResumed;
-    public event Action         OnGameRestarted;
-    public event Action<string> OnSceneChanged;
-    public event Action<int>    OnScoreChanged;
+    public static event Action         OnGameOver;
+    public static event Action         OnGamePaused;
+    public static event Action         OnGameResumed;
+    public static event Action         OnGameRestarted;
+    public static event Action<string> OnSceneChanged;
+    public static event Action<int>    OnScoreChanged;
 
     int _score = 0;
     bool _isGamePaused = false;

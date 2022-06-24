@@ -35,18 +35,18 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.Instance.OnScoreChanged += OnScoreChanged;
-        GameManager.Instance.OnGameOver     += OnGameOver;
-        GameManager.Instance.OnGamePaused   += OnGamePause;
-        GameManager.Instance.OnGameResumed  += OnGameResumed;
+        GameManager.OnScoreChanged += OnScoreChanged;
+        GameManager.OnGameOver     += OnGameOver;
+        GameManager.OnGamePaused   += OnGamePause;
+        GameManager.OnGameResumed  += OnGameResumed;
     }
 
     private void OnDisable()
     {
-        GameManager.Instance.OnScoreChanged -= OnScoreChanged;
-        GameManager.Instance.OnGameOver     -= OnGameOver;
-        GameManager.Instance.OnGamePaused   -= OnGamePause;
-        GameManager.Instance.OnGameResumed  -= OnGameResumed;
+        GameManager.OnScoreChanged -= OnScoreChanged;
+        GameManager.OnGameOver     -= OnGameOver;
+        GameManager.OnGamePaused   -= OnGamePause;
+        GameManager.OnGameResumed  -= OnGameResumed;
     }
 
     #endregion
