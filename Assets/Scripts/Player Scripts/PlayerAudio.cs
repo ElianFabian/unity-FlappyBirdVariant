@@ -8,15 +8,15 @@ namespace Assets.Scripts.PlayerScripts
     [RequireComponent(typeof(AudioSource))]
     public class PlayerAudio : BasePlayerComponent
     {
-        AudioSource source;
+        AudioSource _source;
 
 
 
         private void Start()
         {
-            source = GetComponent<AudioSource>();
+            _source = GetComponent<AudioSource>();
 
-            source.playOnAwake = false;
+            _source.playOnAwake = false;
         }
 
         private void OnEnable()
@@ -33,9 +33,9 @@ namespace Assets.Scripts.PlayerScripts
 
         void OnJump()
         {
-            source.clip = player.data.jumpClip;
+            _source.clip = player.data.jumpClip;
 
-            source.Play();
+            _source.Play();
         }
     }
 }
