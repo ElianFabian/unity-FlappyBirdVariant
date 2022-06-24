@@ -27,13 +27,13 @@ namespace Assets.Scripts.PlayerScripts
 
             var newRotation = LookAt2D(bottom);
 
-            var t = Mathf.InverseLerp(_jumpVelocity, -_jumpVelocity, velocity.y);
+            var rotationRate = Mathf.InverseLerp(_jumpVelocity, -_jumpVelocity, velocity.y);
 
             transform.rotation = Quaternion.Lerp
             (
                 Quaternion.identity,
                 newRotation,
-                t
+                rotationRate
             );
         }
 
