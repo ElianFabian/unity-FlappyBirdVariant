@@ -522,11 +522,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b2c173411acc74abbd7d98ba4cfc89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  txtScore: {fileID: 1524036083}
-  pauseMenu: {fileID: 800640309}
-  gameOverMenu: {fileID: 1876531279}
-  btnGoToMenu: {fileID: 422912845}
-  btnTryAgain: {fileID: 1089396925}
+  _txtScore: {fileID: 1524036083}
+  _pauseMenu: {fileID: 800640309}
+  _gameOverMenu: {fileID: 1876531279}
+  _btnGoToMenu: {fileID: 422912845}
+  _btnTryAgain: {fileID: 1089396925}
+  _menuSceneName: Menu
 --- !u!1 &629844661
 GameObject:
   m_ObjectHideFlags: 0
