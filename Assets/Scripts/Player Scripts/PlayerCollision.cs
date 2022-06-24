@@ -17,6 +17,12 @@ namespace Assets.Scripts.PlayerScripts
 
             _circleCollider2D.isTrigger = true;
             _circleCollider2D.radius    = 1.8f;
+
+            var offset = _circleCollider2D.offset;
+            offset.x = -0.2f;
+            offset.y = 0.2f;
+
+            _circleCollider2D.offset = offset;
         }
     }
 }

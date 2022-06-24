@@ -10,9 +10,10 @@ namespace Assets.Scripts.PlayerScripts
     {
         [SerializeField] float maxJumpHeight = 2;
 
-        internal event Action OnJump;
+        public static event Action OnJump;
         
         Rigidbody2D _rigidbody;
+
 
 
         internal float JumpVelocity { get => Mathf.Sqrt(-2f * Player.GRAVITY * maxJumpHeight); }

@@ -2069,6 +2069,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1979824620032549073, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
+      propertyPath: m_Radius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1979824620032549073, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1979824620032549073, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3975788982048650911, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
       propertyPath: maxJumpHeight
       value: 1.5
@@ -2121,6 +2133,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8199134691106986887, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 56281cff4cdefe448a791ac0374c7dd7, type: 3}
     - target: {fileID: 8199134691106986909, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
       propertyPath: m_BodyType
       value: 0
