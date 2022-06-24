@@ -20,6 +20,10 @@ namespace Assets.Scripts.PipeScripts
 
             _boxCollider2D.isTrigger = true;
 
+            var newColliderSize = _boxCollider2D.size;
+            newColliderSize.x = 2.4f;
+
+            _boxCollider2D.size = newColliderSize;
             _rigidbody2D.isKinematic = true;
         }
 

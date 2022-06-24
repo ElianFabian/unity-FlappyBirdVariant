@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Util;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 
@@ -9,10 +10,12 @@ public class GameManager : SingletonPersistent<GameManager>
 {
     [SerializeField] KeyCode pauseKey = KeyCode.Escape;
 
-    public event Action      OnGameOver;
-    public event Action      OnGamePaused;
-    public event Action      OnGameResumed;
-    public event Action<int> OnScoreChanged;
+    public event Action         OnGameOver;
+    public event Action         OnGamePaused;
+    public event Action         OnGameResumed;
+    public event Action         OnGameRestarted;
+    public event Action<string> OnSceneChanged;
+    public event Action<int>    OnScoreChanged;
 
     int score = 0;
     bool isGamePaused = false;
@@ -52,6 +55,24 @@ public class GameManager : SingletonPersistent<GameManager>
         score++;
 
         OnScoreChanged?.Invoke(score);
+    }
+
+    public void RestartGame()
+    {
+        var currentScene = SceneManager.GetActiveScene();
+
+        SceneManager.LoadSceneAsync(currentScene.name);
+
+        Resume();
+
+        OnGameRestarted?.Invoke();
+    }
+
+    public void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadSceneAsync(sceneName);
+
+        OnSceneChanged?.Invoke(sceneName);
     }
 
     void ResetScore()

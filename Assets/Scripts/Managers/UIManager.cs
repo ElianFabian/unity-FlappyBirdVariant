@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         _btnGoToMenu.onClick.AddListener(GoToMenu);
-        _btnTryAgain.onClick.AddListener(RestartGame);
+        _btnTryAgain.onClick.AddListener(GameManager.Instance.RestartGame);
 
 
         // This is in case they're not hidden in the editor.
@@ -71,7 +71,7 @@ public class UIManager : MonoBehaviour
 
     void GoToMenu()
     {
-        SceneManager.LoadSceneAsync(_menuSceneName);
+        GameManager.Instance.ChangeScene(_menuSceneName);
     }
 
     void ShowPauseMenu()
@@ -98,14 +98,5 @@ public class UIManager : MonoBehaviour
         _gameOverMenu.gameObject.SetActive(false);
         _btnGoToMenu.gameObject.SetActive(false);
         _btnTryAgain.gameObject.SetActive(false);
-    }
-
-    void RestartGame()
-    {
-        var currentScene = SceneManager.GetActiveScene();
-
-        Time.timeScale = 1;
-
-        SceneManager.LoadSceneAsync(currentScene.name);
     }
 }
