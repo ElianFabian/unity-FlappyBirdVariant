@@ -2036,6 +2036,10 @@ PrefabInstance:
       value: Pipe Group Spawner
       objectReference: {fileID: 0}
     - target: {fileID: 5007065227720335680, guid: 034801bfa1ab7154597e72bd25f59e43, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007065227720335680, guid: 034801bfa1ab7154597e72bd25f59e43, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -2160,6 +2164,14 @@ PrefabInstance:
     - target: {fileID: 8199134691106986885, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199134691106986909, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199134691106986909, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
+      propertyPath: m_Simulated
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}

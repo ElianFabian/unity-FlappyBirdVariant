@@ -15,6 +15,10 @@ namespace Assets.Scripts.PlayerScripts
         Rigidbody2D _rigidbody;
 
 
+        internal float JumpVelocity { get => Mathf.Sqrt(-2f * Player.GRAVITY * maxJumpHeight); }
+
+
+
 
         private void Start()
         {
@@ -27,7 +31,7 @@ namespace Assets.Scripts.PlayerScripts
         {
             var newVelocity = _rigidbody.velocity;
 
-            newVelocity.y = Mathf.Sqrt(-2f * Player.GRAVITY * maxJumpHeight);
+            newVelocity.y = JumpVelocity;
 
             _rigidbody.velocity = newVelocity;
 
