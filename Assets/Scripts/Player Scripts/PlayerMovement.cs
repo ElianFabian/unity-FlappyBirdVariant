@@ -28,9 +28,9 @@ namespace Assets.Scripts.PlayerScripts
         {
             var velocity = _rigidBody.velocity;
 
-            var bottom = transform.position + Vector3.down;
+            var playerBottom = transform.position + Vector3.down;
 
-            var newRotation = LookAt2D(bottom);
+            var newRotation = LookAt2D(playerBottom);
 
             var rotationRate = Mathf.InverseLerp(_jumpVelocity, -_jumpVelocity, velocity.y);
 
