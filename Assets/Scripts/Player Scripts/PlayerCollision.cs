@@ -5,7 +5,7 @@
 namespace Assets.Scripts.PlayerScripts
 {
     [DisallowMultipleComponent]
-    public class PlayerCollision : MonoBehaviour
+    public class PlayerCollision : BasePlayerComponent
     {
         CircleCollider2D _circleCollider2D;
 
