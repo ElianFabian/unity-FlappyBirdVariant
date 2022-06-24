@@ -13,6 +13,8 @@ using NaughtyAttributes;
 [DisallowMultipleComponent]
 public class GameManager : SingletonPersistent<GameManager>
 {
+    #region Fields
+
     [SerializeField] KeyCode _pauseKey = KeyCode.Escape;
 
     [Scene]
@@ -29,7 +31,9 @@ public class GameManager : SingletonPersistent<GameManager>
     bool _isGamePaused = false;
     bool _isGameOver   = false;
 
+    #endregion
 
+    #region Unity event functions
 
     private void OnEnable()
     {
@@ -69,7 +73,9 @@ public class GameManager : SingletonPersistent<GameManager>
         }
     }
 
+    #endregion
 
+    #region Event functions
 
     private void OnPlayerCollidedWithDeathZone(Player player, Collider2D collider)
     {
@@ -81,19 +87,21 @@ public class GameManager : SingletonPersistent<GameManager>
         IncrementScore();
     }
 
-    public void BtnGoToMenu_Click()
+    private void BtnGoToMenu_Click()
     {
         SceneManager.LoadSceneAsync(_menuSceneName);
 
         OnSceneChanged?.Invoke(_menuSceneName);
     }
 
-    public void BtnTryAgain_Click()
+    private void BtnTryAgain_Click()
     {
         RestartGame();
     }
 
+    #endregion
 
+    #region Methods
 
     void IncrementScore()
     {
@@ -102,7 +110,7 @@ public class GameManager : SingletonPersistent<GameManager>
         OnScoreChanged?.Invoke(_score);
     }
 
-    public void RestartGame()
+    void RestartGame()
     {
         Resume();
 
@@ -143,4 +151,6 @@ public class GameManager : SingletonPersistent<GameManager>
 
         AudioListener.pause = false;
     }
+
+    #endregion
 }

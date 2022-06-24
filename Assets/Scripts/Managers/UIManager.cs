@@ -8,6 +8,8 @@ using System;
 [DisallowMultipleComponent]
 public class UIManager : MonoBehaviour
 {
+    #region Fields
+
     [SerializeField] TextMeshProUGUI _txtScore;
     [SerializeField] RectTransform   _pauseMenu;
     [SerializeField] RectTransform   _gameOverMenu;
@@ -18,7 +20,9 @@ public class UIManager : MonoBehaviour
     public static event Action BtnGoToMenu_Click;
     public static event Action BtnTryAgain_Click;
 
+    #endregion
 
+    #region Unity event functions
 
     private void Start()
     {
@@ -45,7 +49,9 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.OnGameResumed  -= OnGameResumed;
     }
 
+    #endregion
 
+    #region Event functions
 
     void OnScoreChanged(int newScore)
     {
@@ -66,6 +72,10 @@ public class UIManager : MonoBehaviour
     {
         HidePauseMenu();
     }
+
+    #endregion
+
+    #region Methods
 
     void ShowPauseMenu()
     {
@@ -92,4 +102,6 @@ public class UIManager : MonoBehaviour
         _btnGoToMenu.gameObject.SetActive(false);
         _btnTryAgain.gameObject.SetActive(false);
     }
+
+    #endregion
 }
