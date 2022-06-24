@@ -21,6 +21,12 @@ namespace Assets.Scripts.PlayerScripts
         {
             if (player.isJumpPressed) player.action.Jump();
 
+            HandleRotation();
+        }
+
+
+        void HandleRotation()
+        {
             var velocity = _rigidBody.velocity;
 
             var bottom = transform.position + Vector3.down;
@@ -36,7 +42,6 @@ namespace Assets.Scripts.PlayerScripts
                 rotationRate
             );
         }
-
 
         Quaternion LookAt2D(Vector3 targetPosition)
         {
