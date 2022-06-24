@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using Assets.Scripts.Data;
 using NaughtyAttributes;
-using System;
 
 
 
@@ -22,11 +21,11 @@ namespace Assets.Scripts.PlayerScripts
     {
         public const float GRAVITY = -9.81f;
 
-        [SerializeField] internal PlayerInput     input;
-        [SerializeField] internal PlayerAction    action;
-        [SerializeField] internal PlayerMovement  movement;
-        [SerializeField] internal PlayerCollision collision;
-        [SerializeField] internal PlayerAudio     audio;
+        internal PlayerInput     input;
+        internal PlayerAction    action;
+        internal PlayerMovement  movement;
+        internal PlayerCollision collision;
+        internal PlayerAudio     audio;
 
         [OnValueChanged(nameof(LoadPlayerData))]
         public PlayerDataSO data;
@@ -38,6 +37,15 @@ namespace Assets.Scripts.PlayerScripts
         void Awake()
         {
             LoadPlayerData();
+        }
+
+        private void Start()
+        {
+            input     = GetComponent<PlayerInput>();
+            action    = GetComponent<PlayerAction>();
+            movement  = GetComponent<PlayerMovement>();
+            collision = GetComponent<PlayerCollision>();
+            audio     = GetComponent<PlayerAudio>();
         }
 
 
