@@ -107,10 +107,14 @@ public class GameManager : SingletonPersistent<GameManager>
     void Pause()
     {
         Time.timeScale = 0;
+
+        AudioListener.pause = true;
     }
 
     void Resume()
     {
         Time.timeScale = 1;
+
+        AudioListener.pause = false;
     }
 }
