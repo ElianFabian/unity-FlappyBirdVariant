@@ -7,6 +7,8 @@ using Assets.Scripts.PlayerScripts;
 
 
 
+// To make the Game Manager work properly I had to added to the
+// Script Execution Order settings.
 [DisallowMultipleComponent]
 public class GameManager : SingletonPersistent<GameManager>
 {
@@ -27,12 +29,14 @@ public class GameManager : SingletonPersistent<GameManager>
 
     private void OnEnable()
     {
-        DeadZone.OnPlayerCollided += OnPlayerCollidedWithDeadZone;
+        DeathZone.OnPlayerCollided += OnPlayerCollidedWithDeathZone;
+        ScoreZone.OnPlayerCollided += OnPlayerCollidedWithScoreArea;
     }
 
     private void OnDisable()
     {
-        DeadZone.OnPlayerCollided += OnPlayerCollidedWithDeadZone;
+        DeathZone.OnPlayerCollided += OnPlayerCollidedWithDeathZone;
+        ScoreZone.OnPlayerCollided += OnPlayerCollidedWithScoreArea;
     }
 
     private void Update()
@@ -57,12 +61,17 @@ public class GameManager : SingletonPersistent<GameManager>
 
 
 
-    void OnPlayerCollidedWithDeadZone(Player player, Collider2D collider)
+    private void OnPlayerCollidedWithDeathZone(Player player, Collider2D collider)
     {
         SetGameOver();
     }
 
-    public void IncrementScore()
+    private void OnPlayerCollidedWithScoreArea()
+    {
+        IncrementScore();
+    }
+
+    private void IncrementScore()
     {
         _score++;
 

@@ -9,7 +9,7 @@ namespace Assets.Scripts.PipeScripts
     [DisallowMultipleComponent]
     [RequireComponent(typeof(BoxCollider2D))]
     [RequireComponent(typeof(Rigidbody2D))]
-    public class DeadZone : MonoBehaviour
+    public class DeathZone : MonoBehaviour
     {
         public static event Action<Player, Collider2D> OnPlayerCollided;
 

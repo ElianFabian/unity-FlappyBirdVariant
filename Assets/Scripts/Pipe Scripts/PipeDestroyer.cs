@@ -10,7 +10,7 @@ namespace Assets.Scripts.PipeScripts
     {
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!collision.TryGetComponent(out DeadZone collidedPipe)) return;
+            if (!collision.TryGetComponent(out DeathZone collidedPipe)) return;
 
             // When it collides with a pipe we want to destroy it's parent group and the pipe itself.
             Destroy(collidedPipe.transform.parent.gameObject);

@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.PlayerScripts;
 using UnityEngine;
+using System;
 
 
 
@@ -7,8 +8,10 @@ namespace Assets.Scripts.PipeScripts
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(BoxCollider2D))]
-    public class PuntuationZone : MonoBehaviour
+    public class ScoreZone : MonoBehaviour
     {
+        public static event Action OnPlayerCollided;
+
         BoxCollider2D _boxCollider2D;
 
 
@@ -24,7 +27,7 @@ namespace Assets.Scripts.PipeScripts
         {
             if (!collision.TryGetComponent(out Player _)) return;
 
-            GameManager.Instance.IncrementScore();
+            OnPlayerCollided?.Invoke();
 
             Destroy(gameObject);
         }

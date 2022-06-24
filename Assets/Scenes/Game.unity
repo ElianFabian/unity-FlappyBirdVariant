@@ -2054,7 +2054,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6597918325219759175, guid: 63738d69c8019ce409cf33afdcfe7e2e, type: 3}
       propertyPath: m_Name
-      value: Pipe Dead Zone
+      value: Pipe Death Zone
       objectReference: {fileID: 0}
     - target: {fileID: 6597918325219759175, guid: 63738d69c8019ce409cf33afdcfe7e2e, type: 3}
       propertyPath: m_StaticEditorFlags

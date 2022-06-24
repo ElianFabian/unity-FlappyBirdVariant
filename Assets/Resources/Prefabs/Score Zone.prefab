@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8991685015591131199}
   - component: {fileID: 6318760323578753636}
   m_Layer: 0
-  m_Name: Puntuation Zone
+  m_Name: Score Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
