@@ -9,7 +9,7 @@ namespace Assets.Scripts.PlayerScripts
     {
         Rigidbody2D _rigidBody;
 
-        float _jumpVelocity;
+        float _startJumpVelocity;
 
         Quaternion _fordwardRotation;
         Quaternion _downRotation;
@@ -20,9 +20,9 @@ namespace Assets.Scripts.PlayerScripts
         {
             _rigidBody = GetComponent<Rigidbody2D>();
             
-            _jumpVelocity     = player.action.JumpVelocity;
-            _fordwardRotation = Quaternion.identity;
-            _downRotation     = Quaternion.Euler(0, 0, -90);
+            _startJumpVelocity = player.action.JumpVelocity;
+            _fordwardRotation  = Quaternion.identity;
+            _downRotation      = Quaternion.Euler(0, 0, -90);
         }
 
         private void Update()
@@ -36,7 +36,7 @@ namespace Assets.Scripts.PlayerScripts
         {
             var velocity = _rigidBody.velocity;
 
-            var rotationRate = Mathf.InverseLerp(_jumpVelocity, -_jumpVelocity, velocity.y);
+            var rotationRate = Mathf.InverseLerp(_startJumpVelocity, -_startJumpVelocity, velocity.y);
 
             transform.rotation = Quaternion.Lerp
             (
