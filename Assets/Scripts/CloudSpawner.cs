@@ -60,8 +60,8 @@ namespace Assets.Scripts
 
                 var newColudRigidBody = newCloud.AddComponent<Rigidbody2D>();
 
-                newColudRigidBody.isKinematic = true;
-                newColudRigidBody.velocity    = _spawnVelocity * cloudScale * Vector2.left;
+                newColudRigidBody.bodyType = RigidbodyType2D.Kinematic;
+                newColudRigidBody.velocity = _spawnVelocity * cloudScale * Vector2.left;
 
 
 
