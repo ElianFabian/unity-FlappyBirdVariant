@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   playerSprite: {fileID: 21300000, guid: 56281cff4cdefe448a791ac0374c7dd7, type: 3}
-  jumpClip: {fileID: 8300000, guid: 55ac18aa4a5a6a54cb40d9a3ef823f77, type: 3}
+  jumpClip: {fileID: 8300000, guid: 4bafcb83b439eb1489a67a7d7a9d309f, type: 3}
