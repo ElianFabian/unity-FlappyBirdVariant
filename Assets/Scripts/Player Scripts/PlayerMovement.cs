@@ -22,7 +22,7 @@ namespace Assets.Scripts.PlayerScripts
             
             _jumpVelocity     = player.action.JumpVelocity;
             _fordwardRotation = Quaternion.identity;
-            _downRotation     = Quaternion.Euler(0, 0, 90);
+            _downRotation     = Quaternion.Euler(0, 0, -90);
         }
 
         private void Update()
