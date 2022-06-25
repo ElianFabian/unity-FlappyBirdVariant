@@ -10,7 +10,7 @@ namespace Assets.Scripts
     [RequireComponent(typeof(BoxCollider2D))]
     public class ScoreZone : MonoBehaviour
     {
-        public static event Action OnPlayerCollided;
+        public static event Action<Player, Collider2D> OnPlayerCollided;
 
         BoxCollider2D _boxCollider2D;
 
@@ -25,9 +25,9 @@ namespace Assets.Scripts
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!collision.TryGetComponent(out Player _)) return;
+            if (!collision.TryGetComponent(out Player player)) return;
 
-            OnPlayerCollided?.Invoke();
+            OnPlayerCollided?.Invoke(player, collision);
 
             Destroy(gameObject);
         }

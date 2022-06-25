@@ -80,7 +80,7 @@ public class GameManager : SingletonPersistent<GameManager>
         SetGameOver();
     }
 
-    private void OnPlayerCollidedWithScoreArea()
+    private void OnPlayerCollidedWithScoreArea(Player player, Collider2D collider)
     {
         IncrementScore();
     }
