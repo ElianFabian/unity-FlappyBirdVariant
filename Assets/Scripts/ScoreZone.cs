@@ -8,19 +8,37 @@ namespace Assets.Scripts
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(BoxCollider2D))]
+    [RequireComponent(typeof(AudioSource))]
     public class ScoreZone : MonoBehaviour
     {
         public static event Action<Player, Collider2D> OnPlayerCollided;
 
+        [SerializeField] AudioClip scoreClip;
+
         BoxCollider2D _boxCollider2D;
+        AudioSource   _audioSource;
 
 
 
-        private void Awake()
+        private void Start()
         {
             _boxCollider2D = GetComponent<BoxCollider2D>();
+            _audioSource   = GetComponent<AudioSource>();
 
             _boxCollider2D.isTrigger = true;
+
+            _audioSource.playOnAwake = false;
+            _audioSource.clip        = scoreClip;
+        }
+
+        private void OnEnable()
+        {
+            OnPlayerCollided += PlayScoreSound;
+        }
+
+        private void OnDisable()
+        {
+            OnPlayerCollided -= PlayScoreSound;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -28,8 +46,10 @@ namespace Assets.Scripts
             if (!collision.TryGetComponent(out Player player)) return;
 
             OnPlayerCollided?.Invoke(player, collision);
-
-            Destroy(gameObject);
         }
+
+
+
+        void PlayScoreSound(Player player, Collider2D collision) => _audioSource.Play();
     }
 }
