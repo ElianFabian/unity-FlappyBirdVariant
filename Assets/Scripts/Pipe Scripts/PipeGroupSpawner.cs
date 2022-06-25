@@ -10,9 +10,9 @@ namespace Assets.Scripts.PipeScripts
     {
         [SerializeField] PipeGroup pipeGroupPrefab;
 
-        [SerializeField] float spawnDelayInSeconds      = 1.5f;
-        [SerializeField] float spawnedGroupPipeVelocity = 5f;
-        [SerializeField] float heightOffset             = 2f;
+        [SerializeField] float spawnDelayInSeconds = 1.5f;
+        [SerializeField] float spawnVelocity       = 5f;
+        [SerializeField] float heightOffset        = 2f;
 
         WaitForSeconds waitForSpawnDelay;
 
@@ -42,7 +42,7 @@ namespace Assets.Scripts.PipeScripts
                 var pipeGroupRigidBody = newPipeGroup.AddComponent<Rigidbody2D>();
 
                 pipeGroupRigidBody.isKinematic = true;
-                pipeGroupRigidBody.velocity = Vector2.left * spawnedGroupPipeVelocity;
+                pipeGroupRigidBody.velocity = Vector2.left * spawnVelocity;
             }
         }
     }
