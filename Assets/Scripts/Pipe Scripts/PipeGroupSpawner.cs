@@ -39,7 +39,7 @@ namespace Assets.Scripts.PipeScripts
                 var pipeGroupRigidBody = newPipeGroup.AddComponent<Rigidbody2D>();
 
                 pipeGroupRigidBody.isKinematic = true;
-                pipeGroupRigidBody.velocity = Vector2.left * _spawnVelocity;
+                pipeGroupRigidBody.velocity    = Vector2.left * _spawnVelocity;
             }
         }
     }
