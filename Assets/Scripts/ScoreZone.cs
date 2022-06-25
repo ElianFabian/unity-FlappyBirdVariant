@@ -33,12 +33,12 @@ namespace Assets.Scripts
 
         private void OnEnable()
         {
-            OnPlayerCollided += PlayScoreSound;
+            OnPlayerCollided += OnCollidedWithPlayer;
         }
 
         private void OnDisable()
         {
-            OnPlayerCollided -= PlayScoreSound;
+            OnPlayerCollided -= OnCollidedWithPlayer;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -50,6 +50,9 @@ namespace Assets.Scripts
 
 
 
-        void PlayScoreSound(Player player, Collider2D collision) => _audioSource.Play();
+        void OnCollidedWithPlayer(Player player, Collider2D collision)
+        {
+            _audioSource.Play();
+        }
     }
 }
