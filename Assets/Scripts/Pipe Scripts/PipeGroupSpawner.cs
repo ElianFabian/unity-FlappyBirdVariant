@@ -8,23 +8,20 @@ namespace Assets.Scripts.PipeScripts
     [DisallowMultipleComponent]
     public class PipeGroupSpawner : MonoBehaviour
     {
-        [SerializeField] PipeGroup pipeGroupPrefab;
+        [SerializeField] PipeGroup _pipeGroupPrefab;
 
-        [SerializeField] float spawnDelayInSeconds = 1.5f;
-        [SerializeField] float spawnVelocity       = 5f;
-        [SerializeField] float heightOffset        = 2f;
+        [SerializeField] float _spawnDelayInSeconds = 1.5f;
+        [SerializeField] float _spawnVelocity       = 5f;
+        [SerializeField] float _heightOffset        = 2f;
 
-        WaitForSeconds waitForSpawnDelay;
+        WaitForSeconds _waitForSpawnDelay;
 
 
-
-        private void Awake()
-        {
-            waitForSpawnDelay = new WaitForSeconds(spawnDelayInSeconds);
-        }
 
         private void Start()
         {
+            _waitForSpawnDelay = new WaitForSeconds(_spawnDelayInSeconds);
+
             StartCoroutine(SpawnPipeGroupCoroutine());
         }
 
@@ -32,17 +29,17 @@ namespace Assets.Scripts.PipeScripts
         {
             while (true)
             {
-                yield return waitForSpawnDelay;
+                yield return _waitForSpawnDelay;
 
-                var randomFactor = Random.Range(-heightOffset, heightOffset);
+                var randomFactor = Random.Range(-_heightOffset, _heightOffset);
                 var randomHeight = transform.position + Vector3.up * randomFactor;
 
-                var newPipeGroup = Instantiate(pipeGroupPrefab, randomHeight, Quaternion.identity).gameObject;
+                var newPipeGroup = Instantiate(_pipeGroupPrefab, randomHeight, Quaternion.identity).gameObject;
                 
                 var pipeGroupRigidBody = newPipeGroup.AddComponent<Rigidbody2D>();
 
                 pipeGroupRigidBody.isKinematic = true;
-                pipeGroupRigidBody.velocity = Vector2.left * spawnVelocity;
+                pipeGroupRigidBody.velocity = Vector2.left * _spawnVelocity;
             }
         }
     }
