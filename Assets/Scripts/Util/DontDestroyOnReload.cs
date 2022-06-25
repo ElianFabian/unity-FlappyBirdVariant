@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using NaughtyAttributes;
 
 
 
@@ -15,28 +16,29 @@ namespace Assets.Scripts.Util
     [DisallowMultipleComponent]
     public class DontDestroyOnReload : MonoBehaviour
     {
-        static DontDestroyOnReload Instance;
+        [Scene]
+        [SerializeField] string _initialScene;
 
-        Scene initialScene;
+        static DontDestroyOnReload Instance;
 
         private void Awake()
         {
-            initialScene = SceneManager.GetActiveScene();
-
-            DontDestroyOnLoad(gameObject);
+            _initialScene = SceneManager.GetActiveScene().name;
 
             if (Instance == null)
             {
                 Instance = this;
+
+                DontDestroyOnLoad(gameObject);
             }
             else Destroy(gameObject);
         }
 
         private void OnLevelWasLoaded(int level)
         {
-            var currentScene = SceneManager.GetActiveScene();
+            var currentScene = SceneManager.GetActiveScene().name;
 
-            if (currentScene != initialScene) Destroy(gameObject);
+            if (currentScene != _initialScene) Destroy(gameObject);
         }
     }
 }
