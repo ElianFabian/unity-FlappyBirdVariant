@@ -17,6 +17,8 @@ namespace Assets.Scripts.PlayerScripts
             _source = GetComponent<AudioSource>();
 
             _source.playOnAwake = false;
+
+            _source.clip = player.data.jumpClip;
         }
 
         private void OnEnable()
@@ -33,8 +35,6 @@ namespace Assets.Scripts.PlayerScripts
 
         void OnJump()
         {
-            _source.clip = player.data.jumpClip;
-
             _source.Play();
         }
     }
