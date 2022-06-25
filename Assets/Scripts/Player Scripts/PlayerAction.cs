@@ -16,7 +16,7 @@ namespace Assets.Scripts.PlayerScripts
 
 
 
-        internal float JumpVelocity { get => Mathf.Sqrt(-2f * Player.GRAVITY * maxJumpHeight); }
+        internal float JumpVelocity => Mathf.Sqrt(-2f * Player.GRAVITY * maxJumpHeight);
 
 
 
