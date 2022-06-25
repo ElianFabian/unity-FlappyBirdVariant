@@ -104,7 +104,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: clouds-transparent_0
+      name: clouds_0
       rect:
         serializedVersion: 2
         x: 64
@@ -112,20 +112,20 @@ TextureImporter:
         width: 328
         height: 193
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b37544e597fa26943af4a7b65006d35e
-      internalID: 920824972
+      spriteID: a7be0887efeaafd4b9f163e114fb2167
+      internalID: -821209382
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: clouds-transparent_1
+      name: clouds_1
       rect:
         serializedVersion: 2
         x: 496
@@ -133,20 +133,20 @@ TextureImporter:
         width: 335
         height: 187
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64545bb9b4d333547831a321cc2ba76f
-      internalID: 1248559490
+      spriteID: ecd3b454b2fd3b54c97ac53c8f98476d
+      internalID: -1715351015
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: clouds-transparent_2
+      name: clouds_2
       rect:
         serializedVersion: 2
         x: 927
@@ -154,20 +154,20 @@ TextureImporter:
         width: 342
         height: 196
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd6d8db584031f24ea41146405c354c9
-      internalID: -1819590110
+      spriteID: aa43d6f284e0e20418f02ba0781f0dad
+      internalID: 59112448
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: clouds-transparent_3
+      name: clouds_3
       rect:
         serializedVersion: 2
         x: 56
@@ -175,20 +175,20 @@ TextureImporter:
         width: 326
         height: 187
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0877b2266c192da408748695dd62fdc9
-      internalID: -254467477
+      spriteID: 06b3c0976cf91b844aa8244afbab7eda
+      internalID: -371841923
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: clouds-transparent_4
+      name: clouds_4
       rect:
         serializedVersion: 2
         x: 491
@@ -196,20 +196,20 @@ TextureImporter:
         width: 326
         height: 187
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46482024d332d8149b12e6f886d67e6d
-      internalID: 1884126036
+      spriteID: 2e5d785d351ee3f4fbaa249d1dd7ece1
+      internalID: 780380659
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: clouds-transparent_5
+      name: clouds_5
       rect:
         serializedVersion: 2
         x: 935
@@ -217,20 +217,20 @@ TextureImporter:
         width: 333
         height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ee5d6d82453dec4cb0f0d8cfadf2627
-      internalID: 1112991061
+      spriteID: 830ec359b68030c4ea160c65f73ddd1e
+      internalID: -699614950
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: clouds-transparent_6
+      name: clouds_6
       rect:
         serializedVersion: 2
         x: 46
@@ -238,20 +238,20 @@ TextureImporter:
         width: 346
         height: 264
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9f116d2ddf2b82489be5ce345ab9e56
-      internalID: -331748926
+      spriteID: 2c82d1cdf5e4eed4caaeb709f3357f71
+      internalID: 810549942
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: clouds-transparent_7
+      name: clouds_7
       rect:
         serializedVersion: 2
         x: 483
@@ -259,35 +259,35 @@ TextureImporter:
         width: 346
         height: 236
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4c8205c2f715ed4085b87f55fded875
-      internalID: -2045082069
+      spriteID: 21353f0f5cd791b48b9c4eb4965d0e1a
+      internalID: 828723830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: clouds-transparent_8
+      name: clouds_8
       rect:
         serializedVersion: 2
         x: 935
-        y: 125
+        y: 127
         width: 326
         height: 187
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9de83c37f3f54784c8c42eb90048492f
-      internalID: 992303846
+      spriteID: 5dc7d2f31fd6c92409f514ec202965b2
+      internalID: 1955973874
       vertices: []
       indices: 
       edges: []
@@ -303,15 +303,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      clouds-transparent_7: -2045082069
-      clouds-transparent_1: 1248559490
-      clouds-transparent_3: -254467477
-      clouds-transparent_5: 1112991061
-      clouds-transparent_0: 920824972
-      clouds-transparent_4: 1884126036
-      clouds-transparent_2: -1819590110
-      clouds-transparent_6: -331748926
-      clouds-transparent_8: 992303846
+      clouds_7: 828723830
+      clouds_9: 1444404022
+      clouds_1: -1715351015
+      clouds_5: -699614950
+      clouds_6: 810549942
+      clouds_0: -821209382
+      clouds_8: 1955973874
+      clouds_2: 59112448
+      clouds_3: -371841923
+      clouds_4: 780380659
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
