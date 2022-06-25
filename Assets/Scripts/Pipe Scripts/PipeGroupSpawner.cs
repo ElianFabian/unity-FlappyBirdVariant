@@ -8,7 +8,7 @@ namespace Assets.Scripts.PipeScripts
     [DisallowMultipleComponent]
     public class PipeGroupSpawner : MonoBehaviour
     {
-        [SerializeField] PipeGroup _pipeGroupPrefab;
+        [SerializeField] GameObject _pipeGroupPrefab;
 
         [SerializeField] float _spawnDelayInSeconds = 1.5f;
         [SerializeField] float _spawnVelocity       = 5f;
@@ -36,7 +36,7 @@ namespace Assets.Scripts.PipeScripts
 
                 var newPipeGroup = Instantiate(_pipeGroupPrefab, randomHeight, Quaternion.identity).gameObject;
                 
-                var pipeGroupRigidBody = newPipeGroup.AddComponent<Rigidbody2D>();
+                var pipeGroupRigidBody = newPipeGroup.GetComponent<Rigidbody2D>();
 
                 pipeGroupRigidBody.isKinematic = true;
                 pipeGroupRigidBody.velocity    = Vector2.left * _spawnVelocity;

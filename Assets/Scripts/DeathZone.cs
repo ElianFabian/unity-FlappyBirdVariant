@@ -4,7 +4,7 @@ using System;
 
 
 
-namespace Assets.Scripts.PipeScripts
+namespace Assets.Scripts
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(BoxCollider2D))]

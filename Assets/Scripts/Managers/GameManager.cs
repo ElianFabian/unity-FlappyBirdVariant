@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Assets.Scripts.PipeScripts;
+using Assets.Scripts;
 using Assets.Scripts.PlayerScripts;
 using NaughtyAttributes;
 

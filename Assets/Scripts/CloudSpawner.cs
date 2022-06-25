@@ -49,9 +49,12 @@ namespace Assets.Scripts
                 newCloud.transform.position   = randomHeight;
                 newCloud.transform.localScale = Vector3.one * cloudScale;
 
+                newCloud.AddComponent<SpawnedObjectTag>();
+                newCloud.AddComponent<BoxCollider2D>().isTrigger = true;
+
                 var spriteRenderer = newCloud.AddComponent<SpriteRenderer>();
 
-                spriteRenderer.sprite       = _spriteClouds[sizeTypeCloudIndex];
+                spriteRenderer.sprite       = _spriteClouds[spriteCloudIndex];
                 spriteRenderer.color        = Color.white * Map(sizeTypeCloudIndex, 0f, 2, 1f, 0.9f);
                 spriteRenderer.sortingOrder = BASE_CLOUD_SORTING_ORDER - sizeTypeCloudIndex;
 
@@ -59,6 +62,7 @@ namespace Assets.Scripts
 
                 newColudRigidBody.isKinematic = true;
                 newColudRigidBody.velocity    = _spawnVelocity * cloudScale * Vector2.left;
+
 
 
                 var randomDelay = Random.Range(_minSpawnDelayInSeconds, _maxSpawnDelayInSeconds);
