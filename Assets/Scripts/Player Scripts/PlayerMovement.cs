@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+
+
 namespace Assets.Scripts.PlayerScripts
 {
     [DisallowMultipleComponent]
@@ -17,8 +19,8 @@ namespace Assets.Scripts.PlayerScripts
         private void Start()
         {
             _rigidBody = GetComponent<Rigidbody2D>();
+            
             _jumpVelocity = player.action.JumpVelocity;
-
             _fordwardRotation = Quaternion.identity;
             _downRotation     = Quaternion.Euler(0, 0, 90);
         }
