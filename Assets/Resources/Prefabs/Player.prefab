@@ -127,9 +127,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.2, y: 0.2}
   serializedVersion: 2
-  m_Radius: 2.3
+  m_Radius: 2
 --- !u!114 &4720838179805794524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 983fbf4c1b558b54f91db01082857330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxJumpHeight: 2
+  maxJumpHeight: 1.5
 --- !u!114 &7457285317763243711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,13 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd5ec60fa6e05c42b5b0aba333ece53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 4720838179805794524}
-  action: {fileID: 3975788982048650911}
-  movement: {fileID: 7457285317763243711}
-  collision: {fileID: 2541942460758527690}
-  audio: {fileID: 2165669738991784198}
   data: {fileID: 11400000, guid: 35e87c16a3cd975419aa59c3367cb586, type: 2}
-  isJumpPressed: 0
 --- !u!82 &629968048780119525
 AudioSource:
   m_ObjectHideFlags: 0
@@ -231,7 +225,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 10
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0

@@ -2336,9 +2336,17 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2165669738991784198, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3975788982048650911, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
       propertyPath: maxJumpHeight
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720838179805794524, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8199134691106986880, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
       propertyPath: m_RootOrder
