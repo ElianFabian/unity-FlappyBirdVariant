@@ -12,16 +12,15 @@ namespace Assets.Scripts
 
 
 
-        [SerializeField] Sprite[] _spriteClouds;
-
-        [SerializeField] float _maxSpawnDelayInSeconds = 5f;
-        [SerializeField] float _minSpawnDelayInSeconds = 3f;
+        [SerializeField] float _maxSpawnDelayInSeconds = 4.5f;
+        [SerializeField] float _minSpawnDelayInSeconds = 2.5f;
         [SerializeField] float _spawnDelayInSeconds    = 5f;
         [SerializeField] float _spawnVelocity          = 1.5f;
-        [SerializeField] float _heightOffset           = 1.5f;
+        [SerializeField] float _heightOffset           = 3f;
 
-        // From nearest to farest
-        float[] _cloudScaleAccordingToDistance = new float[] { 0.8f, 0.5f, 0.3f };
+        Sprite[] _spriteClouds;
+
+        readonly float[] _cloudScaleOrderByDistanceDescending = new float[] { 0.8f, 0.5f, 0.3f };
 
         private void Start()
         {
@@ -34,15 +33,16 @@ namespace Assets.Scripts
 
         IEnumerator SpawnCloudCoroutine()
         {
+            var numberOfCloudDistanceTypes = _cloudScaleOrderByDistanceDescending.Length;
+            var remotenessColorFactor      = 0.86f;
+
             while (true)
             {
-                var spriteCloudIndex   = Random.Range(0, _spriteClouds.Length);
+                var spriteCloudIndex   = Random.Range(0, numberOfCloudDistanceTypes);
+                var sizeTypeCloudIndex = Random.Range(0, numberOfCloudDistanceTypes);
                 var heightFactor       = Random.Range(-_heightOffset, _heightOffset);
-                var sizeTypeCloudIndex = Random.Range(0, 3);
-
-                var randomHeight        = transform.position + Vector3.up * heightFactor;
-
-                var cloudScale = _cloudScaleAccordingToDistance[sizeTypeCloudIndex];
+                var randomHeight       = transform.position + Vector3.up * heightFactor;
+                var cloudScale         = _cloudScaleOrderByDistanceDescending[sizeTypeCloudIndex];
 
                 var newCloud = new GameObject("Spawned Cloud");
 
@@ -56,7 +56,9 @@ namespace Assets.Scripts
 
                 spriteRenderer.sprite       = _spriteClouds[spriteCloudIndex];
 
-                var colorRelatedToDistance = Color.white * Map(sizeTypeCloudIndex, 0f, 2, 1f, 0.86f);
+                var distanceFactor = Map(sizeTypeCloudIndex, 0, numberOfCloudDistanceTypes - 1, 1f, remotenessColorFactor);
+
+                var colorRelatedToDistance = Color.white * distanceFactor;
                 colorRelatedToDistance.a   = 1;
                 spriteRenderer.color       = colorRelatedToDistance;
 
