@@ -11,7 +11,7 @@ namespace Assets.Scripts.PlayerScripts
         [SerializeField] float maxJumpHeight = 2;
 
         public static event Action OnJump;
-        
+
         Rigidbody2D _rigidbody;
 
 

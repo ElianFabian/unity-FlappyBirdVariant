@@ -35,7 +35,7 @@ namespace Assets.Scripts.PipeScripts
                 var randomHeight = transform.position + Vector3.up * randomFactor;
 
                 var newPipeGroup = Instantiate(_pipeGroupPrefab, randomHeight, Quaternion.identity).gameObject;
-                
+
                 var pipeGroupRigidBody = newPipeGroup.GetComponent<Rigidbody2D>();
 
                 pipeGroupRigidBody.bodyType = RigidbodyType2D.Kinematic;
