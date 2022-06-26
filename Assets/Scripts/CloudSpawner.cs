@@ -7,8 +7,8 @@ namespace Assets.Scripts
 {
     public class CloudSpawner : MonoBehaviour
     {
-        const string SPRITE_PATH = "Images/Background/clouds";
-        const int BASE_CLOUD_SORTING_ORDER = -20;
+        const string SPRITE_PATH              = "Images/Background/clouds";
+        const int    BASE_CLOUD_SORTING_ORDER = -20;
 
 
 
