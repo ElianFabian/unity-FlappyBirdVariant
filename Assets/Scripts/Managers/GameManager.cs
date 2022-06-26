@@ -1,8 +1,8 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
-using Assets.Scripts.PlayerScripts;
-using NaughtyAttributes;
+﻿using Assets.Scripts.PlayerScripts;
 using Assets.Scripts.ScriptableObjects.Events;
+using NaughtyAttributes;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 

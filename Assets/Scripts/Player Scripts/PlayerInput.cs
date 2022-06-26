@@ -1,6 +1,6 @@
-using UnityEngine;
-using System;
 using Assets.Scripts.ScriptableObjects.Events;
+using System;
+using UnityEngine;
 
 
 

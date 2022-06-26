@@ -1,6 +1,6 @@
-﻿using UnityEngine;
-using Assets.Scripts.PlayerScripts;
+﻿using Assets.Scripts.PlayerScripts;
 using Assets.Scripts.ScriptableObjects.Events;
+using UnityEngine;
 
 
 

@@ -1,8 +1,7 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using Assets.Scripts.ScriptableObjects.Events;
 using TMPro;
-using System;
-using Assets.Scripts.ScriptableObjects.Events;
+using UnityEngine;
+using UnityEngine.UI;
 
 
 

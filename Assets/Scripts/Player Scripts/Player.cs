@@ -1,7 +1,9 @@
-﻿using UnityEngine;
-using NaughtyAttributes;
-using Assets.Scripts.ScriptableObjects.Data;
+﻿using Assets.Scripts.ScriptableObjects.Data;
 using Assets.Scripts.ScriptableObjects.Events;
+using NaughtyAttributes;
+using UnityEngine;
+
+
 
 namespace Assets.Scripts.PlayerScripts
 {
