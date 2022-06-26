@@ -34,7 +34,7 @@ namespace Assets.Scripts.Managers
             _gameEventChannel.OnGameOver      += OnGameOver;
             _gameEventChannel.OnGamePaused    += OnGamePaused;
             _gameEventChannel.OnGameResumed   += OnGameResumed;
-            _gameEventChannel.OnGameRestarted += OnGameResumed;
+            _gameEventChannel.OnGameRestarted += OnGameRestarted;
         }
 
         private void OnDisable()
@@ -42,7 +42,7 @@ namespace Assets.Scripts.Managers
             _gameEventChannel.OnGameOver      -= OnGameOver;
             _gameEventChannel.OnGamePaused    -= OnGamePaused;
             _gameEventChannel.OnGameResumed   -= OnGameResumed;
-            _gameEventChannel.OnGameRestarted -= OnGameResumed;
+            _gameEventChannel.OnGameRestarted -= OnGameRestarted;
         }
 
 
