@@ -32,7 +32,7 @@ namespace Assets.Scripts
         IEnumerator SpawnCloudCoroutine()
         {
             var numberOfCloudDistanceTypes = _cloudScaleOrderByDistanceDescending.Length;
-            var remotenessColorFactor      = 0.86f;
+            var remotenessColorFactor      = 0.82f;
 
             while (true)
             {
