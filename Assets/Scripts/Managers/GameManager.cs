@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
 
         if (!Input.GetKeyDown(_pauseKey)) return;
 
-        _gameState = SwitchGameState();
+        _gameState = ToggleGameState();
 
         if (_gameState == GameState.Paused)
         {
@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    GameState SwitchGameState() => _gameState == GameState.Playing ? GameState.Paused : GameState.Playing;
+    GameState ToggleGameState() => _gameState == GameState.Playing ? GameState.Paused : GameState.Playing;
 
     #endregion
 }
