@@ -15,6 +15,8 @@ namespace Assets.Scripts.ScriptableObjects.Events
         public event Action<string> OnSceneChanged;
         public event Action<int>    OnScoreChanged;
 
+
+
         public void RaiseGameOverEvent() => OnGameOver?.Invoke();
         public void RaiseGamePausedEvent() => OnGamePaused?.Invoke();
         public void RaiseGameResumedEvent() => OnGameResumed?.Invoke();
