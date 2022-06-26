@@ -55,7 +55,11 @@ namespace Assets.Scripts
                 var spriteRenderer = newCloud.AddComponent<SpriteRenderer>();
 
                 spriteRenderer.sprite       = _spriteClouds[spriteCloudIndex];
-                spriteRenderer.color        = Color.white * Map(sizeTypeCloudIndex, 0f, 2, 1f, 0.9f);
+
+                var colorRelatedToDistance = Color.white * Map(sizeTypeCloudIndex, 0f, 2, 1f, 0.86f);
+                colorRelatedToDistance.a   = 1;
+                spriteRenderer.color       = colorRelatedToDistance;
+
                 spriteRenderer.sortingOrder = BASE_CLOUD_SORTING_ORDER - sizeTypeCloudIndex;
 
                 var newColudRigidBody = newCloud.AddComponent<Rigidbody2D>();
