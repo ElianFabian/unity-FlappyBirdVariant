@@ -12,6 +12,7 @@ namespace Assets.Scripts.ScriptableObjects.Events
         public event Action BtnTryAgain_Click;
 
 
+
         public void RaiseBtnGoToMenu_ClickEvent() => BtnGoToMenu_Click?.Invoke();
         public void RaiseBtnTryAgain_ClickEvent() => BtnTryAgain_Click?.Invoke();
     }
