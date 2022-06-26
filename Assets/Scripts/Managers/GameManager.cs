@@ -36,7 +36,7 @@ public class GameManager : SingletonPersistent<GameManager>
     private void OnEnable()
     {
         DeathZone.OnPlayerCollided += OnPlayerCollidedWithDeathZone;
-        ScoreZone.OnPlayerCollided += OnPlayerCollidedWithScoreArea;
+        ScoreZone.OnPlayerCollided += OnPlayerCollidedWithScoreZone;
 
         UIManager.BtnGoToMenu_Click += BtnGoToMenu_Click;
         UIManager.BtnTryAgain_Click += BtnTryAgain_Click;
@@ -45,7 +45,7 @@ public class GameManager : SingletonPersistent<GameManager>
     private void OnDisable()
     {
         DeathZone.OnPlayerCollided -= OnPlayerCollidedWithDeathZone;
-        ScoreZone.OnPlayerCollided -= OnPlayerCollidedWithScoreArea;
+        ScoreZone.OnPlayerCollided -= OnPlayerCollidedWithScoreZone;
 
         UIManager.BtnGoToMenu_Click -= BtnGoToMenu_Click;
         UIManager.BtnTryAgain_Click -= BtnTryAgain_Click;
@@ -80,7 +80,7 @@ public class GameManager : SingletonPersistent<GameManager>
         SetGameOver();
     }
 
-    private void OnPlayerCollidedWithScoreArea(Player player, Collider2D collider)
+    private void OnPlayerCollidedWithScoreZone(Player player, Collider2D collider)
     {
         IncrementScore();
     }
