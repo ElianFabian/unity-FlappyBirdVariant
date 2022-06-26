@@ -1,8 +1,5 @@
-﻿using Assets.Scripts.Util;
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using Assets.Scripts;
 using Assets.Scripts.PlayerScripts;
 using NaughtyAttributes;
 using Assets.Scripts.ScriptableObjects.Events;
@@ -23,9 +20,8 @@ public class GameManager : MonoBehaviour
     [Scene]
     [SerializeField] string _menuSceneName;
 
-    int  _score        = 0;
-    bool _isGamePaused = false;
-    bool _isGameOver   = false;
+    GameState _gameState = GameState.Playing;
+    int       _score     = 0;
 
     #endregion
 
@@ -51,18 +47,18 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (_isGameOver) return;
+        if (_gameState == GameState.GameOver) return;
 
         if (!Input.GetKeyDown(_pauseKey)) return;
 
-        _isGamePaused = !_isGamePaused;
+        _gameState = SwitchGameState();
 
-        if (_isGamePaused)
+        if (_gameState == GameState.Paused)
         {
             Pause();
             _gameEventChannel.RaiseGamePausedEvent();
         }
-        else
+        else if (_gameState == GameState.Playing)
         {
             Resume();
             _gameEventChannel.RaiseGameResumedEvent();
@@ -114,7 +110,7 @@ public class GameManager : MonoBehaviour
 
         SceneManager.LoadSceneAsync(currentScene.name);
 
-        _isGameOver = false;
+        _gameState = GameState.Playing;
 
         _gameEventChannel.RaiseGameRestartedEvent();
     }
@@ -123,7 +119,7 @@ public class GameManager : MonoBehaviour
     {
         Pause();
 
-        _isGameOver = true;
+        _gameState = GameState.GameOver;
 
         _gameEventChannel.RaiseGameOverEvent();
     }
@@ -141,5 +137,14 @@ public class GameManager : MonoBehaviour
 
         AudioListener.pause = false;
     }
+
+    GameState SwitchGameState() => _gameState == GameState.Playing ? GameState.Paused : GameState.Playing;
+
     #endregion
+}
+
+
+enum GameState
+{
+    Paused, Playing, GameOver
 }
