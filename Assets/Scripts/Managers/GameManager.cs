@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using Assets.Scripts;
 using Assets.Scripts.PlayerScripts;
 using NaughtyAttributes;
+using Assets.Scripts.ScriptableObjects.Events;
 
 
 
@@ -13,19 +14,16 @@ public class GameManager : SingletonPersistent<GameManager>
 {
     #region Fields
 
+    [SerializeField] GameEventChannelSO      _gameEventChannel;
+    [SerializeField] UIEventChannelSO        _uiEventChannel;
+    [SerializeField] PlayerCollisionEventChannelSO _playerCollistionEventChannel;
+
     [SerializeField] KeyCode _pauseKey = KeyCode.Escape;
 
     [Scene]
     [SerializeField] string _menuSceneName;
 
-    public static event Action         OnGameOver;
-    public static event Action         OnGamePaused;
-    public static event Action         OnGameResumed;
-    public static event Action         OnGameRestarted;
-    public static event Action<string> OnSceneChanged;
-    public static event Action<int>    OnScoreChanged;
-
-    int _score         = 0;
+    int  _score        = 0;
     bool _isGamePaused = false;
     bool _isGameOver   = false;
 
@@ -35,20 +33,20 @@ public class GameManager : SingletonPersistent<GameManager>
 
     private void OnEnable()
     {
-        DeathZone.OnPlayerCollided += OnPlayerCollidedWithDeathZone;
-        ScoreZone.OnPlayerCollided += OnPlayerCollidedWithScoreZone;
+        _playerCollistionEventChannel.OnCollidedWithDeathZone += OnPlayerCollidedWithDeathZone;
+        _playerCollistionEventChannel.OnCollidedWithScoreZone += OnPlayerCollidedWithScoreZone;
 
-        UIManager.BtnGoToMenu_Click += BtnGoToMenu_Click;
-        UIManager.BtnTryAgain_Click += BtnTryAgain_Click;
+        _uiEventChannel.BtnGoToMenu_Click += BtnGoToMenu_Click;
+        _uiEventChannel.BtnTryAgain_Click += BtnTryAgain_Click;
     }
 
     private void OnDisable()
     {
-        DeathZone.OnPlayerCollided -= OnPlayerCollidedWithDeathZone;
-        ScoreZone.OnPlayerCollided -= OnPlayerCollidedWithScoreZone;
+        _playerCollistionEventChannel.OnCollidedWithDeathZone -= OnPlayerCollidedWithDeathZone;
+        _playerCollistionEventChannel.OnCollidedWithScoreZone -= OnPlayerCollidedWithScoreZone;
 
-        UIManager.BtnGoToMenu_Click -= BtnGoToMenu_Click;
-        UIManager.BtnTryAgain_Click -= BtnTryAgain_Click;
+        _uiEventChannel.BtnGoToMenu_Click -= BtnGoToMenu_Click;
+        _uiEventChannel.BtnTryAgain_Click -= BtnTryAgain_Click;
     }
 
     private void Update()
@@ -62,12 +60,12 @@ public class GameManager : SingletonPersistent<GameManager>
         if (_isGamePaused)
         {
             Pause();
-            OnGamePaused?.Invoke();
+            _gameEventChannel.RaiseGamePausedEvent();
         }
         else
         {
             Resume();
-            OnGameResumed?.Invoke();
+            _gameEventChannel.RaiseGameResumedEvent();
         }
     }
 
@@ -89,7 +87,7 @@ public class GameManager : SingletonPersistent<GameManager>
     {
         SceneManager.LoadSceneAsync(_menuSceneName);
 
-        OnSceneChanged?.Invoke(_menuSceneName);
+        _gameEventChannel.RaiseSceneChangedEvent(_menuSceneName);
     }
 
     private void BtnTryAgain_Click()
@@ -105,7 +103,7 @@ public class GameManager : SingletonPersistent<GameManager>
     {
         _score++;
 
-        OnScoreChanged?.Invoke(_score);
+        _gameEventChannel.RaiseScoreChangedEvent(_score);
     }
 
     void RestartGame()
@@ -118,7 +116,7 @@ public class GameManager : SingletonPersistent<GameManager>
 
         _isGameOver = false;
 
-        OnGameRestarted?.Invoke();
+        _gameEventChannel.RaiseGameRestartedEvent();
     }
 
     void SetGameOver()
@@ -128,7 +126,7 @@ public class GameManager : SingletonPersistent<GameManager>
 
         _isGameOver = true;
 
-        OnGameOver?.Invoke();
+        _gameEventChannel.RaiseGameOverEvent();
     }
 
     void ResetScore()

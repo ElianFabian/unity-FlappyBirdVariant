@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8206d37eb9f8a804db5ddaa61a89446e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collisionEventChannel: {fileID: 11400000, guid: d8a8caf3233f15e4dbe16863783e5f6e, type: 2}
   scoreClip: {fileID: 8300000, guid: 72bd3a4f13829f841aa82c07583475ee, type: 3}
 --- !u!82 &3664384468371399375
 AudioSource:

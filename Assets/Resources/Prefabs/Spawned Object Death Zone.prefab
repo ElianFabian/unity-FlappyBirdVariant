@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6597918325219759174}
   - component: {fileID: 1046994604022170944}
   m_Layer: 0
-  m_Name: Pipe Death Zone
+  m_Name: Spawned Object Death Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

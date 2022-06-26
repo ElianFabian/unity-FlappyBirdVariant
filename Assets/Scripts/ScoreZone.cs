@@ -1,6 +1,6 @@
 ﻿using Assets.Scripts.PlayerScripts;
 using UnityEngine;
-using System;
+using Assets.Scripts.ScriptableObjects.Events;
 
 
 
@@ -11,8 +11,7 @@ namespace Assets.Scripts
     [RequireComponent(typeof(AudioSource))]
     public class ScoreZone : MonoBehaviour
     {
-        public static event Action<Player, Collider2D> OnPlayerCollided;
-
+        [SerializeField] PlayerCollisionEventChannelSO _collisionEventChannel;
         [SerializeField] AudioClip scoreClip;
 
         BoxCollider2D _boxCollider2D;
@@ -33,19 +32,19 @@ namespace Assets.Scripts
 
         private void OnEnable()
         {
-            OnPlayerCollided += OnCollidedWithPlayer;
+            _collisionEventChannel.OnCollidedWithScoreZone += OnCollidedWithPlayer;
         }
 
         private void OnDisable()
         {
-            OnPlayerCollided -= OnCollidedWithPlayer;
+            _collisionEventChannel.OnCollidedWithScoreZone -= OnCollidedWithPlayer;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (!collision.TryGetComponent(out Player player)) return;
 
-            OnPlayerCollided?.Invoke(player, collision);
+            _collisionEventChannel.RaiseCollidedWithScoreZoneEvent(player, collision);
         }
 
 

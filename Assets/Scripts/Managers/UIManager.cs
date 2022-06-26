@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using TMPro;
 using System;
+using Assets.Scripts.ScriptableObjects.Events;
 
 
 
@@ -10,15 +11,14 @@ public class UIManager : MonoBehaviour
 {
     #region Fields
 
+    [SerializeField] UIEventChannelSO   _uiEventChannel;
+    [SerializeField] GameEventChannelSO _gameEventChannel;
+
     [SerializeField] TextMeshProUGUI _txtScore;
     [SerializeField] RectTransform   _pauseMenu;
     [SerializeField] RectTransform   _gameOverMenu;
     [SerializeField] Button          _btnGoToMenu;
     [SerializeField] Button          _btnTryAgain;
-
-
-    public static event Action BtnGoToMenu_Click;
-    public static event Action BtnTryAgain_Click;
 
     #endregion
 
@@ -26,8 +26,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        _btnGoToMenu.onClick.AddListener(BtnGoToMenu_Click.Invoke);
-        _btnTryAgain.onClick.AddListener(BtnTryAgain_Click.Invoke);
+        _btnGoToMenu.onClick.AddListener(_uiEventChannel.RaiseBtnGoToMenu_ClickEvent);
+        _btnTryAgain.onClick.AddListener(_uiEventChannel.RaiseBtnTryAgain_ClickEvent);
 
         HidePauseMenu();
         HideShowGameOverMenu();
@@ -35,18 +35,18 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.OnScoreChanged += OnScoreChanged;
-        GameManager.OnGameOver     += OnGameOver;
-        GameManager.OnGamePaused   += OnGamePause;
-        GameManager.OnGameResumed  += OnGameResumed;
+        _gameEventChannel.OnScoreChanged += OnScoreChanged;
+        _gameEventChannel.OnGameOver     += OnGameOver;
+        _gameEventChannel.OnGamePaused   += OnGamePause;
+        _gameEventChannel.OnGameResumed  += OnGameResumed;
     }
 
     private void OnDisable()
     {
-        GameManager.OnScoreChanged -= OnScoreChanged;
-        GameManager.OnGameOver     -= OnGameOver;
-        GameManager.OnGamePaused   -= OnGamePause;
-        GameManager.OnGameResumed  -= OnGameResumed;
+        _gameEventChannel.OnScoreChanged -= OnScoreChanged;
+        _gameEventChannel.OnGameOver     -= OnGameOver;
+        _gameEventChannel.OnGamePaused   -= OnGamePause;
+        _gameEventChannel.OnGameResumed  -= OnGameResumed;
     }
 
     #endregion
