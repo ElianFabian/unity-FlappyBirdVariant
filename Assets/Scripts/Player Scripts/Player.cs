@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using NaughtyAttributes;
 using Assets.Scripts.ScriptableObjects.Data;
+using Assets.Scripts.ScriptableObjects.Events;
 
 namespace Assets.Scripts.PlayerScripts
 {
@@ -18,6 +19,8 @@ namespace Assets.Scripts.PlayerScripts
     public class Player : MonoBehaviour
     {
         public const float GRAVITY = -9.81f;
+
+        [SerializeField] GameEventChannelSO _gameEventChannel;
 
         internal PlayerInput     input;
         internal PlayerAction    action;
@@ -46,6 +49,19 @@ namespace Assets.Scripts.PlayerScripts
             LoadPlayerData();
         }
 
+        private void OnEnable()
+        {
+            _gameEventChannel.OnGamePaused  += DisableInput;
+            _gameEventChannel.OnGameOver    += DisableInput;
+            _gameEventChannel.OnGameResumed += EnableInput;
+        }
+
+        private void OnDisable()
+        {
+            _gameEventChannel.OnGamePaused  -= DisableInput;
+            _gameEventChannel.OnGameOver    -= DisableInput;
+            _gameEventChannel.OnGameResumed -= EnableInput;
+        }
 
 
         void LoadPlayerData()
@@ -55,5 +71,9 @@ namespace Assets.Scripts.PlayerScripts
             _spriteRenderer.sprite = data.playerSprite;
             audio.source.clip      = data.jumpClip;
         }
+
+        void EnableInput() => input.enabled = true;
+
+        void DisableInput() => input.enabled = false;
     }
 }

@@ -18,8 +18,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] UIEventChannelSO              _uiEventChannel;
     [SerializeField] PlayerCollisionEventChannelSO _playerCollistionEventChannel;
 
-    [SerializeField] PlayerInput _playerInput;
-
     [SerializeField] KeyCode _pauseKey = KeyCode.Escape;
 
     [Scene]
@@ -77,8 +75,6 @@ public class GameManager : MonoBehaviour
 
     private void OnPlayerCollidedWithDeathZone(Player player, Collider2D collider)
     {
-        DisablePlayerInput();
-
         SetGameOver();
     }
 
@@ -137,8 +133,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
 
         AudioListener.pause = true;
-
-        DisablePlayerInput();
     }
 
     void Resume()
@@ -146,13 +140,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
 
         AudioListener.pause = false;
-
-        EnablePlayerInput();
     }
-
-    void EnablePlayerInput() => _playerInput.enabled = true;
-
-    void DisablePlayerInput() => _playerInput.enabled = false;
-
     #endregion
 }
