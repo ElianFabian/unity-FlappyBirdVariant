@@ -28,7 +28,7 @@ namespace Assets.Scripts
         {
             if (!collision.TryGetComponent(out Player player)) return;
 
-            _collisionEventChannel.RaiseCollidedWithDeathZoneEvent(player, collision);
+            _collisionEventChannel.RaiseTriggerEnter2DInDeathZoneEvent(player, collision);
         }
     }
 }

@@ -10,13 +10,15 @@ using Assets.Scripts.ScriptableObjects.Events;
 
 
 [DisallowMultipleComponent]
-public class GameManager : SingletonPersistent<GameManager>
+public class GameManager : MonoBehaviour
 {
     #region Fields
 
-    [SerializeField] GameEventChannelSO      _gameEventChannel;
-    [SerializeField] UIEventChannelSO        _uiEventChannel;
+    [SerializeField] GameEventChannelSO            _gameEventChannel;
+    [SerializeField] UIEventChannelSO              _uiEventChannel;
     [SerializeField] PlayerCollisionEventChannelSO _playerCollistionEventChannel;
+
+    [SerializeField] PlayerInput _playerInput;
 
     [SerializeField] KeyCode _pauseKey = KeyCode.Escape;
 
@@ -33,8 +35,8 @@ public class GameManager : SingletonPersistent<GameManager>
 
     private void OnEnable()
     {
-        _playerCollistionEventChannel.OnCollidedWithDeathZone += OnPlayerCollidedWithDeathZone;
-        _playerCollistionEventChannel.OnCollidedWithScoreZone += OnPlayerCollidedWithScoreZone;
+        _playerCollistionEventChannel.OnTriggerEnter2DInDeathZone += OnPlayerCollidedWithDeathZone;
+        _playerCollistionEventChannel.OnTriggerEnter2DScoreZone += OnPlayerCollidedWithScoreZone;
 
         _uiEventChannel.BtnGoToMenu_Click += BtnGoToMenu_Click;
         _uiEventChannel.BtnTryAgain_Click += BtnTryAgain_Click;
@@ -42,8 +44,8 @@ public class GameManager : SingletonPersistent<GameManager>
 
     private void OnDisable()
     {
-        _playerCollistionEventChannel.OnCollidedWithDeathZone -= OnPlayerCollidedWithDeathZone;
-        _playerCollistionEventChannel.OnCollidedWithScoreZone -= OnPlayerCollidedWithScoreZone;
+        _playerCollistionEventChannel.OnTriggerEnter2DInDeathZone -= OnPlayerCollidedWithDeathZone;
+        _playerCollistionEventChannel.OnTriggerEnter2DScoreZone -= OnPlayerCollidedWithScoreZone;
 
         _uiEventChannel.BtnGoToMenu_Click -= BtnGoToMenu_Click;
         _uiEventChannel.BtnTryAgain_Click -= BtnTryAgain_Click;
@@ -75,6 +77,8 @@ public class GameManager : SingletonPersistent<GameManager>
 
     private void OnPlayerCollidedWithDeathZone(Player player, Collider2D collider)
     {
+        DisablePlayerInput();
+
         SetGameOver();
     }
 
@@ -122,16 +126,10 @@ public class GameManager : SingletonPersistent<GameManager>
     void SetGameOver()
     {
         Pause();
-        ResetScore();
 
         _isGameOver = true;
 
         _gameEventChannel.RaiseGameOverEvent();
-    }
-
-    void ResetScore()
-    {
-        _score = 0;
     }
 
     void Pause()
@@ -139,6 +137,8 @@ public class GameManager : SingletonPersistent<GameManager>
         Time.timeScale = 0;
 
         AudioListener.pause = true;
+
+        DisablePlayerInput();
     }
 
     void Resume()
@@ -146,7 +146,13 @@ public class GameManager : SingletonPersistent<GameManager>
         Time.timeScale = 1;
 
         AudioListener.pause = false;
+
+        EnablePlayerInput();
     }
+
+    void EnablePlayerInput() => _playerInput.enabled = true;
+
+    void DisablePlayerInput() => _playerInput.enabled = false;
 
     #endregion
 }
