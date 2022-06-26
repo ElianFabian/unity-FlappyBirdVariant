@@ -10,13 +10,11 @@ namespace Assets.Scripts
         const string SPRITE_PATH              = "Images/Background/clouds";
         const int    BASE_CLOUD_SORTING_ORDER = -20;
 
-
-
-        [SerializeField] float _maxSpawnDelayInSeconds = 4.5f;
-        [SerializeField] float _minSpawnDelayInSeconds = 2.5f;
+        [SerializeField] float _maxSpawnDelayInSeconds = 4f;
+        [SerializeField] float _minSpawnDelayInSeconds = 2.2f;
         [SerializeField] float _spawnDelayInSeconds    = 5f;
         [SerializeField] float _spawnVelocity          = 1.5f;
-        [SerializeField] float _heightOffset           = 3f;
+        [SerializeField] float _heightOffset           = 4.5f;
 
         Sprite[] _spriteClouds;
 
