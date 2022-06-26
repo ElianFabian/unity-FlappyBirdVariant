@@ -10,8 +10,6 @@ namespace Assets.Scripts.PlayerScripts
     {
         [SerializeField] float maxJumpHeight = 2;
 
-        public static event Action OnJump;
-
         Rigidbody2D _rigidbody;
 
 
@@ -29,19 +27,12 @@ namespace Assets.Scripts.PlayerScripts
 
         private void OnEnable()
         {
-            PlayerInput.OnJumpKeyDown += OnJumpKeyDown;
+            player.inputEventChannel.OnJumpKeyDown += Jump;
         }
 
         private void OnDisable()
         {
-            PlayerInput.OnJumpKeyDown -= OnJumpKeyDown;
-        }
-
-
-
-        void OnJumpKeyDown()
-        {
-            Jump();
+            player.inputEventChannel.OnJumpKeyDown -= Jump;
         }
 
 
@@ -53,8 +44,6 @@ namespace Assets.Scripts.PlayerScripts
             newVelocity.y = JumpVelocity;
 
             _rigidbody.velocity = newVelocity;
-
-            OnJump?.Invoke();
         }
     }
 }

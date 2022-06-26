@@ -25,19 +25,16 @@ namespace Assets.Scripts.PlayerScripts
 
         private void OnEnable()
         {
-            PlayerAction.OnJump += OnJump;
+            player.inputEventChannel.OnJumpKeyDown += PlayJumpSound;
         }
 
         private void OnDisable()
         {
-            PlayerAction.OnJump -= OnJump;
+            player.inputEventChannel.OnJumpKeyDown -= PlayJumpSound;
         }
 
 
 
-        void OnJump()
-        {
-            source.Play();
-        }
+        void PlayJumpSound() =>source.Play();
     }
 }
