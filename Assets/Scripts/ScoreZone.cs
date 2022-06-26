@@ -11,7 +11,7 @@ namespace Assets.Scripts
     [RequireComponent(typeof(AudioSource))]
     public class ScoreZone : MonoBehaviour
     {
-        [SerializeField] PlayerCollisionEventChannelSO _collisionEventChannel;
+        [SerializeField] PlayerCollisionEventChannelSO _playerCollisionEventChannel;
         [SerializeField] AudioClip scoreClip;
 
         BoxCollider2D _boxCollider2D;
@@ -39,7 +39,7 @@ namespace Assets.Scripts
 
             _audioSource.Play();
 
-            _collisionEventChannel.RaiseTriggerEnter2DWithScoreZoneEvent(player, collision);
+            _playerCollisionEventChannel.scoreZone.RaiseTriggerEnter2DEvent(player, collision);
         }
     }
 }

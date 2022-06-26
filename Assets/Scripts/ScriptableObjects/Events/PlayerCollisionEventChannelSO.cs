@@ -9,19 +9,27 @@ namespace Assets.Scripts.ScriptableObjects.Events
     [CreateAssetMenu(fileName = "PlayerCollisionEventChannel", menuName = "Custom Event Channels/Player Trigger Enter Event Channel")]
     public class PlayerCollisionEventChannelSO : ScriptableObject
     {
-        public event Action<Player, Collider2D> OnTriggerEnter2DWithDeathZone;
-        public event Action<Player, Collider2D> OnTriggerEnter2DWithScoreZone;
+        public DeathZone deathZone = new();
+        public ScoreZone scoreZone = new();
+    }
 
+    public class DeathZone
+    {
+        public event Action<Player, Collider2D> OnTriggerEnter2D;
 
-
-        public void RaiseTriggerEnter2DWithDeathZoneEvent(Player player, Collider2D collision)
+        public void RaiseTriggerEnter2DEvent(Player player, Collider2D collision)
         {
-            OnTriggerEnter2DWithDeathZone?.Invoke(player, collision);
+            OnTriggerEnter2D?.Invoke(player, collision);
         }
+    }
 
-        public void RaiseTriggerEnter2DWithScoreZoneEvent(Player player, Collider2D collision)
+    public class ScoreZone
+    {
+        public event Action<Player, Collider2D> OnTriggerEnter2D;
+
+        public void RaiseTriggerEnter2DEvent(Player player, Collider2D collision)
         {
-            OnTriggerEnter2DWithScoreZone?.Invoke(player, collision);
+            OnTriggerEnter2D?.Invoke(player, collision);
         }
     }
 }

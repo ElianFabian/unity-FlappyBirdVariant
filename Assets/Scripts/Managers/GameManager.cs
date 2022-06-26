@@ -29,8 +29,8 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerCollisionEventChannel.OnTriggerEnter2DWithDeathZone += OnPlayerCollidedWithDeathZone;
-        _playerCollisionEventChannel.OnTriggerEnter2DWithScoreZone   += OnPlayerCollidedWithScoreZone;
+        _playerCollisionEventChannel.deathZone.OnTriggerEnter2D += OnPlayerCollidedWithDeathZone;
+        _playerCollisionEventChannel.scoreZone.OnTriggerEnter2D += OnPlayerCollidedWithScoreZone;
 
         _uiEventChannel.BtnGoToMenu_Click += BtnGoToMenu_Click;
         _uiEventChannel.BtnTryAgain_Click += BtnTryAgain_Click;
@@ -38,8 +38,8 @@ public class GameManager : MonoBehaviour
 
     private void OnDisable()
     {
-        _playerCollisionEventChannel.OnTriggerEnter2DWithDeathZone -= OnPlayerCollidedWithDeathZone;
-        _playerCollisionEventChannel.OnTriggerEnter2DWithScoreZone   -= OnPlayerCollidedWithScoreZone;
+        _playerCollisionEventChannel.deathZone.OnTriggerEnter2D -= OnPlayerCollidedWithDeathZone;
+        _playerCollisionEventChannel.scoreZone.OnTriggerEnter2D -= OnPlayerCollidedWithScoreZone;
 
         _uiEventChannel.BtnGoToMenu_Click -= BtnGoToMenu_Click;
         _uiEventChannel.BtnTryAgain_Click -= BtnTryAgain_Click;

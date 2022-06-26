@@ -11,7 +11,7 @@ namespace Assets.Scripts
     [RequireComponent(typeof(BoxCollider2D))]
     public class DeathZone : MonoBehaviour
     {
-        [SerializeField] PlayerCollisionEventChannelSO _collisionEventChannel;
+        [SerializeField] PlayerCollisionEventChannelSO _playerCollisionEventChannel;
 
         BoxCollider2D _boxCollider2D;
 
@@ -28,7 +28,7 @@ namespace Assets.Scripts
         {
             if (!collision.TryGetComponent(out Player player)) return;
 
-            _collisionEventChannel.RaiseTriggerEnter2DWithDeathZoneEvent(player, collision);
+            _playerCollisionEventChannel.deathZone.RaiseTriggerEnter2DEvent(player, collision);
         }
     }
 }
