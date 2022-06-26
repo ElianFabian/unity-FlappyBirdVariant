@@ -2,6 +2,7 @@
 using Assets.Scripts.ScriptableObjects.Events;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 
@@ -14,6 +15,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameEventChannelSO            _gameEventChannel;
     [SerializeField] UIEventChannelSO              _uiEventChannel;
     [SerializeField] PlayerCollisionEventChannelSO _playerCollisionEventChannel;
+
+    [SerializeField] AudioMixerSnapshot _playingSnapshot;
+    [SerializeField] AudioMixerSnapshot _pausedSnapshot;
+    [SerializeField] AudioMixerSnapshot _gameOverSnapshot;
 
     [SerializeField] KeyCode _pauseKey = KeyCode.Escape;
 
@@ -121,6 +126,8 @@ public class GameManager : MonoBehaviour
 
         _gameState = GameState.GameOver;
 
+        _gameOverSnapshot.TransitionTo(0.01f);
+
         _gameEventChannel.RaiseGameOverEvent();
     }
 
@@ -128,14 +135,14 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
 
-        AudioListener.pause = true;
+        _pausedSnapshot.TransitionTo(0.01f);
     }
 
     void Resume()
     {
         Time.timeScale = 1;
 
-        AudioListener.pause = false;
+        _playingSnapshot.TransitionTo(0.01f);
     }
 
     GameState SwitchGameState() => _gameState == GameState.Playing ? GameState.Paused : GameState.Playing;

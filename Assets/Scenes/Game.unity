@@ -594,6 +594,9 @@ MonoBehaviour:
   _gameEventChannel: {fileID: 11400000, guid: aa07e7a14a4397848afe7a3838cfc7f8, type: 2}
   _uiEventChannel: {fileID: 11400000, guid: 76a188cbb4911984cabd0c45c24d0f2e, type: 2}
   _playerCollisionEventChannel: {fileID: 11400000, guid: d8a8caf3233f15e4dbe16863783e5f6e, type: 2}
+  _playingSnapshot: {fileID: 5216563307680870191, guid: 14d0fc5255ca87146979a6bb761feb8e, type: 2}
+  _pausedSnapshot: {fileID: 24500006, guid: 14d0fc5255ca87146979a6bb761feb8e, type: 2}
+  _gameOverSnapshot: {fileID: -3235957310990484050, guid: 14d0fc5255ca87146979a6bb761feb8e, type: 2}
   _pauseKey: 27
   _menuSceneName: Menu
 --- !u!1 &676796062
@@ -1995,7 +1998,7 @@ AudioSource:
   m_GameObject: {fileID: 1876406714}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 798076999670964550, guid: 14d0fc5255ca87146979a6bb761feb8e, type: 2}
   m_audioClip: {fileID: 8300000, guid: 422017967a295a948b9d77bcb19830e3, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
@@ -2320,6 +2323,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 629968048780119525, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 3590692097845996727, guid: 14d0fc5255ca87146979a6bb761feb8e, type: 2}
     - target: {fileID: 4720838179805794524, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
       propertyPath: _gameEventChannel
       value: 
@@ -2375,6 +2382,10 @@ PrefabInstance:
     - target: {fileID: 8199134691106986885, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199134691106986885, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
