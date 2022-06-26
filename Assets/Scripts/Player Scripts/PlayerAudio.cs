@@ -35,6 +35,6 @@ namespace Assets.Scripts.PlayerScripts
 
 
 
-        void PlayJumpSound() =>source.Play();
+        void PlayJumpSound() => source.Play();
     }
 }
