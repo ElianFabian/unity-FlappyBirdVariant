@@ -3,7 +3,7 @@ using NaughtyAttributes;
 
 
 
-namespace Assets.Scripts.Data
+namespace Assets.Scripts.ScriptableObjects.Data
 {
     [CreateAssetMenu(fileName = "PlayerData", menuName = "Custom Data/Player Data")]
     public class PlayerDataSO : ScriptableObject

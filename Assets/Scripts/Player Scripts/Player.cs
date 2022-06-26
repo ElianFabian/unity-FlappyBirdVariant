@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
-using Assets.Scripts.Data;
 using NaughtyAttributes;
-
-
+using Assets.Scripts.ScriptableObjects.Data;
 
 namespace Assets.Scripts.PlayerScripts
 {
