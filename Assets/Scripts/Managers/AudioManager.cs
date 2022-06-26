@@ -31,16 +31,18 @@ namespace Assets.Scripts.Managers
 
         private void OnEnable()
         {
-            _gameEventChannel.OnGameOver    += OnGameOver;
-            _gameEventChannel.OnGamePaused  += OnGamePaused;
-            _gameEventChannel.OnGameResumed += OnGameResumed;
+            _gameEventChannel.OnGameOver      += OnGameOver;
+            _gameEventChannel.OnGamePaused    += OnGamePaused;
+            _gameEventChannel.OnGameResumed   += OnGameResumed;
+            _gameEventChannel.OnGameRestarted += OnGameResumed;
         }
 
         private void OnDisable()
         {
-            _gameEventChannel.OnGameOver    -= OnGameOver;
-            _gameEventChannel.OnGamePaused  -= OnGamePaused;
-            _gameEventChannel.OnGameResumed -= OnGameResumed;
+            _gameEventChannel.OnGameOver      -= OnGameOver;
+            _gameEventChannel.OnGamePaused    -= OnGamePaused;
+            _gameEventChannel.OnGameResumed   -= OnGameResumed;
+            _gameEventChannel.OnGameRestarted -= OnGameResumed;
         }
 
 
@@ -60,7 +62,11 @@ namespace Assets.Scripts.Managers
             _gameOverSnapshot.TransitionTo(2f);
 
             _source.PlayOneShot(_gameOverClip);
+        }
 
+        void OnGameRestarted()
+        {
+            _playingSnapshot.TransitionTo(0.01f);
         }
     }
 }
