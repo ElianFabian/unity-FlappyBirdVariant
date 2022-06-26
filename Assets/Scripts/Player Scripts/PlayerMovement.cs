@@ -38,7 +38,7 @@ namespace Assets.Scripts.PlayerScripts
         {
             var velocity = _rigidBody.velocity;
 
-            var rotationRate = Mathf.InverseLerp(_startJumpVelocity, -_startJumpVelocity, velocity.y);
+            var rotationRate = Mathf.InverseLerp(_startJumpVelocity, -_startJumpVelocity * 2, velocity.y);
 
             transform.rotation = Quaternion.Lerp(_fordwardRotation, _downRotation, rotationRate);
         }
