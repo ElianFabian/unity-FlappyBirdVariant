@@ -30,28 +30,16 @@ namespace Assets.Scripts
             _audioSource.clip        = scoreClip;
         }
 
-        private void OnEnable()
-        {
-            _collisionEventChannel.OnTriggerEnter2DWithScoreZone += OnCollidedWithPlayer;
-        }
-
-        private void OnDisable()
-        {
-            _collisionEventChannel.OnTriggerEnter2DWithScoreZone -= OnCollidedWithPlayer;
-        }
-
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (!collision.TryGetComponent(out Player player)) return;
 
-            _collisionEventChannel.RaiseTriggerEnter2DWithScoreZoneEvent(player, collision);
-        }
+            // This avoids the player to increase the score more than once
+            _boxCollider2D.enabled = false;
 
-
-
-        void OnCollidedWithPlayer(Player player, Collider2D collision)
-        {
             _audioSource.Play();
+
+            _collisionEventChannel.RaiseTriggerEnter2DWithScoreZoneEvent(player, collision);
         }
     }
 }
