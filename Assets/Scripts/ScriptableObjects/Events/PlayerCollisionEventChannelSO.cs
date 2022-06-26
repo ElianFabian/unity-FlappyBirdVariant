@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.ScriptableObjects.Events
 {
-    [CreateAssetMenu(fileName = "PlayerCollisionEventChannel", menuName = "Custom Event Channels/Player Trigger Enter Event Channel")]
+    [CreateAssetMenu(fileName = "PlayerCollisionEventChannel", menuName = "Custom Event Channels/Player Collision Event Channel")]
     public class PlayerCollisionEventChannelSO : ScriptableObject
     {
         public DeathZone deathZone = new();
