@@ -25,7 +25,7 @@ public class GameManager : SingletonPersistent<GameManager>
     public static event Action<string> OnSceneChanged;
     public static event Action<int>    OnScoreChanged;
 
-    int _score = 0;
+    int _score         = 0;
     bool _isGamePaused = false;
     bool _isGameOver   = false;
 

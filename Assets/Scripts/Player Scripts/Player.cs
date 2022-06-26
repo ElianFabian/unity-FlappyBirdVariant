@@ -36,16 +36,16 @@ namespace Assets.Scripts.PlayerScripts
 
         void Awake()
         {
-            LoadPlayerData();
-        }
-
-        private void Start()
-        {
             input     = GetComponent<PlayerInput>();
             action    = GetComponent<PlayerAction>();
             movement  = GetComponent<PlayerMovement>();
             collision = GetComponent<PlayerCollision>();
             audio     = GetComponent<PlayerAudio>();
+        }
+
+        private void Start()
+        {
+            LoadPlayerData();
         }
 
 
@@ -55,6 +55,7 @@ namespace Assets.Scripts.PlayerScripts
             _spriteRenderer = GetComponent<SpriteRenderer>();
 
             _spriteRenderer.sprite = data.playerSprite;
+            audio.source.clip      = data.jumpClip;
         }
     }
 }

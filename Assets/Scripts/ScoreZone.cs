@@ -20,7 +20,7 @@ namespace Assets.Scripts
 
 
 
-        private void Start()
+        private void Awake()
         {
             _boxCollider2D = GetComponent<BoxCollider2D>();
             _audioSource   = GetComponent<AudioSource>();

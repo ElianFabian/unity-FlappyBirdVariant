@@ -11,8 +11,10 @@ namespace Assets.Scripts.PlayerScripts
 
 
 
-        private void Start()
+        protected override void Awake()
         {
+            base.Awake();
+
             _circleCollider2D = GetComponent<CircleCollider2D>();
 
             _circleCollider2D.isTrigger = true;

@@ -16,8 +16,10 @@ namespace Assets.Scripts.PlayerScripts
 
 
 
-        private void Start()
+        protected override void Awake()
         {
+            base.Awake();
+
             _rigidBody = GetComponent<Rigidbody2D>();
 
             _startJumpVelocity = player.action.JumpVelocity;
