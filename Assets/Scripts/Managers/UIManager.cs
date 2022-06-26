@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
     {
         _gameEventChannel.OnScoreChanged += OnScoreChanged;
         _gameEventChannel.OnGameOver     += OnGameOver;
-        _gameEventChannel.OnGamePaused   += OnGamePause;
+        _gameEventChannel.OnGamePaused   += OnGamePaused;
         _gameEventChannel.OnGameResumed  += OnGameResumed;
     }
 
@@ -44,7 +44,7 @@ public class UIManager : MonoBehaviour
     {
         _gameEventChannel.OnScoreChanged -= OnScoreChanged;
         _gameEventChannel.OnGameOver     -= OnGameOver;
-        _gameEventChannel.OnGamePaused   -= OnGamePause;
+        _gameEventChannel.OnGamePaused   -= OnGamePaused;
         _gameEventChannel.OnGameResumed  -= OnGameResumed;
     }
 
@@ -62,7 +62,7 @@ public class UIManager : MonoBehaviour
         ShowGameOverMenu();
     }
 
-    void OnGamePause()
+    void OnGamePaused()
     {
         ShowPauseMenu();
     }

@@ -514,7 +514,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &629844661
 GameObject:
@@ -594,9 +594,6 @@ MonoBehaviour:
   _gameEventChannel: {fileID: 11400000, guid: aa07e7a14a4397848afe7a3838cfc7f8, type: 2}
   _uiEventChannel: {fileID: 11400000, guid: 76a188cbb4911984cabd0c45c24d0f2e, type: 2}
   _playerCollisionEventChannel: {fileID: 11400000, guid: d8a8caf3233f15e4dbe16863783e5f6e, type: 2}
-  _playingSnapshot: {fileID: 5216563307680870191, guid: 14d0fc5255ca87146979a6bb761feb8e, type: 2}
-  _pausedSnapshot: {fileID: 24500006, guid: 14d0fc5255ca87146979a6bb761feb8e, type: 2}
-  _gameOverSnapshot: {fileID: -3235957310990484050, guid: 14d0fc5255ca87146979a6bb761feb8e, type: 2}
   _pauseKey: 27
   _menuSceneName: Menu
 --- !u!1 &676796062
@@ -2098,7 +2095,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1876531278
 GameObject:
@@ -2138,6 +2135,55 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2124754026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2124754028}
+  - component: {fileID: 2124754027}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2124754027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124754026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6c2bcaa572eac74b9e9c0259c0c3571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEventChannel: {fileID: 11400000, guid: aa07e7a14a4397848afe7a3838cfc7f8, type: 2}
+  _playingSnapshot: {fileID: 5216563307680870191, guid: 14d0fc5255ca87146979a6bb761feb8e, type: 2}
+  _pausedSnapshot: {fileID: 24500006, guid: 14d0fc5255ca87146979a6bb761feb8e, type: 2}
+  _gameOverSnapshot: {fileID: -3235957310990484050, guid: 14d0fc5255ca87146979a6bb761feb8e, type: 2}
+  _gameOverClip: {fileID: 8300000, guid: 97f84a60e50e485418163cff5d837243, type: 3}
+--- !u!4 &2124754028
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124754026}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.5792174, y: 1.8957244, z: -0.02967558}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &919867880068757904
 PrefabInstance:
   m_ObjectHideFlags: 0
