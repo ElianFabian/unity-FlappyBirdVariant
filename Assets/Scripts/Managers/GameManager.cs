@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameEventChannelSO            _gameEventChannel;
     [SerializeField] UIEventChannelSO              _uiEventChannel;
-    [SerializeField] PlayerCollisionEventChannelSO _playerCollistionEventChannel;
+    [SerializeField] PlayerCollisionEventChannelSO _playerCollisionEventChannel;
 
     [SerializeField] KeyCode _pauseKey = KeyCode.Escape;
 
@@ -29,8 +29,8 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerCollistionEventChannel.OnTriggerEnter2DWithDeathZone += OnPlayerCollidedWithDeathZone;
-        _playerCollistionEventChannel.OnTriggerEnter2DWithScoreZone   += OnPlayerCollidedWithScoreZone;
+        _playerCollisionEventChannel.OnTriggerEnter2DWithDeathZone += OnPlayerCollidedWithDeathZone;
+        _playerCollisionEventChannel.OnTriggerEnter2DWithScoreZone   += OnPlayerCollidedWithScoreZone;
 
         _uiEventChannel.BtnGoToMenu_Click += BtnGoToMenu_Click;
         _uiEventChannel.BtnTryAgain_Click += BtnTryAgain_Click;
@@ -38,8 +38,8 @@ public class GameManager : MonoBehaviour
 
     private void OnDisable()
     {
-        _playerCollistionEventChannel.OnTriggerEnter2DWithDeathZone -= OnPlayerCollidedWithDeathZone;
-        _playerCollistionEventChannel.OnTriggerEnter2DWithScoreZone   -= OnPlayerCollidedWithScoreZone;
+        _playerCollisionEventChannel.OnTriggerEnter2DWithDeathZone -= OnPlayerCollidedWithDeathZone;
+        _playerCollisionEventChannel.OnTriggerEnter2DWithScoreZone   -= OnPlayerCollidedWithScoreZone;
 
         _uiEventChannel.BtnGoToMenu_Click -= BtnGoToMenu_Click;
         _uiEventChannel.BtnTryAgain_Click -= BtnTryAgain_Click;
