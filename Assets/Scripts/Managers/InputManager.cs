@@ -12,8 +12,7 @@ namespace Assets.Scripts.Managers
         [SerializeField] UIEventChannelSO           _uiEventChannel;
         [SerializeField] GameEventChannelSO         _gameEventChannel;
 
-        [SerializeField] PlayerInputDataSO _playerInputData;
-        [SerializeField] GlobalInputDataSO _globalInputData;
+        [SerializeField] KeyBindingDataSo _keyBinding;
 
         ActionMap _currentActionMap = ActionMap.Player;
 
@@ -21,14 +20,14 @@ namespace Assets.Scripts.Managers
 
         private void OnEnable()
         {
-            _gameEventChannel.OnGamePaused  += SwitchToGlobal;
+            _gameEventChannel.OnGamePaused  += SwitchToPause;
             _gameEventChannel.OnGameResumed += SwitchToPlayer;
             _gameEventChannel.OnGameOver    += SwitchToNone;
         }
 
         private void OnDisable()
         {
-            _gameEventChannel.OnGamePaused  -= SwitchToGlobal;
+            _gameEventChannel.OnGamePaused  -= SwitchToPause;
             _gameEventChannel.OnGameResumed -= SwitchToPlayer;
             _gameEventChannel.OnGameOver    -= SwitchToNone;
         }
@@ -48,7 +47,7 @@ namespace Assets.Scripts.Managers
                     HandleGlobalInput();
                     HandlePlayerInput();
                     break;
-                case ActionMap.Global:
+                case ActionMap.Pause:
                     HandleGlobalInput();
                     break;
             }
@@ -56,21 +55,21 @@ namespace Assets.Scripts.Managers
 
         void HandleGlobalInput()
         {
-            if (Input.GetKeyDown(_globalInputData.pauseKey)) _uiEventChannel.ReaiseTogglePauseEvent();
+            if (Input.GetKeyDown(_keyBinding.pauseKey)) _uiEventChannel.ReaiseTogglePauseEvent();
         }
 
         void HandlePlayerInput()
         {
-            if (Input.GetKeyDown(_playerInputData.jumpKey)) _playerInputEventChannel.RaiseJumpEvent();
+            if (Input.GetKeyDown(_keyBinding.jumpKey)) _playerInputEventChannel.RaiseJumpEvent();
         }
 
         void SwitchToPlayer() => _currentActionMap = ActionMap.Player;
-        void SwitchToGlobal() => _currentActionMap = ActionMap.Global;
+        void SwitchToPause() => _currentActionMap = ActionMap.Pause;
         void SwitchToNone() => _currentActionMap = ActionMap.None;
     }
 }
 
 enum ActionMap
 {
-    Player, Global, None
+    Player, Pause, None
 }
