@@ -27,7 +27,6 @@ namespace Assets.Scripts.Managers
             _source = GetComponent<AudioSource>();
 
             _source.playOnAwake = false;
-            _source.loop        = true;
         }
 
         private void OnEnable()
@@ -64,6 +63,7 @@ namespace Assets.Scripts.Managers
         {
             _snapshotData.gameOver.TransitionTo(2f);
 
+            _source.loop = true;
             _source.PlayOneShot(_clipData.gameOver);
         }
 
