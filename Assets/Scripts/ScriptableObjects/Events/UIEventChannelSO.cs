@@ -8,9 +8,10 @@ namespace Assets.Scripts.ScriptableObjects.Events
     [CreateAssetMenu(fileName = "UIEventChannel", menuName = "Custom Event Channels/UI Event Channel")]
     public class UIEventChannelSO : ScriptableObject
     {
-        public event Action BtnGoToMenu_Click;
-        public event Action BtnTryAgain_Click;
-        public event Action OnPauseToggled;
+        public event Action 
+            BtnGoToMenu_Click,
+            BtnTryAgain_Click,
+            OnPauseToggled;
 
 
 

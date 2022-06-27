@@ -8,10 +8,11 @@ namespace Assets.Scripts.ScriptableObjects.Events
     [CreateAssetMenu(fileName = "GameEventChannel", menuName = "Custom Event Channels/Game Event Channel")]
     public class GameEventChannelSO : ScriptableObject
     {
-        public event Action         OnGameOver;
-        public event Action         OnGamePaused;
-        public event Action         OnGameResumed;
-        public event Action         OnGameRestarted;
+        public event Action
+            OnGameOver,
+            OnGamePaused,
+            OnGameResumed,
+            OnGameRestarted;
         public event Action<string> OnSceneChanged;
         public event Action<int>    OnScoreChanged;
 
