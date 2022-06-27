@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.ScriptableObjects.Data;
 using Assets.Scripts.ScriptableObjects.Events;
+using System;
 using UnityEngine;
 
 
@@ -21,14 +22,14 @@ namespace Assets.Scripts.Managers
         private void OnEnable()
         {
             _gameEventChannel.OnGamePaused  += SwitchToPause;
-            _gameEventChannel.OnGameResumed += SwitchToPlayer;
+            _gameEventChannel.OnGameResumed += SwitchToGamePlay;
             _gameEventChannel.OnGameOver    += SwitchToNone;
         }
 
         private void OnDisable()
         {
             _gameEventChannel.OnGamePaused  -= SwitchToPause;
-            _gameEventChannel.OnGameResumed -= SwitchToPlayer;
+            _gameEventChannel.OnGameResumed -= SwitchToGamePlay;
             _gameEventChannel.OnGameOver    -= SwitchToNone;
         }
 
@@ -43,17 +44,17 @@ namespace Assets.Scripts.Managers
         {
             switch (_currentActionMap)
             {
-                case ActionMap.Player:
-                    HandleGlobalInput();
+                case ActionMap.GamePlay:
+                    HandlePauseInput();
                     HandlePlayerInput();
                     break;
                 case ActionMap.Pause:
-                    HandleGlobalInput();
+                    HandlePauseInput();
                     break;
             }
         }
 
-        void HandleGlobalInput()
+        void HandlePauseInput()
         {
             if (Input.GetKeyDown(_keyBinding.pauseKey)) _uiEventChannel.ReaiseTogglePauseEvent();
         }
@@ -63,13 +64,18 @@ namespace Assets.Scripts.Managers
             if (Input.GetKeyDown(_keyBinding.jumpKey)) _playerInputEventChannel.RaiseJumpEvent();
         }
 
-        void SwitchToPlayer() => _currentActionMap = ActionMap.Player;
+        void SwitchToGamePlay() => _currentActionMap = ActionMap.GamePlay;
         void SwitchToPause() => _currentActionMap = ActionMap.Pause;
         void SwitchToNone() => _currentActionMap = ActionMap.None;
     }
 }
 
+[Flags]
 enum ActionMap
 {
-    Player, Pause, None
+    None = 0,
+    Player = 1 << 0,
+    Pause = 1 << 1,
+
+    GamePlay = Player | Pause
 }
