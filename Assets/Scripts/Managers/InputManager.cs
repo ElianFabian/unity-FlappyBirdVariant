@@ -13,52 +13,64 @@ namespace Assets.Scripts.Managers
         [SerializeField] GameEventChannelSO         _gameEventChannel;
 
         [SerializeField] PlayerInputDataSO _playerInputData;
-        [SerializeField] UIInputDataSO     _uiInputData;
+        [SerializeField] GlobalInputDataSO _globalInputData;
 
-        bool _isPlayerInputAvailable = true;
-        bool _isUIInputAvailable     = true;
+        ActionMap _currentActionMap = ActionMap.Player;
 
 
 
         private void OnEnable()
         {
-            _gameEventChannel.OnGamePaused  += DisablePlayerInput;
-            _gameEventChannel.OnGameOver    += DisablePlayerInput;
-            _gameEventChannel.OnGameOver    += DisableUIInput;
-            _gameEventChannel.OnGameResumed += EnablePlayerInput;
+            _gameEventChannel.OnGamePaused  += SwitchToGlobal;
+            _gameEventChannel.OnGameResumed += SwitchToPlayer;
+            _gameEventChannel.OnGameOver    += SwitchToNone;
         }
 
         private void OnDisable()
         {
-            _gameEventChannel.OnGamePaused  -= DisablePlayerInput;
-            _gameEventChannel.OnGameOver    -= DisablePlayerInput;
-            _gameEventChannel.OnGameOver    -= DisableUIInput;
-            _gameEventChannel.OnGameResumed -= EnablePlayerInput;
+            _gameEventChannel.OnGamePaused  -= SwitchToGlobal;
+            _gameEventChannel.OnGameResumed -= SwitchToPlayer;
+            _gameEventChannel.OnGameOver    -= SwitchToNone;
         }
 
         private void Update()
         {
-            if (_isPlayerInputAvailable) HandlePlayerInput();
-
-            if (_isUIInputAvailable) HandleUIInput();
+            HandleSwitchActionMap();
         }
 
 
+
+        void HandleSwitchActionMap()
+        {
+            switch (_currentActionMap)
+            {
+                case ActionMap.Player:
+                    HandleGlobalInput();
+                    HandlePlayerInput();
+                    break;
+                case ActionMap.Global:
+                    HandleGlobalInput();
+                    break;
+            }
+        }
+
+        void HandleGlobalInput()
+        {
+            if (Input.GetKeyDown(_globalInputData.pauseKey)) _uiEventChannel.ReaiseTogglePauseEvent();
+        }
 
         void HandlePlayerInput()
         {
             if (Input.GetKeyDown(_playerInputData.jumpKey)) _playerInputEventChannel.RaiseJumpEvent();
         }
 
-        void HandleUIInput()
-        {
-            if (Input.GetKeyDown(_uiInputData.pauseKey)) _uiEventChannel.ReaiseTogglePauseEvent();
-        }
-
-        void EnablePlayerInput() => _isPlayerInputAvailable = true;
-
-        void DisablePlayerInput() => _isPlayerInputAvailable = false;
-
-        void DisableUIInput() => _isUIInputAvailable = false;
+        void SwitchToPlayer() => _currentActionMap = ActionMap.Player;
+        void SwitchToGlobal() => _currentActionMap = ActionMap.Global;
+        void SwitchToNone() => _currentActionMap = ActionMap.None;
     }
+}
+
+enum ActionMap
+{
+    Player, Global, None
 }
