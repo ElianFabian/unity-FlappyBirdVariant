@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Managers
 {
+    [DisallowMultipleComponent]
     [RequireComponent(typeof(AudioSource))]
     public class AudioManager : MonoBehaviour
     {

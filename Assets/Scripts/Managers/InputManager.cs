@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Managers
 {
+    [DisallowMultipleComponent]
     public class InputManager : MonoBehaviour
     {
         [SerializeField] PlayerActionEventChannelSO _playerInputEventChannel;
