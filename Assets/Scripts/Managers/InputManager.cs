@@ -56,7 +56,7 @@ namespace Assets.Scripts.Managers
 
         void HandlePauseInput()
         {
-            if (Input.GetKeyDown(_keyBinding.pauseKey)) _uiEventChannel.ReaiseTogglePauseEvent();
+            if (Input.GetKeyDown(_keyBinding.pauseKey)) _uiEventChannel.RaisePauseToggledEvent();
         }
 
         void HandlePlayerInput()

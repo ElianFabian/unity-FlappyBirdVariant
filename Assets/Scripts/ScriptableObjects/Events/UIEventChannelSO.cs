@@ -17,6 +17,6 @@ namespace Assets.Scripts.ScriptableObjects.Events
 
         public void RaiseBtnGoToMenu_ClickEvent() => BtnGoToMenu_Click?.Invoke();
         public void RaiseBtnTryAgain_ClickEvent() => BtnTryAgain_Click?.Invoke();
-        public void ReaiseTogglePauseEvent() => OnPauseToggled?.Invoke();
+        public void RaisePauseToggledEvent() => OnPauseToggled?.Invoke();
     }
 }
