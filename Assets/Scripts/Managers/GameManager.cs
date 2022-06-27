@@ -15,8 +15,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] UIEventChannelSO              _uiEventChannel;
     [SerializeField] PlayerCollisionEventChannelSO _playerCollisionEventChannel;
 
-    [SerializeField] KeyCode _pauseKey = KeyCode.Escape;
-
     [Scene]
     [SerializeField] string _menuSceneName;
 
@@ -34,6 +32,7 @@ public class GameManager : MonoBehaviour
 
         _uiEventChannel.BtnGoToMenu_Click += BtnGoToMenu_Click;
         _uiEventChannel.BtnTryAgain_Click += BtnTryAgain_Click;
+        _uiEventChannel.OnPauseToggled    += OnPauseToggled;
     }
 
     private void OnDisable()
@@ -43,14 +42,15 @@ public class GameManager : MonoBehaviour
 
         _uiEventChannel.BtnGoToMenu_Click -= BtnGoToMenu_Click;
         _uiEventChannel.BtnTryAgain_Click -= BtnTryAgain_Click;
+        _uiEventChannel.OnPauseToggled    -= OnPauseToggled;
     }
 
-    private void Update()
+    #endregion
+
+    #region Event functions
+
+    private void OnPauseToggled()
     {
-        if (_gameState == GameState.GameOver) return;
-
-        if (!Input.GetKeyDown(_pauseKey)) return;
-
         _gameState = ToggleGameState();
 
         if (_gameState == GameState.Paused)
@@ -64,10 +64,6 @@ public class GameManager : MonoBehaviour
             _gameEventChannel.RaiseGameResumedEvent();
         }
     }
-
-    #endregion
-
-    #region Event functions
 
     private void OnPlayerCollidedWithDeathZone(Player player, Collider2D collider)
     {

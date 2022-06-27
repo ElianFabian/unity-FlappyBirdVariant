@@ -13,7 +13,6 @@ namespace Assets.Scripts.PlayerScripts
     [RequireComponent(typeof(SpriteRenderer))]
     [RequireComponent(typeof(CircleCollider2D))]
 
-    [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(PlayerAction))]
     [RequireComponent(typeof(PlayerMovement))]
     [RequireComponent(typeof(PlayerCollision))]
@@ -25,7 +24,6 @@ namespace Assets.Scripts.PlayerScripts
         [SerializeField] internal PlayerActionEventChannelSO inputEventChannel;
         [SerializeField]          GameEventChannelSO        _gameEventChannel;
 
-        internal PlayerInput     input;
         internal PlayerAction    action;
         internal PlayerMovement  movement;
         internal PlayerCollision collision;
@@ -40,7 +38,6 @@ namespace Assets.Scripts.PlayerScripts
 
         void Awake()
         {
-            input     = GetComponent<PlayerInput>();
             action    = GetComponent<PlayerAction>();
             movement  = GetComponent<PlayerMovement>();
             collision = GetComponent<PlayerCollision>();
@@ -52,19 +49,6 @@ namespace Assets.Scripts.PlayerScripts
             LoadPlayerData();
         }
 
-        private void OnEnable()
-        {
-            _gameEventChannel.OnGamePaused  += DisableInput;
-            _gameEventChannel.OnGameOver    += DisableInput;
-            _gameEventChannel.OnGameResumed += EnableInput;
-        }
-
-        private void OnDisable()
-        {
-            _gameEventChannel.OnGamePaused  -= DisableInput;
-            _gameEventChannel.OnGameOver    -= DisableInput;
-            _gameEventChannel.OnGameResumed -= EnableInput;
-        }
 
 
         void LoadPlayerData()
@@ -74,9 +58,5 @@ namespace Assets.Scripts.PlayerScripts
             _spriteRenderer.sprite = data.playerSprite;
             audio.source.clip      = data.jumpClip;
         }
-
-        void EnableInput() => input.enabled = true;
-
-        void DisableInput() => input.enabled = false;
     }
 }
