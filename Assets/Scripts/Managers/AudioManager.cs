@@ -12,10 +12,9 @@ namespace Assets.Scripts.Managers
         #region Fields
 
         [SerializeField] AudioMixerSnapshotDataSO _snapshotData;
+        [SerializeField] AudioClipDataSO          _clipData;
 
         [SerializeField] GameEventChannelSO _gameEventChannel;
-
-        [SerializeField] AudioClip _gameOverClip;
 
         AudioSource _source;
 
@@ -65,7 +64,7 @@ namespace Assets.Scripts.Managers
         {
             _snapshotData.gameOver.TransitionTo(2f);
 
-            _source.PlayOneShot(_gameOverClip);
+            _source.PlayOneShot(_clipData.gameOver);
         }
 
         void OnGameRestarted()

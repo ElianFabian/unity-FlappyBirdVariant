@@ -2165,11 +2165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c2bcaa572eac74b9e9c0259c0c3571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _snapshotData: {fileID: 11400000, guid: ac2d17fa373440f46910138571a8be61, type: 2}
+  _clipData: {fileID: 11400000, guid: bde4bdba2fc0f784d99149a66da16ab9, type: 2}
   _gameEventChannel: {fileID: 11400000, guid: aa07e7a14a4397848afe7a3838cfc7f8, type: 2}
-  _playingSnapshot: {fileID: 5216563307680870191, guid: 14d0fc5255ca87146979a6bb761feb8e, type: 2}
-  _pausedSnapshot: {fileID: 24500006, guid: 14d0fc5255ca87146979a6bb761feb8e, type: 2}
-  _gameOverSnapshot: {fileID: -3235957310990484050, guid: 14d0fc5255ca87146979a6bb761feb8e, type: 2}
-  _gameOverClip: {fileID: 8300000, guid: 97f84a60e50e485418163cff5d837243, type: 3}
 --- !u!4 &2124754028
 Transform:
   m_ObjectHideFlags: 0
