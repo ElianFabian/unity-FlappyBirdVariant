@@ -19,25 +19,6 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
---- !u!243 &-5844262538866344154
-AudioMixerGroupController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Game Over Music
-  m_AudioMixer: {fileID: 24100000}
-  m_GroupID: 99fe754dab757124d8ff831c1920f1a6
-  m_Children: []
-  m_Volume: c8d6bea5373119246a8b8c643beeb346
-  m_Pitch: f3b3ffc6bbf9e8b40a2987c25c49ecea
-  m_Send: 00000000000000000000000000000000
-  m_Effects:
-  - {fileID: -1783800308755800856}
-  m_UserColorIndex: 0
-  m_Mute: 0
-  m_Solo: 0
-  m_BypassEffects: 0
 --- !u!245 &-3235957310990484050
 AudioMixerSnapshotController:
   m_ObjectHideFlags: 0
@@ -84,20 +65,6 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
---- !u!244 &-1783800308755800856
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_EffectID: de9a6933cd5a11f41a4b46ea7119a122
-  m_EffectName: Attenuation
-  m_MixLevel: 123be1364cd712a4aaab2482d4a45822
-  m_Parameters: []
-  m_SendTarget: {fileID: 0}
-  m_EnableWetMix: 0
-  m_Bypass: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -122,10 +89,9 @@ AudioMixerController:
     - ae9aeac768b4f5a43b9b4a2f92471143
     - 119e6e9801ec20b45a86ef7a68e87b22
     - 3eb022dd544c9664bbf4b9e2b9d329ea
-    - 99fe754dab757124d8ff831c1920f1a6
     name: View
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: -3235957310990484050}
+  m_TargetSnapshot: {fileID: 5216563307680870191}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -139,7 +105,6 @@ AudioMixerGroupController:
   - {fileID: 3590692097845996727}
   - {fileID: 798076999670964550}
   - {fileID: -8709036529238343420}
-  - {fileID: -5844262538866344154}
   m_Volume: da6f6eeb97affc0408e92af849052980
   m_Pitch: 2294960fb67e49e4fb3384b15fedda74
   m_Send: 00000000000000000000000000000000
