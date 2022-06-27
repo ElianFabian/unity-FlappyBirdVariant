@@ -27,12 +27,12 @@ namespace Assets.Scripts.PlayerScripts
 
         private void OnEnable()
         {
-            player.actionEventChannel.OnJump += Jump;
+            player.inputEventChannel.OnJump += Jump;
         }
 
         private void OnDisable()
         {
-            player.actionEventChannel.OnJump -= Jump;
+            player.inputEventChannel.OnJump -= Jump;
         }
 
 

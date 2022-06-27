@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8882f1d9de42b4a8410ed687183c50, type: 3}
+  m_Name: AudioMixerSnapshotData
+  m_EditorClassIdentifier: 
+  playing: {fileID: 5216563307680870191, guid: 14d0fc5255ca87146979a6bb761feb8e, type: 2}
+  paused: {fileID: 24500006, guid: 14d0fc5255ca87146979a6bb761feb8e, type: 2}
+  gameOver: {fileID: -3235957310990484050, guid: 14d0fc5255ca87146979a6bb761feb8e, type: 2}

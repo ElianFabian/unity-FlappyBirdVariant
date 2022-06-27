@@ -1,6 +1,6 @@
-﻿using Assets.Scripts.ScriptableObjects.Events;
+﻿using Assets.Scripts.ScriptableObjects.Data;
+using Assets.Scripts.ScriptableObjects.Events;
 using UnityEngine;
-using UnityEngine.Audio;
 
 
 
@@ -11,11 +11,9 @@ namespace Assets.Scripts.Managers
     {
         #region Fields
 
-        [SerializeField] GameEventChannelSO _gameEventChannel;
+        [SerializeField] AudioMixerSnapshotDataSO _snapshotData;
 
-        [SerializeField] AudioMixerSnapshot _playingSnapshot;
-        [SerializeField] AudioMixerSnapshot _pausedSnapshot;
-        [SerializeField] AudioMixerSnapshot _gameOverSnapshot;
+        [SerializeField] GameEventChannelSO _gameEventChannel;
 
         [SerializeField] AudioClip _gameOverClip;
 
@@ -55,24 +53,24 @@ namespace Assets.Scripts.Managers
 
         void OnGamePaused()
         {
-            _pausedSnapshot.TransitionTo(0.25f);
+            _snapshotData.paused.TransitionTo(0.25f);
         }
 
         void OnGameResumed()
         {
-            _playingSnapshot.TransitionTo(0.25f);
+            _snapshotData.playing.TransitionTo(0.25f);
         }
 
         void OnGameOver()
         {
-            _gameOverSnapshot.TransitionTo(2f);
+            _snapshotData.gameOver.TransitionTo(2f);
 
             _source.PlayOneShot(_gameOverClip);
         }
 
         void OnGameRestarted()
         {
-            _playingSnapshot.TransitionTo(0.01f);
+            _snapshotData.playing.TransitionTo(0.01f);
         }
 
         #endregion
