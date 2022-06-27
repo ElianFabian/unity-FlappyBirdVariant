@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.ScriptableObjects.Events;
+using UnityEngine;
 using UnityEngine.Audio;
-using Assets.Scripts.ScriptableObjects.Events;
 
 
 
@@ -9,6 +9,8 @@ namespace Assets.Scripts.Managers
     [RequireComponent(typeof(AudioSource))]
     public class AudioManager : MonoBehaviour
     {
+        #region Fields
+
         [SerializeField] GameEventChannelSO _gameEventChannel;
 
         [SerializeField] AudioMixerSnapshot _playingSnapshot;
@@ -19,7 +21,9 @@ namespace Assets.Scripts.Managers
 
         AudioSource _source;
 
+        #endregion
 
+        #region Unity event functions
 
         private void Awake()
         {
@@ -45,7 +49,9 @@ namespace Assets.Scripts.Managers
             _gameEventChannel.OnGameRestarted -= OnGameRestarted;
         }
 
+        #endregion
 
+        #region Event functions
 
         void OnGamePaused()
         {
@@ -68,5 +74,7 @@ namespace Assets.Scripts.Managers
         {
             _playingSnapshot.TransitionTo(0.01f);
         }
+
+        #endregion
     }
 }
