@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa87a2fb81c1519448d90504d9db2c38, type: 3}
-  m_Name: PlayerInputEventChannel
+  m_Name: PlayerActionEventChannel
   m_EditorClassIdentifier: 

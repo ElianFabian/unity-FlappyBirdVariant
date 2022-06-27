@@ -15,7 +15,7 @@ namespace Assets.Scripts.PlayerScripts
 
         private void Update()
         {
-            if (Input.GetKeyDown(_jumpKey)) player.inputEventChannel.RaiseJumpKeyPressedEvent();
+            if (Input.GetKeyDown(_jumpKey)) player.actionEventChannel.RaiseJumpEvent();
         }
     }
 }
