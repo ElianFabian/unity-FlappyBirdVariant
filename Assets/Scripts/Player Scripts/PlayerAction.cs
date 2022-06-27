@@ -8,13 +8,13 @@ namespace Assets.Scripts.PlayerScripts
     [DisallowMultipleComponent]
     public class PlayerAction : BasePlayerComponent
     {
-        [SerializeField] float maxJumpHeight = 2;
+        [SerializeField] float _maxJumpHeight = 2;
 
         Rigidbody2D _rigidbody;
 
 
 
-        internal float JumpVelocity => Mathf.Sqrt(-2f * Player.GRAVITY * maxJumpHeight);
+        internal float JumpVelocity => Mathf.Sqrt(-2f * Player.GRAVITY * _maxJumpHeight);
 
 
 
