@@ -63,7 +63,6 @@ namespace Assets.Scripts.Managers
         {
             _snapshotData.gameOver.TransitionTo(2f);
 
-            _source.loop = true;
             _source.PlayOneShot(_clipData.gameOver);
         }
 
