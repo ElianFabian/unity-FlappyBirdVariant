@@ -27,8 +27,8 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerCollisionEventChannel.deathZone.OnTriggerEnter2D += OnPlayerCollidedWithDeathZone;
-        _playerCollisionEventChannel.scoreZone.OnTriggerEnter2D += OnPlayerCollidedWithScoreZone;
+        _playerCollisionEventChannel.deathZone.OnTriggerEnter2D += OnPlayerTriggerEnter2DWithDeathZone;
+        _playerCollisionEventChannel.scoreZone.OnTriggerEnter2D += OnPlayerTriggerEnter2DdWithScoreZone;
 
         _uiEventChannel.BtnGoToMenu_Click += BtnGoToMenu_Click;
         _uiEventChannel.BtnTryAgain_Click += BtnTryAgain_Click;
@@ -37,8 +37,8 @@ public class GameManager : MonoBehaviour
 
     private void OnDisable()
     {
-        _playerCollisionEventChannel.deathZone.OnTriggerEnter2D -= OnPlayerCollidedWithDeathZone;
-        _playerCollisionEventChannel.scoreZone.OnTriggerEnter2D -= OnPlayerCollidedWithScoreZone;
+        _playerCollisionEventChannel.deathZone.OnTriggerEnter2D -= OnPlayerTriggerEnter2DWithDeathZone;
+        _playerCollisionEventChannel.scoreZone.OnTriggerEnter2D -= OnPlayerTriggerEnter2DdWithScoreZone;
 
         _uiEventChannel.BtnGoToMenu_Click -= BtnGoToMenu_Click;
         _uiEventChannel.BtnTryAgain_Click -= BtnTryAgain_Click;
@@ -65,12 +65,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnPlayerCollidedWithDeathZone(Player player, Collider2D collider)
+    private void OnPlayerTriggerEnter2DWithDeathZone(Player player, Collider2D collider)
     {
         SetGameOver();
     }
 
-    private void OnPlayerCollidedWithScoreZone(Player player, Collider2D collider)
+    private void OnPlayerTriggerEnter2DdWithScoreZone(Player player, Collider2D collider)
     {
         IncrementScore();
     }
