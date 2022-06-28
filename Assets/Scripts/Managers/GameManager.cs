@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.PlayerScripts;
-using Assets.Scripts.ScriptableObjects.Events;
+﻿using Assets.Scripts.EventChannels;
+using Assets.Scripts.PlayerScripts;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,10 +10,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     #region Fields
-
-    [SerializeField] GameEventChannelSO            _gameEventChannel;
-    [SerializeField] UIEventChannelSO              _uiEventChannel;
-    [SerializeField] PlayerCollisionEventChannelSO _playerCollisionEventChannel;
 
     [Scene]
     [SerializeField] string _menuSceneName;
@@ -27,22 +23,22 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerCollisionEventChannel.deathZone.OnTriggerEnter2D += OnPlayerTriggerEnter2DWithDeathZone;
-        _playerCollisionEventChannel.scoreZone.OnTriggerEnter2D += OnPlayerTriggerEnter2DWithScoreZone;
+        PlayerCollisionEvents.OnDeathZoneTriggerEnter2D += OnPlayerTriggerEnter2DWithDeathZone;
+        PlayerCollisionEvents.OnScoreZoneTriggerEnter2D += OnPlayerTriggerEnter2DWithScoreZone;
 
-        _uiEventChannel.BtnGoToMenu_Click += GoToMenu;
-        _uiEventChannel.BtnTryAgain_Click += RestartGame;
-        _uiEventChannel.OnPauseToggled    += OnPauseToggled;
+        UIEvents.BtnGoToMenu_Click += GoToMenu;
+        UIEvents.BtnTryAgain_Click += RestartGame;
+        UIEvents.OnPauseToggled    += OnPauseToggled;
     }
 
     private void OnDisable()
     {
-        _playerCollisionEventChannel.deathZone.OnTriggerEnter2D -= OnPlayerTriggerEnter2DWithDeathZone;
-        _playerCollisionEventChannel.scoreZone.OnTriggerEnter2D -= OnPlayerTriggerEnter2DWithScoreZone;
+        PlayerCollisionEvents.OnDeathZoneTriggerEnter2D -= OnPlayerTriggerEnter2DWithDeathZone;
+        PlayerCollisionEvents.OnScoreZoneTriggerEnter2D -= OnPlayerTriggerEnter2DWithScoreZone;
 
-        _uiEventChannel.BtnGoToMenu_Click -= GoToMenu;
-        _uiEventChannel.BtnTryAgain_Click -= RestartGame;
-        _uiEventChannel.OnPauseToggled    -= OnPauseToggled;
+        UIEvents.BtnGoToMenu_Click -= GoToMenu;
+        UIEvents.BtnTryAgain_Click -= RestartGame;
+        UIEvents.OnPauseToggled    -= OnPauseToggled;
     }
 
     #endregion
@@ -56,12 +52,12 @@ public class GameManager : MonoBehaviour
         if (_gameState == GameState.Paused)
         {
             Pause();
-            _gameEventChannel.RaiseGamePausedEvent();
+            GameEvents.RaiseGamePausedEvent();
         }
         else if (_gameState == GameState.Playing)
         {
             Resume();
-            _gameEventChannel.RaiseGameResumedEvent();
+            GameEvents.RaiseGameResumedEvent();
         }
     }
 
@@ -83,14 +79,14 @@ public class GameManager : MonoBehaviour
     {
         _score++;
 
-        _gameEventChannel.RaiseScoreChangedEvent(_score);
+        GameEvents.RaiseScoreChangedEvent(_score);
     }
 
     private void GoToMenu()
     {
         SceneManager.LoadSceneAsync(_menuSceneName);
 
-        _gameEventChannel.RaiseSceneChangedEvent(_menuSceneName);
+        GameEvents.RaiseSceneChangedEvent(_menuSceneName);
     }
 
     void RestartGame()
@@ -103,7 +99,7 @@ public class GameManager : MonoBehaviour
 
         _gameState = GameState.Playing;
 
-        _gameEventChannel.RaiseGameRestartedEvent();
+        GameEvents.RaiseGameRestartedEvent();
     }
 
     void SetGameOver()
@@ -112,7 +108,7 @@ public class GameManager : MonoBehaviour
 
         _gameState = GameState.GameOver;
 
-        _gameEventChannel.RaiseGameOverEvent();
+        GameEvents.RaiseGameOverEvent();
     }
 
     void Pause() => Time.timeScale = 0;

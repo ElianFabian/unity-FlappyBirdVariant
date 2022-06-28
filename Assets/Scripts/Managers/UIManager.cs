@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.ScriptableObjects.Data;
-using Assets.Scripts.ScriptableObjects.Events;
+﻿using Assets.Scripts.EventChannels;
+using Assets.Scripts.ScriptableObjects.Data;
 using UnityEngine;
 
 
@@ -9,9 +9,6 @@ public class UIManager : MonoBehaviour
 {
     #region Fields
 
-    [SerializeField] UIEventChannelSO   _uiEventChannel;
-    [SerializeField] GameEventChannelSO _gameEventChannel;
-
     [SerializeField] UIBinding _uiBinding;
 
     #endregion
@@ -20,8 +17,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        _uiBinding.btnGoToMenu.onClick.AddListener(_uiEventChannel.RaiseBtnGoToMenu_ClickEvent);
-        _uiBinding.btnTryAgain.onClick.AddListener(_uiEventChannel.RaiseBtnTryAgain_ClickEvent);
+        _uiBinding.btnGoToMenu.onClick.AddListener(UIEvents.RaiseBtnGoToMenu_ClickEvent);
+        _uiBinding.btnTryAgain.onClick.AddListener(UIEvents.RaiseBtnTryAgain_ClickEvent);
 
         HideMouseCursor();
         HidePauseMenu();
@@ -30,18 +27,18 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        _gameEventChannel.OnScoreChanged += UpdateScore;
-        _gameEventChannel.OnGamePaused   += OnGamePaused;
-        _gameEventChannel.OnGameResumed  += OnGameResumed;
-        _gameEventChannel.OnGameOver     += OnGameOver;
+        GameEvents.OnScoreChanged += UpdateScore;
+        GameEvents.OnGamePaused   += OnGamePaused;
+        GameEvents.OnGameResumed  += OnGameResumed;
+        GameEvents.OnGameOver     += OnGameOver;
     }
 
     private void OnDisable()
     {
-        _gameEventChannel.OnScoreChanged -= UpdateScore;
-        _gameEventChannel.OnGamePaused   -= OnGamePaused;
-        _gameEventChannel.OnGameResumed  -= OnGameResumed;
-        _gameEventChannel.OnGameOver     -= OnGameOver;
+        GameEvents.OnScoreChanged -= UpdateScore;
+        GameEvents.OnGamePaused   -= OnGamePaused;
+        GameEvents.OnGameResumed  -= OnGameResumed;
+        GameEvents.OnGameOver     -= OnGameOver;
     }
 
     #endregion

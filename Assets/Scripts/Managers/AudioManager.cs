@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.ScriptableObjects.Data;
-using Assets.Scripts.ScriptableObjects.Events;
+﻿using Assets.Scripts.EventChannels;
+using Assets.Scripts.ScriptableObjects.Data;
 using UnityEngine;
 
 
@@ -14,8 +14,6 @@ namespace Assets.Scripts.Managers
 
         [SerializeField] AudioMixerSnapshotDataSO _snapshotData;
         [SerializeField] AudioClipDataSO          _clipData;
-
-        [SerializeField] GameEventChannelSO _gameEventChannel;
 
         AudioSource _source;
 
@@ -32,18 +30,18 @@ namespace Assets.Scripts.Managers
 
         private void OnEnable()
         {
-            _gameEventChannel.OnGameOver      += OnGameOver;
-            _gameEventChannel.OnGamePaused    += OnGamePaused;
-            _gameEventChannel.OnGameResumed   += OnGameResumed;
-            _gameEventChannel.OnGameRestarted += OnGameRestarted;
+            GameEvents.OnGameOver      += OnGameOver;
+            GameEvents.OnGamePaused    += OnGamePaused;
+            GameEvents.OnGameResumed   += OnGameResumed;
+            GameEvents.OnGameRestarted += OnGameRestarted;
         }
 
         private void OnDisable()
         {
-            _gameEventChannel.OnGameOver      -= OnGameOver;
-            _gameEventChannel.OnGamePaused    -= OnGamePaused;
-            _gameEventChannel.OnGameResumed   -= OnGameResumed;
-            _gameEventChannel.OnGameRestarted -= OnGameRestarted;
+            GameEvents.OnGameOver      -= OnGameOver;
+            GameEvents.OnGamePaused    -= OnGamePaused;
+            GameEvents.OnGameResumed   -= OnGameResumed;
+            GameEvents.OnGameRestarted -= OnGameRestarted;
         }
 
         #endregion

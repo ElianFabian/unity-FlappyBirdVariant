@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.EventChannels;
+using UnityEngine;
 
 
 
@@ -26,12 +27,12 @@ namespace Assets.Scripts.PlayerScripts
 
         private void OnEnable()
         {
-            player.inputEventChannel.OnJump += Jump;
+            PlayerEvents.OnJump += Jump;
         }
 
         private void OnDisable()
         {
-            player.inputEventChannel.OnJump -= Jump;
+            PlayerEvents.OnJump -= Jump;
         }
 
 

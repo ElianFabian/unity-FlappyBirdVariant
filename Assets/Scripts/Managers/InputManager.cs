@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.ScriptableObjects.Data;
-using Assets.Scripts.ScriptableObjects.Events;
+﻿using Assets.Scripts.EventChannels;
+using Assets.Scripts.ScriptableObjects.Data;
 using System;
 using UnityEngine;
 
@@ -10,11 +10,7 @@ namespace Assets.Scripts.Managers
     [DisallowMultipleComponent]
     public class InputManager : MonoBehaviour
     {
-        #region Fields
-
-        [SerializeField] PlayerActionEventChannelSO _playerInputEventChannel;
-        [SerializeField] UIEventChannelSO           _uiEventChannel;
-        [SerializeField] GameEventChannelSO         _gameEventChannel;
+        #region Field
 
         [SerializeField] KeyBindingDataSo _keyBinding;
 
@@ -26,16 +22,16 @@ namespace Assets.Scripts.Managers
 
         private void OnEnable()
         {
-            _gameEventChannel.OnGamePaused  += SwitchToPause;
-            _gameEventChannel.OnGameResumed += SwitchToGamePlay;
-            _gameEventChannel.OnGameOver    += SwitchToNone;
+            GameEvents.OnGamePaused  += SwitchToPause;
+            GameEvents.OnGameResumed += SwitchToGamePlay;
+            GameEvents.OnGameOver    += SwitchToNone;
         }
 
         private void OnDisable()
         {
-            _gameEventChannel.OnGamePaused  -= SwitchToPause;
-            _gameEventChannel.OnGameResumed -= SwitchToGamePlay;
-            _gameEventChannel.OnGameOver    -= SwitchToNone;
+            GameEvents.OnGamePaused  -= SwitchToPause;
+            GameEvents.OnGameResumed -= SwitchToGamePlay;
+            GameEvents.OnGameOver    -= SwitchToNone;
         }
 
         private void Update()
@@ -63,12 +59,12 @@ namespace Assets.Scripts.Managers
 
         void HandlePauseInput()
         {
-            if (Input.GetKeyDown(_keyBinding.pauseKey)) _uiEventChannel.RaisePauseToggledEvent();
+            if (Input.GetKeyDown(_keyBinding.pauseKey)) UIEvents.RaisePauseToggledEvent();
         }
 
         void HandlePlayerInput()
         {
-            if (Input.GetKeyDown(_keyBinding.jumpKey)) _playerInputEventChannel.RaiseJumpEvent();
+            if (Input.GetKeyDown(_keyBinding.jumpKey)) PlayerEvents.RaiseJumpEvent();
         }
 
         void SwitchToGamePlay() => _currentActionMap = ActionMap.GamePlay;

@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.ScriptableObjects.Data;
-using Assets.Scripts.ScriptableObjects.Events;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -20,10 +19,6 @@ namespace Assets.Scripts.PlayerScripts
     public class Player : MonoBehaviour
     {
         public const float GRAVITY = -9.81f;
-
-        [SerializeField] GameEventChannelSO        _gameEventChannel;
-
-        public PlayerActionEventChannelSO inputEventChannel;
 
         internal PlayerAction    action;
         internal PlayerMovement  movement;

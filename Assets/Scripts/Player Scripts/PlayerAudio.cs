@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.EventChannels;
+using UnityEngine;
 
 
 
@@ -25,12 +26,12 @@ namespace Assets.Scripts.PlayerScripts
 
         private void OnEnable()
         {
-            player.inputEventChannel.OnJump += PlayJumpSound;
+            PlayerEvents.OnJump += PlayJumpSound;
         }
 
         private void OnDisable()
         {
-            player.inputEventChannel.OnJump -= PlayJumpSound;
+            PlayerEvents.OnJump -= PlayJumpSound;
         }
 
 
