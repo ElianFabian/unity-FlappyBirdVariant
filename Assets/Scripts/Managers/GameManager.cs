@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
         _gameEventChannel.RaiseGameOverEvent();
     }
 
-    void Pause() =>Time.timeScale = 0;
+    void Pause() => Time.timeScale = 0;
 
     void Resume() => Time.timeScale = 1;
 
