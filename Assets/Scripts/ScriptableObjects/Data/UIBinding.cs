@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.ScriptableObjects.Data
 {
+    [DisallowMultipleComponent]
     public class UIBinding : MonoBehaviour
     {
         public TextMeshProUGUI txtScore;
