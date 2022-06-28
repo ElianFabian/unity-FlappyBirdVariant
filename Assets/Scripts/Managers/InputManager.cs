@@ -10,6 +10,8 @@ namespace Assets.Scripts.Managers
     [DisallowMultipleComponent]
     public class InputManager : MonoBehaviour
     {
+        #region Fields
+
         [SerializeField] PlayerActionEventChannelSO _playerInputEventChannel;
         [SerializeField] UIEventChannelSO           _uiEventChannel;
         [SerializeField] GameEventChannelSO         _gameEventChannel;
@@ -18,7 +20,9 @@ namespace Assets.Scripts.Managers
 
         ActionMap _currentActionMap = ActionMap.GamePlay;
 
+        #endregion
 
+        #region Unity event functions
 
         private void OnEnable()
         {
@@ -39,7 +43,9 @@ namespace Assets.Scripts.Managers
             HandleSwitchActionMap();
         }
 
+        #endregion
 
+        #region Methods
 
         void HandleSwitchActionMap()
         {
@@ -68,8 +74,12 @@ namespace Assets.Scripts.Managers
         void SwitchToGamePlay() => _currentActionMap = ActionMap.GamePlay;
         void SwitchToPause() => _currentActionMap = ActionMap.Pause;
         void SwitchToNone() => _currentActionMap = ActionMap.None;
+
+        #endregion
     }
 }
+
+
 
 [Flags]
 enum ActionMap
