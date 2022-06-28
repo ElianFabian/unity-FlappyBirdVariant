@@ -21,8 +21,8 @@ namespace Assets.Scripts.PlayerScripts
     {
         public const float GRAVITY = -9.81f;
 
-        [SerializeField] internal PlayerActionEventChannelSO inputEventChannel;
-        [SerializeField]          GameEventChannelSO        _gameEventChannel;
+        [SerializeField] PlayerActionEventChannelSO inputEventChannel;
+        [SerializeField] GameEventChannelSO        _gameEventChannel;
 
         internal PlayerAction    action;
         internal PlayerMovement  movement;
