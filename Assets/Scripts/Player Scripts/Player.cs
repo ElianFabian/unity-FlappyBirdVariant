@@ -16,7 +16,7 @@ namespace Assets.Scripts.PlayerScripts
     [RequireComponent(typeof(PlayerAction))]
     [RequireComponent(typeof(PlayerMovement))]
     [RequireComponent(typeof(PlayerCollision))]
-    [RequireComponent(typeof(PlayerAction))]
+    [RequireComponent(typeof(PlayerAudio))]
     public class Player : MonoBehaviour
     {
         public const float GRAVITY = -9.81f;
