@@ -1706,7 +1706,7 @@ MonoBehaviour:
   _minSpawnDelayInSeconds: 2.2
   _spawnDelayInSeconds: 5
   _spawnVelocity: 1.5
-  _heightOffset: 4.5
+  _heightOffset: 4
 --- !u!4 &1616176831
 Transform:
   m_ObjectHideFlags: 0

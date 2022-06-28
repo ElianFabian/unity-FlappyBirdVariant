@@ -14,7 +14,7 @@ namespace Assets.Scripts
         [SerializeField] float _minSpawnDelayInSeconds = 2.2f;
         [SerializeField] float _spawnDelayInSeconds    = 5f;
         [SerializeField] float _spawnVelocity          = 1.5f;
-        [SerializeField] float _heightOffset           = 4.3f;
+        [SerializeField] float _heightOffset           = 4f;
 
         Sprite[] _spriteClouds;
 
