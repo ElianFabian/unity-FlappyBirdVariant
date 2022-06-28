@@ -52,12 +52,12 @@ namespace Assets.Scripts.Managers
 
         void OnGamePaused()
         {
-            _snapshotData.paused.TransitionTo(0.25f);
+            _snapshotData.paused.TransitionTo(0.1f);
         }
 
         void OnGameResumed()
         {
-            _snapshotData.playing.TransitionTo(0.25f);
+            _snapshotData.playing.TransitionTo(0.1f);
         }
 
         void OnGameOver()
