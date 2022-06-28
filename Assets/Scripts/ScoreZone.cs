@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.EventChannels;
-using Assets.Scripts.PlayerScripts;
+﻿using Assets.Scripts.PlayerScripts;
+using System;
 using UnityEngine;
 
 
@@ -12,6 +12,8 @@ namespace Assets.Scripts
     public class ScoreZone : MonoBehaviour
     {
         [SerializeField] AudioClip _scoreClip;
+
+        public static event Action<Player, Collider2D> OnPlayerTriggerEnter2D;
 
         BoxCollider2D _boxCollider2D;
         AudioSource   _audioSource;
@@ -38,7 +40,7 @@ namespace Assets.Scripts
 
             _audioSource.Play();
 
-            PlayerCollisionEvents.RaiseScoreZoneTriggerEnter2DEvent(player, collision);
+            OnPlayerTriggerEnter2D?.Invoke(player, collision);
         }
     }
 }

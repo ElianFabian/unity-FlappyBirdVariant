@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 
-namespace Assets.Scripts.PipeScripts
+namespace Assets.Scripts
 {
     [DisallowMultipleComponent]
     public class PipeGroupSpawner : MonoBehaviour
@@ -34,7 +34,7 @@ namespace Assets.Scripts.PipeScripts
                 var randomFactor = Random.Range(-_heightOffset, _heightOffset);
                 var randomHeight = transform.position + Vector3.up * randomFactor;
 
-                var newPipeGroup = Instantiate(_pipeGroupPrefab, randomHeight, Quaternion.identity).gameObject;
+                var newPipeGroup = Instantiate(_pipeGroupPrefab, randomHeight, Quaternion.identity);
 
                 var pipeGroupRigidBody = newPipeGroup.GetComponent<Rigidbody2D>();
 

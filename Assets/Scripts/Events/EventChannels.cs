@@ -42,21 +42,4 @@ namespace Assets.Scripts.EventChannels
 
         public static void RaiseJumpEvent() => OnJump?.Invoke();
     }
-
-    public static class PlayerCollisionEvents
-    {
-        public static event Action<Player, Collider2D> OnScoreZoneTriggerEnter2D;
-        public static event Action<Player, Collider2D> OnDeathZoneTriggerEnter2D;
-
-
-        public static void RaiseScoreZoneTriggerEnter2DEvent(Player player, Collider2D collision)
-        {
-            OnScoreZoneTriggerEnter2D?.Invoke(player, collision);
-        }
-
-        public static void RaiseDeathZoneTriggerEnter2DEvent(Player player, Collider2D collision)
-        {
-            OnDeathZoneTriggerEnter2D?.Invoke(player, collision);
-        }
-    }
 }

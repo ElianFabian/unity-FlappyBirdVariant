@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.EventChannels;
+﻿using Assets.Scripts;
+using Assets.Scripts.EventChannels;
 using Assets.Scripts.PlayerScripts;
 using NaughtyAttributes;
 using UnityEngine;
@@ -23,8 +24,8 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerCollisionEvents.OnDeathZoneTriggerEnter2D += OnPlayerTriggerEnter2DWithDeathZone;
-        PlayerCollisionEvents.OnScoreZoneTriggerEnter2D += OnPlayerTriggerEnter2DWithScoreZone;
+        DeathZone.OnPlayerTriggerEnter2D += OnPlayerTriggerEnter2DWithDeathZone;
+        ScoreZone.OnPlayerTriggerEnter2D += OnPlayerTriggerEnter2DWithScoreZone;
 
         UIEvents.BtnGoToMenu_Click += GoToMenu;
         UIEvents.BtnTryAgain_Click += RestartGame;
@@ -33,8 +34,8 @@ public class GameManager : MonoBehaviour
 
     private void OnDisable()
     {
-        PlayerCollisionEvents.OnDeathZoneTriggerEnter2D -= OnPlayerTriggerEnter2DWithDeathZone;
-        PlayerCollisionEvents.OnScoreZoneTriggerEnter2D -= OnPlayerTriggerEnter2DWithScoreZone;
+        DeathZone.OnPlayerTriggerEnter2D -= OnPlayerTriggerEnter2DWithDeathZone;
+        ScoreZone.OnPlayerTriggerEnter2D -= OnPlayerTriggerEnter2DWithScoreZone;
 
         UIEvents.BtnGoToMenu_Click -= GoToMenu;
         UIEvents.BtnTryAgain_Click -= RestartGame;

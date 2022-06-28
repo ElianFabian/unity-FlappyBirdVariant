@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.EventChannels;
-using Assets.Scripts.PlayerScripts;
+﻿using Assets.Scripts.PlayerScripts;
+using System;
 using UnityEngine;
 
 
@@ -10,6 +10,8 @@ namespace Assets.Scripts
     [RequireComponent(typeof(BoxCollider2D))]
     public class DeathZone : MonoBehaviour
     {
+        public static event Action<Player, Collider2D> OnPlayerTriggerEnter2D;
+
         BoxCollider2D _boxCollider2D;
 
 
@@ -25,7 +27,7 @@ namespace Assets.Scripts
         {
             if (!collision.TryGetComponent(out Player player)) return;
 
-            PlayerCollisionEvents.RaiseDeathZoneTriggerEnter2DEvent(player, collision);
+            OnPlayerTriggerEnter2D?.Invoke(player, collision);
         }
     }
 }
