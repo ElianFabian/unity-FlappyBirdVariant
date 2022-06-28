@@ -72,7 +72,7 @@ public class UIManager : MonoBehaviour
 
     void UpdateScore(int newScore)
     {
-        _uiBinding.txtScore.text = $"Score: {newScore}";
+        _uiBinding.txtScore.SetText($"Score: {newScore}");
     }
 
     void ShowPauseMenu()
