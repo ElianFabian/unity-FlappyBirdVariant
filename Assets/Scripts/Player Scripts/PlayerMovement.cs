@@ -21,7 +21,10 @@ namespace Assets.Scripts.PlayerScripts
             base.Awake();
 
             _rigidBody = GetComponent<Rigidbody2D>();
+        }
 
+        private void Start()
+        {
             _startJumpVelocity = player.action.JumpVelocity;
             _fordwardRotation  = Quaternion.identity;
             _downRotation      = Quaternion.Euler(0, 0, -90);
