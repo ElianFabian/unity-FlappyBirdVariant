@@ -7,7 +7,7 @@ namespace Assets.Scripts.PlayerScripts
     [DisallowMultipleComponent]
     public class PlayerAction : BasePlayerComponent
     {
-        [SerializeField] float _maxJumpHeight = 2;
+        [SerializeField] float _maxJumpHeight = 1.75f;
 
         Rigidbody2D _rigidbody;
 
