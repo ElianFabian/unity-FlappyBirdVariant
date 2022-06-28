@@ -16,7 +16,7 @@ namespace Assets.Scripts.Managers
 
         [SerializeField] KeyBindingDataSo _keyBinding;
 
-        ActionMap _currentActionMap = ActionMap.Player;
+        ActionMap _currentActionMap = ActionMap.GamePlay;
 
 
 

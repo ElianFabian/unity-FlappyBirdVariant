@@ -1,7 +1,6 @@
-﻿using Assets.Scripts.ScriptableObjects.Events;
-using TMPro;
+﻿using Assets.Scripts.Data;
+using Assets.Scripts.ScriptableObjects.Events;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 
@@ -13,11 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] UIEventChannelSO   _uiEventChannel;
     [SerializeField] GameEventChannelSO _gameEventChannel;
 
-    [SerializeField] TextMeshProUGUI _txtScore;
-    [SerializeField] RectTransform   _pauseMenu;
-    [SerializeField] RectTransform   _gameOverMenu;
-    [SerializeField] Button          _btnGoToMenu;
-    [SerializeField] Button          _btnTryAgain;
+    [SerializeField] UIBinding _uiBinding;
 
     #endregion
 
@@ -25,8 +20,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        _btnGoToMenu.onClick.AddListener(_uiEventChannel.RaiseBtnGoToMenu_ClickEvent);
-        _btnTryAgain.onClick.AddListener(_uiEventChannel.RaiseBtnTryAgain_ClickEvent);
+        _uiBinding.btnGoToMenu.onClick.AddListener(_uiEventChannel.RaiseBtnGoToMenu_ClickEvent);
+        _uiBinding.btnTryAgain.onClick.AddListener(_uiEventChannel.RaiseBtnTryAgain_ClickEvent);
 
         HidePauseMenu();
         HideShowGameOverMenu();
@@ -54,7 +49,7 @@ public class UIManager : MonoBehaviour
 
     void OnScoreChanged(int newScore)
     {
-        _txtScore.text = $"Score: {newScore}";
+        _uiBinding.txtScore.text = $"Score: {newScore}";
     }
 
     void OnGameOver()
@@ -78,28 +73,28 @@ public class UIManager : MonoBehaviour
 
     void ShowPauseMenu()
     {
-        _pauseMenu.gameObject.SetActive(true);
-        _btnGoToMenu.gameObject.SetActive(true);
+        _uiBinding.pauseMenu.gameObject.SetActive(true);
+        _uiBinding.btnGoToMenu.gameObject.SetActive(true);
     }
 
     void HidePauseMenu()
     {
-        _pauseMenu.gameObject.SetActive(false);
-        _btnGoToMenu.gameObject.SetActive(false);
+        _uiBinding.pauseMenu.gameObject.SetActive(false);
+        _uiBinding.btnGoToMenu.gameObject.SetActive(false);
     }
 
     void ShowGameOverMenu()
     {
-        _gameOverMenu.gameObject.SetActive(true);
-        _btnGoToMenu.gameObject.SetActive(true);
-        _btnTryAgain.gameObject.SetActive(true);
+        _uiBinding.gameOverMenu.gameObject.SetActive(true);
+        _uiBinding.btnGoToMenu.gameObject.SetActive(true);
+        _uiBinding.btnTryAgain.gameObject.SetActive(true);
     }
 
     void HideShowGameOverMenu()
     {
-        _gameOverMenu.gameObject.SetActive(false);
-        _btnGoToMenu.gameObject.SetActive(false);
-        _btnTryAgain.gameObject.SetActive(false);
+        _uiBinding.gameOverMenu.gameObject.SetActive(false);
+        _uiBinding.btnGoToMenu.gameObject.SetActive(false);
+        _uiBinding.btnTryAgain.gameObject.SetActive(false);
     }
 
     #endregion

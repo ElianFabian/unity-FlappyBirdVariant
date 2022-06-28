@@ -480,11 +480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiEventChannel: {fileID: 11400000, guid: 76a188cbb4911984cabd0c45c24d0f2e, type: 2}
   _gameEventChannel: {fileID: 11400000, guid: aa07e7a14a4397848afe7a3838cfc7f8, type: 2}
-  _txtScore: {fileID: 1524036083}
-  _pauseMenu: {fileID: 800640309}
-  _gameOverMenu: {fileID: 1876531279}
-  _btnGoToMenu: {fileID: 422912845}
-  _btnTryAgain: {fileID: 1089396925}
+  _uiBinding: {fileID: 630860808}
 --- !u!1 &603988425
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,6 +542,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &630860807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 630860809}
+  - component: {fileID: 630860808}
+  m_Layer: 0
+  m_Name: UI Binding
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &630860808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630860807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc9e123b3792c07499ad8be471f7783d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  txtScore: {fileID: 1524036083}
+  btnGoToMenu: {fileID: 422912845}
+  btnTryAgain: {fileID: 1089396925}
+  pauseMenu: {fileID: 800640309}
+  gameOverMenu: {fileID: 1876531279}
+--- !u!4 &630860809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630860807}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &632674628
 GameObject:
@@ -2027,6 +2072,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1864855790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1864855791}
+  m_Layer: 0
+  m_Name: =====DATA=====
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1864855791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864855790}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.664414, y: -0.24217133, z: -0.016620029}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1876406714
 GameObject:
   m_ObjectHideFlags: 0
@@ -2369,8 +2445,7 @@ MonoBehaviour:
   _playerInputEventChannel: {fileID: 11400000, guid: 85c6c617ca2501c44b8cca49309452e6, type: 2}
   _uiEventChannel: {fileID: 11400000, guid: 76a188cbb4911984cabd0c45c24d0f2e, type: 2}
   _gameEventChannel: {fileID: 11400000, guid: aa07e7a14a4397848afe7a3838cfc7f8, type: 2}
-  _playerInputData: {fileID: 11400000, guid: 64dc68825a7b32d4c9ca6084c4c20d89, type: 2}
-  _globalInputData: {fileID: 11400000, guid: aed24a13cd6e52245a308862d473ceb3, type: 2}
+  _keyBinding: {fileID: 11400000, guid: 64dc68825a7b32d4c9ca6084c4c20d89, type: 2}
 --- !u!4 &2143318231
 Transform:
   m_ObjectHideFlags: 0
@@ -2522,6 +2597,10 @@ PrefabInstance:
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 3590692097845996727, guid: 14d0fc5255ca87146979a6bb761feb8e, type: 2}
+    - target: {fileID: 3975788982048650911, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
+      propertyPath: _maxJumpHeight
+      value: 1.75
+      objectReference: {fileID: 0}
     - target: {fileID: 4720838179805794524, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
       propertyPath: _gameEventChannel
       value: 
