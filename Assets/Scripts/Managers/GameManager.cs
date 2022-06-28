@@ -96,7 +96,7 @@ namespace Assets.Scripts.Managers
         {
             SceneManager.LoadSceneAsync(_menuSceneName);
 
-            OnSceneChanged(_menuSceneName);
+            OnSceneChanged?.Invoke(_menuSceneName);
         }
 
         void RestartGame()
