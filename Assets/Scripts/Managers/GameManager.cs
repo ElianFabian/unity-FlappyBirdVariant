@@ -30,8 +30,8 @@ public class GameManager : MonoBehaviour
         _playerCollisionEventChannel.deathZone.OnTriggerEnter2D += OnPlayerTriggerEnter2DWithDeathZone;
         _playerCollisionEventChannel.scoreZone.OnTriggerEnter2D += OnPlayerTriggerEnter2DdWithScoreZone;
 
-        _uiEventChannel.BtnGoToMenu_Click += BtnGoToMenu_Click;
-        _uiEventChannel.BtnTryAgain_Click += BtnTryAgain_Click;
+        _uiEventChannel.BtnGoToMenu_Click += GoToMenu;
+        _uiEventChannel.BtnTryAgain_Click += RestartGame;
         _uiEventChannel.OnPauseToggled    += OnPauseToggled;
     }
 
@@ -40,8 +40,8 @@ public class GameManager : MonoBehaviour
         _playerCollisionEventChannel.deathZone.OnTriggerEnter2D -= OnPlayerTriggerEnter2DWithDeathZone;
         _playerCollisionEventChannel.scoreZone.OnTriggerEnter2D -= OnPlayerTriggerEnter2DdWithScoreZone;
 
-        _uiEventChannel.BtnGoToMenu_Click -= BtnGoToMenu_Click;
-        _uiEventChannel.BtnTryAgain_Click -= BtnTryAgain_Click;
+        _uiEventChannel.BtnGoToMenu_Click -= GoToMenu;
+        _uiEventChannel.BtnTryAgain_Click -= RestartGame;
         _uiEventChannel.OnPauseToggled    -= OnPauseToggled;
     }
 
@@ -75,18 +75,6 @@ public class GameManager : MonoBehaviour
         IncrementScore();
     }
 
-    private void BtnGoToMenu_Click()
-    {
-        SceneManager.LoadSceneAsync(_menuSceneName);
-
-        _gameEventChannel.RaiseSceneChangedEvent(_menuSceneName);
-    }
-
-    private void BtnTryAgain_Click()
-    {
-        RestartGame();
-    }
-
     #endregion
 
     #region Methods
@@ -96,6 +84,13 @@ public class GameManager : MonoBehaviour
         _score++;
 
         _gameEventChannel.RaiseScoreChangedEvent(_score);
+    }
+
+    private void GoToMenu()
+    {
+        SceneManager.LoadSceneAsync(_menuSceneName);
+
+        _gameEventChannel.RaiseSceneChangedEvent(_menuSceneName);
     }
 
     void RestartGame()
@@ -120,15 +115,9 @@ public class GameManager : MonoBehaviour
         _gameEventChannel.RaiseGameOverEvent();
     }
 
-    void Pause()
-    {
-        Time.timeScale = 0;
-    }
+    void Pause() =>Time.timeScale = 0;
 
-    void Resume()
-    {
-        Time.timeScale = 1;
-    }
+    void Resume() => Time.timeScale = 1;
 
     GameState ToggleGameState() => _gameState == GameState.Playing ? GameState.Paused : GameState.Playing;
 
@@ -136,7 +125,8 @@ public class GameManager : MonoBehaviour
 }
 
 
+
 enum GameState
 {
-    Paused, Playing, GameOver
+    Playing, Paused, GameOver
 }
