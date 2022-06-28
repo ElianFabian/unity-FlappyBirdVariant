@@ -8,6 +8,8 @@ namespace Assets.Scripts.PlayerScripts
     {
         protected Player player;
 
+
+
         protected virtual void Awake()
         {
             player = GetComponent<Player>();
