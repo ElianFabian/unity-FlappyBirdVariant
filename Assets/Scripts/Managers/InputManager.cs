@@ -12,7 +12,7 @@ namespace Assets.Scripts.Managers
     {
         #region Field
 
-        [SerializeField] KeyBindingDataSo _keyBinding;
+        [SerializeField] KeyBindingDataSO _keyBinding;
 
         ActionMap _currentActionMap = ActionMap.GamePlay;
 
