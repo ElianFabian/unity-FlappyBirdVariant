@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Data;
+﻿using Assets.Scripts.ScriptableObjects.Data;
 using Assets.Scripts.ScriptableObjects.Events;
 using UnityEngine;
 
