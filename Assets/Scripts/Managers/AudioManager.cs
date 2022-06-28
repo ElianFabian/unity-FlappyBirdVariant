@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.EventChannels;
-using Assets.Scripts.ScriptableObjects.Data;
+﻿using Assets.Scripts.ScriptableObjects.Data;
 using UnityEngine;
 
 
@@ -30,18 +29,18 @@ namespace Assets.Scripts.Managers
 
         private void OnEnable()
         {
-            GameEvents.OnGameOver      += OnGameOver;
-            GameEvents.OnGamePaused    += OnGamePaused;
-            GameEvents.OnGameResumed   += OnGameResumed;
-            GameEvents.OnGameRestarted += OnGameRestarted;
+            GameManager.OnGameOver      += OnGameOver;
+            GameManager.OnGamePaused    += OnGamePaused;
+            GameManager.OnGameResumed   += OnGameResumed;
+            GameManager.OnGameRestarted += OnGameRestarted;
         }
 
         private void OnDisable()
         {
-            GameEvents.OnGameOver      -= OnGameOver;
-            GameEvents.OnGamePaused    -= OnGamePaused;
-            GameEvents.OnGameResumed   -= OnGameResumed;
-            GameEvents.OnGameRestarted -= OnGameRestarted;
+            GameManager.OnGameOver      -= OnGameOver;
+            GameManager.OnGamePaused    -= OnGamePaused;
+            GameManager.OnGameResumed   -= OnGameResumed;
+            GameManager.OnGameRestarted -= OnGameRestarted;
         }
 
         #endregion

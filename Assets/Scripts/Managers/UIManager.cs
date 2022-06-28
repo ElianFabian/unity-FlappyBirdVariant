@@ -1,106 +1,113 @@
-﻿using Assets.Scripts.EventChannels;
-using Assets.Scripts.ScriptableObjects.Data;
+﻿using Assets.Scripts.ScriptableObjects.Data;
+using System;
 using UnityEngine;
 
 
 
-[DisallowMultipleComponent]
-public class UIManager : MonoBehaviour
+namespace Assets.Scripts.Managers
 {
-    #region Fields
-
-    [SerializeField] UIBinding _uiBinding;
-
-    #endregion
-
-    #region Unity event functions
-
-    private void Start()
+    [DisallowMultipleComponent]
+    public class UIManager : MonoBehaviour
     {
-        _uiBinding.btnGoToMenu.onClick.AddListener(UIEvents.RaiseBtnGoToMenu_ClickEvent);
-        _uiBinding.btnTryAgain.onClick.AddListener(UIEvents.RaiseBtnTryAgain_ClickEvent);
+        #region Fields
 
-        HideMouseCursor();
-        HidePauseMenu();
-        HideGameOverMenu();
+        public static event Action
+                BtnGoToMenu_Click,
+                BtnTryAgain_Click;
+
+        [SerializeField] UIBinding _uiBinding;
+
+        #endregion
+
+        #region Unity event functions
+
+        private void Start()
+        {
+            _uiBinding.btnGoToMenu.onClick.AddListener(BtnGoToMenu_Click.Invoke);
+            _uiBinding.btnTryAgain.onClick.AddListener(BtnTryAgain_Click.Invoke);
+
+            HideMouseCursor();
+            HidePauseMenu();
+            HideGameOverMenu();
+        }
+
+        private void OnEnable()
+        {
+            GameManager.OnScoreChanged += UpdateScore;
+            GameManager.OnGamePaused   += OnGamePaused;
+            GameManager.OnGameResumed  += OnGameResumed;
+            GameManager.OnGameOver     += OnGameOver;
+        }
+
+        private void OnDisable()
+        {
+            GameManager.OnScoreChanged -= UpdateScore;
+            GameManager.OnGamePaused   -= OnGamePaused;
+            GameManager.OnGameResumed  -= OnGameResumed;
+            GameManager.OnGameOver     -= OnGameOver;
+        }
+
+        #endregion
+
+        #region Event functions
+
+        void OnGamePaused()
+        {
+            ShowPauseMenu();
+            ShowMouseCursor();
+        }
+
+        void OnGameResumed()
+        {
+            HidePauseMenu();
+            HideMouseCursor();
+        }
+
+        void OnGameOver()
+        {
+            ShowGameOverMenu();
+            ShowMouseCursor();
+        }
+
+        #endregion
+
+        #region Methods
+
+        void UpdateScore(int newScore)
+        {
+            _uiBinding.txtScore.SetText($"Score: {newScore}");
+        }
+
+        void ShowPauseMenu()
+        {
+            _uiBinding.pauseMenu.gameObject.SetActive(true);
+            _uiBinding.btnGoToMenu.gameObject.SetActive(true);
+        }
+
+        void HidePauseMenu()
+        {
+            _uiBinding.pauseMenu.gameObject.SetActive(false);
+            _uiBinding.btnGoToMenu.gameObject.SetActive(false);
+        }
+
+        void ShowGameOverMenu()
+        {
+            _uiBinding.gameOverMenu.gameObject.SetActive(true);
+            _uiBinding.btnGoToMenu.gameObject.SetActive(true);
+            _uiBinding.btnTryAgain.gameObject.SetActive(true);
+        }
+
+        void HideGameOverMenu()
+        {
+            _uiBinding.gameOverMenu.gameObject.SetActive(false);
+            _uiBinding.btnGoToMenu.gameObject.SetActive(false);
+            _uiBinding.btnTryAgain.gameObject.SetActive(false);
+        }
+
+        void ShowMouseCursor() => Cursor.visible = true;
+
+        void HideMouseCursor() => Cursor.visible = false;
+
+        #endregion
     }
-
-    private void OnEnable()
-    {
-        GameEvents.OnScoreChanged += UpdateScore;
-        GameEvents.OnGamePaused   += OnGamePaused;
-        GameEvents.OnGameResumed  += OnGameResumed;
-        GameEvents.OnGameOver     += OnGameOver;
-    }
-
-    private void OnDisable()
-    {
-        GameEvents.OnScoreChanged -= UpdateScore;
-        GameEvents.OnGamePaused   -= OnGamePaused;
-        GameEvents.OnGameResumed  -= OnGameResumed;
-        GameEvents.OnGameOver     -= OnGameOver;
-    }
-
-    #endregion
-
-    #region Event functions
-
-    void OnGamePaused()
-    {
-        ShowPauseMenu();
-        ShowMouseCursor();
-    }
-
-    void OnGameResumed()
-    {
-        HidePauseMenu();
-        HideMouseCursor();
-    }
-
-    void OnGameOver()
-    {
-        ShowGameOverMenu();
-        ShowMouseCursor();
-    }
-
-    #endregion
-
-    #region Methods
-
-    void UpdateScore(int newScore)
-    {
-        _uiBinding.txtScore.SetText($"Score: {newScore}");
-    }
-
-    void ShowPauseMenu()
-    {
-        _uiBinding.pauseMenu.gameObject.SetActive(true);
-        _uiBinding.btnGoToMenu.gameObject.SetActive(true);
-    }
-
-    void HidePauseMenu()
-    {
-        _uiBinding.pauseMenu.gameObject.SetActive(false);
-        _uiBinding.btnGoToMenu.gameObject.SetActive(false);
-    }
-
-    void ShowGameOverMenu()
-    {
-        _uiBinding.gameOverMenu.gameObject.SetActive(true);
-        _uiBinding.btnGoToMenu.gameObject.SetActive(true);
-        _uiBinding.btnTryAgain.gameObject.SetActive(true);
-    }
-
-    void HideGameOverMenu()
-    {
-        _uiBinding.gameOverMenu.gameObject.SetActive(false);
-        _uiBinding.btnGoToMenu.gameObject.SetActive(false);
-        _uiBinding.btnTryAgain.gameObject.SetActive(false);
-    }
-
-    void ShowMouseCursor() => Cursor.visible = true;
-
-    void HideMouseCursor() => Cursor.visible = false;
-
-    #endregion
 }

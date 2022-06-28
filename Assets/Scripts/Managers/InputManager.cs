@@ -1,6 +1,5 @@
-﻿using Assets.Scripts.EventChannels;
+﻿using Assets.Scripts.Data;
 using Assets.Scripts.PlayerScripts;
-using Assets.Scripts.ScriptableObjects.Data;
 using System;
 using UnityEngine;
 
@@ -13,7 +12,7 @@ namespace Assets.Scripts.Managers
     {
         #region Field
 
-        [SerializeField] KeyBindingDataSO _keyBinding;
+        public static event Action OnPauseToggled;
 
         ActionMap _currentActionMap = ActionMap.GamePlay;
 
@@ -23,16 +22,16 @@ namespace Assets.Scripts.Managers
 
         private void OnEnable()
         {
-            GameEvents.OnGamePaused  += SwitchToPause;
-            GameEvents.OnGameResumed += SwitchToGamePlay;
-            GameEvents.OnGameOver    += SwitchToNone;
+            GameManager.OnGamePaused  += SwitchToPause;
+            GameManager.OnGameResumed += SwitchToGamePlay;
+            GameManager.OnGameOver    += SwitchToNone;
         }
 
         private void OnDisable()
         {
-            GameEvents.OnGamePaused  -= SwitchToPause;
-            GameEvents.OnGameResumed -= SwitchToGamePlay;
-            GameEvents.OnGameOver    -= SwitchToNone;
+            GameManager.OnGamePaused  -= SwitchToPause;
+            GameManager.OnGameResumed -= SwitchToGamePlay;
+            GameManager.OnGameOver    -= SwitchToNone;
         }
 
         private void Update()
@@ -60,7 +59,7 @@ namespace Assets.Scripts.Managers
 
         void HandlePauseInput()
         {
-            if (Input.GetKeyDown(_keyBinding.pauseKey)) UIEvents.RaisePauseToggledEvent();
+            if (Input.GetKeyDown(KeyBinding.keys.pauseKey)) OnPauseToggled?.Invoke();
         }
 
         void HandlePlayerInput()

@@ -1,129 +1,139 @@
-﻿using Assets.Scripts;
-using Assets.Scripts.EventChannels;
-using Assets.Scripts.PlayerScripts;
+﻿using Assets.Scripts.PlayerScripts;
 using NaughtyAttributes;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
 
-[DisallowMultipleComponent]
-public class GameManager : MonoBehaviour
+namespace Assets.Scripts.Managers
 {
-    #region Fields
-
-    [Scene]
-    [SerializeField] string _menuSceneName;
-
-    GameState _gameState = GameState.Playing;
-    int       _score     = 0;
-
-    #endregion
-
-    #region Unity event functions
-
-    private void OnEnable()
+    [DisallowMultipleComponent]
+    public class GameManager : MonoBehaviour
     {
-        DeathZone.OnPlayerTriggerEnter2D += OnPlayerTriggerEnter2DWithDeathZone;
-        ScoreZone.OnPlayerTriggerEnter2D += OnPlayerTriggerEnter2DWithScoreZone;
+        #region Fields
 
-        UIEvents.BtnGoToMenu_Click += GoToMenu;
-        UIEvents.BtnTryAgain_Click += RestartGame;
-        UIEvents.OnPauseToggled    += OnPauseToggled;
-    }
+        public static event Action
+                OnGameOver,
+                OnGamePaused,
+                OnGameResumed,
+                OnGameRestarted;
+        public static event Action<string> OnSceneChanged;
+        public static event Action<int>    OnScoreChanged;
 
-    private void OnDisable()
-    {
-        DeathZone.OnPlayerTriggerEnter2D -= OnPlayerTriggerEnter2DWithDeathZone;
-        ScoreZone.OnPlayerTriggerEnter2D -= OnPlayerTriggerEnter2DWithScoreZone;
+        [Scene]
+        [SerializeField] string _menuSceneName;
 
-        UIEvents.BtnGoToMenu_Click -= GoToMenu;
-        UIEvents.BtnTryAgain_Click -= RestartGame;
-        UIEvents.OnPauseToggled    -= OnPauseToggled;
-    }
+        GameState _gameState = GameState.Playing;
+        int       _score     = 0;
 
-    #endregion
+        #endregion
 
-    #region Event functions
+        #region Unity event functions
 
-    private void OnPauseToggled()
-    {
-        _gameState = ToggleGameState();
-
-        if (_gameState == GameState.Paused)
+        private void OnEnable()
         {
-            Pause();
-            GameEvents.RaiseGamePausedEvent();
+            DeathZone.OnPlayerTriggerEnter2D += OnPlayerTriggerEnter2DWithDeathZone;
+            ScoreZone.OnPlayerTriggerEnter2D += OnPlayerTriggerEnter2DWithScoreZone;
+
+            UIManager.BtnGoToMenu_Click += GoToMenu;
+            UIManager.BtnTryAgain_Click += RestartGame;
+            InputManager.OnPauseToggled    += OnPauseToggled;
         }
-        else if (_gameState == GameState.Playing)
+
+        private void OnDisable()
+        {
+            DeathZone.OnPlayerTriggerEnter2D -= OnPlayerTriggerEnter2DWithDeathZone;
+            ScoreZone.OnPlayerTriggerEnter2D -= OnPlayerTriggerEnter2DWithScoreZone;
+
+            UIManager.BtnGoToMenu_Click -= GoToMenu;
+            UIManager.BtnTryAgain_Click -= RestartGame;
+            InputManager.OnPauseToggled    -= OnPauseToggled;
+        }
+
+        #endregion
+
+        #region Event functions
+
+        private void OnPauseToggled()
+        {
+            _gameState = ToggleGameState();
+
+            if (_gameState == GameState.Paused)
+            {
+                Pause();
+                OnGamePaused?.Invoke();
+            }
+            else if (_gameState == GameState.Playing)
+            {
+                Resume();
+                OnGameResumed?.Invoke();
+            }
+        }
+
+        private void OnPlayerTriggerEnter2DWithDeathZone(Player player, Collider2D collider)
+        {
+            SetGameOver();
+        }
+
+        private void OnPlayerTriggerEnter2DWithScoreZone(Player player, Collider2D collider)
+        {
+            IncrementScore();
+        }
+
+        #endregion
+
+        #region Methods
+
+        void IncrementScore()
+        {
+            _score++;
+
+            OnScoreChanged?.Invoke(_score);
+        }
+
+        private void GoToMenu()
+        {
+            SceneManager.LoadSceneAsync(_menuSceneName);
+
+            OnSceneChanged(_menuSceneName);
+        }
+
+        void RestartGame()
         {
             Resume();
-            GameEvents.RaiseGameResumedEvent();
+
+            var currentScene = SceneManager.GetActiveScene();
+
+            SceneManager.LoadSceneAsync(currentScene.name);
+
+            _gameState = GameState.Playing;
+
+            OnGameRestarted?.Invoke();
         }
+
+        void SetGameOver()
+        {
+            Pause();
+
+            _gameState = GameState.GameOver;
+
+            OnGameOver?.Invoke();
+        }
+
+        void Pause() => Time.timeScale = 0;
+
+        void Resume() => Time.timeScale = 1;
+
+        GameState ToggleGameState() => _gameState == GameState.Playing ? GameState.Paused : GameState.Playing;
+
+        #endregion
     }
 
-    private void OnPlayerTriggerEnter2DWithDeathZone(Player player, Collider2D collider)
+
+
+    enum GameState
     {
-        SetGameOver();
+        Playing, Paused, GameOver
     }
-
-    private void OnPlayerTriggerEnter2DWithScoreZone(Player player, Collider2D collider)
-    {
-        IncrementScore();
-    }
-
-    #endregion
-
-    #region Methods
-
-    void IncrementScore()
-    {
-        _score++;
-
-        GameEvents.RaiseScoreChangedEvent(_score);
-    }
-
-    private void GoToMenu()
-    {
-        SceneManager.LoadSceneAsync(_menuSceneName);
-
-        GameEvents.RaiseSceneChangedEvent(_menuSceneName);
-    }
-
-    void RestartGame()
-    {
-        Resume();
-
-        var currentScene = SceneManager.GetActiveScene();
-
-        SceneManager.LoadSceneAsync(currentScene.name);
-
-        _gameState = GameState.Playing;
-
-        GameEvents.RaiseGameRestartedEvent();
-    }
-
-    void SetGameOver()
-    {
-        Pause();
-
-        _gameState = GameState.GameOver;
-
-        GameEvents.RaiseGameOverEvent();
-    }
-
-    void Pause() => Time.timeScale = 0;
-
-    void Resume() => Time.timeScale = 1;
-
-    GameState ToggleGameState() => _gameState == GameState.Playing ? GameState.Paused : GameState.Playing;
-
-    #endregion
-}
-
-
-
-enum GameState
-{
-    Playing, Paused, GameOver
 }
