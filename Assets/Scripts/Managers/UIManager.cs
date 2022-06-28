@@ -29,47 +29,28 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        _gameEventChannel.OnScoreChanged += OnScoreChanged;
-        _gameEventChannel.OnGameOver     += OnGameOver;
-        _gameEventChannel.OnGamePaused   += OnGamePaused;
-        _gameEventChannel.OnGameResumed  += OnGameResumed;
+        _gameEventChannel.OnScoreChanged += UpdateScore;
+        _gameEventChannel.OnGameOver     += ShowGameOverMenu;
+        _gameEventChannel.OnGamePaused   += ShowPauseMenu;
+        _gameEventChannel.OnGameResumed  += HidePauseMenu;
     }
 
     private void OnDisable()
     {
-        _gameEventChannel.OnScoreChanged -= OnScoreChanged;
-        _gameEventChannel.OnGameOver     -= OnGameOver;
-        _gameEventChannel.OnGamePaused   -= OnGamePaused;
-        _gameEventChannel.OnGameResumed  -= OnGameResumed;
-    }
-
-    #endregion
-
-    #region Event functions
-
-    void OnScoreChanged(int newScore)
-    {
-        _uiBinding.txtScore.text = $"Score: {newScore}";
-    }
-
-    void OnGameOver()
-    {
-        ShowGameOverMenu();
-    }
-
-    void OnGamePaused()
-    {
-        ShowPauseMenu();
-    }
-
-    void OnGameResumed()
-    {
-        HidePauseMenu();
+        _gameEventChannel.OnScoreChanged -= UpdateScore;
+        _gameEventChannel.OnGameOver     -= ShowGameOverMenu;
+        _gameEventChannel.OnGamePaused   -= ShowPauseMenu;
+        _gameEventChannel.OnGameResumed  -= HidePauseMenu;
     }
 
     #endregion
 
     #region Methods
+
+    void UpdateScore(int newScore)
+    {
+        _uiBinding.txtScore.text = $"Score: {newScore}";
+    }
 
     void ShowPauseMenu()
     {
