@@ -1,6 +1,4 @@
-﻿using Assets.Scripts.PlayerScripts;
-using System;
-using UnityEngine;
+﻿using System;
 
 
 
@@ -34,12 +32,5 @@ namespace Assets.Scripts.EventChannels
         public static void RaiseBtnGoToMenu_ClickEvent() => BtnGoToMenu_Click?.Invoke();
         public static void RaiseBtnTryAgain_ClickEvent() => BtnTryAgain_Click?.Invoke();
         public static void RaisePauseToggledEvent() => OnPauseToggled?.Invoke();
-    }
-
-    public static class PlayerEvents
-    {
-        public static event Action OnJump;
-
-        public static void RaiseJumpEvent() => OnJump?.Invoke();
     }
 }

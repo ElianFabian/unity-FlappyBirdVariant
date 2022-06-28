@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: -3368443975412906740}
   - component: {fileID: -6545208177916593344}
   - component: {fileID: -5514492747884254190}
+  - component: {fileID: 1150520671}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -246,8 +247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd5ec60fa6e05c42b5b0aba333ece53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputEventChannel: {fileID: 11400000, guid: 85c6c617ca2501c44b8cca49309452e6, type: 2}
-  _gameEventChannel: {fileID: 11400000, guid: aa07e7a14a4397848afe7a3838cfc7f8, type: 2}
   data: {fileID: 11400000, guid: 35e87c16a3cd975419aa59c3367cb586, type: 2}
 --- !u!114 &4240655787091838609
 MonoBehaviour:
@@ -261,7 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 983fbf4c1b558b54f91db01082857330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxJumpHeight: 2
+  _maxJumpHeight: 1.75
 --- !u!114 &-3368443975412906740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,3 +297,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 597db103b90512b45ab5981826b45aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1150520671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8199134691106986885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f02b0cff738c124eb3a142e41a00c39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _keyBinding: {fileID: 11400000, guid: 64dc68825a7b32d4c9ca6084c4c20d89, type: 2}

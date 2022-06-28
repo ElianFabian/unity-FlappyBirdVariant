@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.EventChannels;
+using Assets.Scripts.PlayerScripts;
 using Assets.Scripts.ScriptableObjects.Data;
 using System;
 using UnityEngine;
@@ -64,7 +65,7 @@ namespace Assets.Scripts.Managers
 
         void HandlePlayerInput()
         {
-            if (Input.GetKeyDown(_keyBinding.jumpKey)) PlayerEvents.RaiseJumpEvent();
+            PlayerInput.HandleInput();
         }
 
         void SwitchToGamePlay() => _currentActionMap = ActionMap.GamePlay;

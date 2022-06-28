@@ -2573,10 +2573,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4240655787091838609, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
-      propertyPath: _maxJumpHeight
-      value: 1.75
-      objectReference: {fileID: 0}
     - target: {fileID: 8199134691106986880, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
       propertyPath: m_RootOrder
       value: 8
