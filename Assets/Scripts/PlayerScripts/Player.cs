@@ -8,14 +8,10 @@ namespace Assets.Scripts.PlayerScripts
 {
     [DisallowMultipleComponent]
 
-    [RequireComponent(typeof(Rigidbody2D))]
-    [RequireComponent(typeof(SpriteRenderer))]
-    [RequireComponent(typeof(CircleCollider2D))]
+    [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer), typeof(CircleCollider2D))]
 
     [RequireComponent(typeof(PlayerAction))]
-    [RequireComponent(typeof(PlayerMovement))]
-    [RequireComponent(typeof(PlayerCollision))]
-    [RequireComponent(typeof(PlayerAudio))]
+    [RequireComponent(typeof(PlayerMovement), typeof(PlayerCollision), typeof(PlayerAudio))]
     public class Player : MonoBehaviour
     {
         public const float GRAVITY = -9.81f;
