@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-namespace Assets.Scripts.PlayerScripts
+namespace Assets.Scripts.PlayerComponents
 {
     public class PlayerInput : BasePlayerComponent
     {

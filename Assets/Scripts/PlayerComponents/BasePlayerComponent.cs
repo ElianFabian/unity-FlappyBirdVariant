@@ -2,7 +2,7 @@
 
 
 
-namespace Assets.Scripts.PlayerScripts
+namespace Assets.Scripts.PlayerComponents
 {
     public abstract class BasePlayerComponent : MonoBehaviour
     {

@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.PlayerScripts;
+﻿using Assets.Scripts.PlayerComponents;
 using NaughtyAttributes;
 using System;
 using UnityEngine;
