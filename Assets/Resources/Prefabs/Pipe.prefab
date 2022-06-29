@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2211129010373259863}
   - component: {fileID: 7103924786510758550}
   - component: {fileID: 894221371591381564}
-  - component: {fileID: -397479592510295169}
   - component: {fileID: 3632703732776343370}
+  - component: {fileID: 3709407912648257178}
   m_Layer: 0
   m_Name: Pipe
   m_TagString: Untagged
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1517610035
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 3286163911610860551, guid: 571459adf9d8a044dabb5ea2f2f092b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -113,18 +113,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.4, y: 7.9}
   m_EdgeRadius: 0
---- !u!114 &-397479592510295169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7837393127518600466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c0940dc50fac064c85eda9e5109313c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &3632703732776343370
 Rigidbody2D:
   serializedVersion: 4
@@ -146,3 +134,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3709407912648257178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7837393127518600466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe73e81e4edf47c4fb6078dc0e899eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
