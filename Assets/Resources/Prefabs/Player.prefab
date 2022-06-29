@@ -80,8 +80,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1274426489
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 56281cff4cdefe448a791ac0374c7dd7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -309,4 +309,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f02b0cff738c124eb3a142e41a00c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyBinding: {fileID: 11400000, guid: 64dc68825a7b32d4c9ca6084c4c20d89, type: 2}

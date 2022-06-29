@@ -7,8 +7,8 @@ namespace Assets.Scripts
 {
     public class CloudSpawner : MonoBehaviour
     {
-        const string SPRITE_PATH              = "Images/Background/clouds";
-        const int    BASE_CLOUD_SORTING_ORDER = -20;
+        const string SPRITE_PATH         = "Images/Background/clouds";
+        const string CLOUD_SORTING_LAYER = "Clouds";
 
         [SerializeField] float _maxSpawnDelayInSeconds = 4f;
         [SerializeField] float _minSpawnDelayInSeconds = 2.2f;
@@ -60,7 +60,8 @@ namespace Assets.Scripts
                 colorRelatedToDistance.a   = 1;
                 spriteRenderer.color       = colorRelatedToDistance;
 
-                spriteRenderer.sortingOrder = BASE_CLOUD_SORTING_ORDER - sizeTypeCloudIndex;
+                spriteRenderer.sortingLayerName = CLOUD_SORTING_LAYER;
+                spriteRenderer.sortingOrder     = -sizeTypeCloudIndex;
 
                 var newColudRigidBody = newCloud.AddComponent<Rigidbody2D>();
 

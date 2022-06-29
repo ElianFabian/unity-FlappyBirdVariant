@@ -38,6 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1374001907
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Clouds
+    uniqueID: 3730023839
+    locked: 0
+  - name: Player
+    uniqueID: 1274426489
+    locked: 0
+  - name: Pipes
+    uniqueID: 2777357261
     locked: 0
