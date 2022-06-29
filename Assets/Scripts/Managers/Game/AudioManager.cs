@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 
-namespace Assets.Scripts.Managers
+namespace Assets.Scripts.Managers.Game
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(AudioSource))]

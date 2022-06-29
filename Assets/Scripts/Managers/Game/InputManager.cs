@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 
-namespace Assets.Scripts.Managers
+namespace Assets.Scripts.Managers.Game
 {
     [DisallowMultipleComponent]
     public class InputManager : MonoBehaviour

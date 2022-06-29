@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 
 
-namespace Assets.Scripts.Managers
+namespace Assets.Scripts.Managers.Game
 {
     [DisallowMultipleComponent]
     public class GameManager : MonoBehaviour
