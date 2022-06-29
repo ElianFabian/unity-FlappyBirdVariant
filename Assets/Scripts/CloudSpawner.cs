@@ -18,7 +18,7 @@ namespace Assets.Scripts
 
         Sprite[] _spriteClouds;
 
-        readonly float[] _cloudScaleOrderByDistanceDescending = new float[] { 0.8f, 0.5f, 0.3f };
+        readonly float[] _cloudScaleOrderFromNearToFar = new float[] { 0.8f, 0.5f, 0.3f };
 
         private void Start()
         {
@@ -31,42 +31,42 @@ namespace Assets.Scripts
 
         IEnumerator SpawnCloudCoroutine()
         {
-            var numberOfCloudDistanceTypes = _cloudScaleOrderByDistanceDescending.Length;
-            var remotenessColorFactor      = 0.82f;
+            var numberOfCloudDistanceTypes = _cloudScaleOrderFromNearToFar.Length;
+            var remotenessColorValue       = 0.82f;
 
             while (true)
             {
-                var spriteCloudIndex   = Random.Range(0, numberOfCloudDistanceTypes);
-                var sizeTypeCloudIndex = Random.Range(0, numberOfCloudDistanceTypes);
-                var heightFactor       = Random.Range(-_heightOffset, _heightOffset);
-                var randomHeight       = transform.position + Vector3.up * heightFactor;
-                var cloudScale         = _cloudScaleOrderByDistanceDescending[sizeTypeCloudIndex];
+                var spriteIndex         = Random.Range(0, numberOfCloudDistanceTypes);
+                var scaleTypeCloudIndex = Random.Range(0, numberOfCloudDistanceTypes);
+                var height              = Random.Range(-_heightOffset, _heightOffset);
+                var position            = transform.position + Vector3.up * height;
+                var scale               = _cloudScaleOrderFromNearToFar[scaleTypeCloudIndex];
 
                 var newCloud = new GameObject("Spawned Cloud");
 
-                newCloud.transform.position   = randomHeight;
-                newCloud.transform.localScale = Vector3.one * cloudScale;
+                newCloud.transform.position   = position;
+                newCloud.transform.localScale = Vector3.one * scale;
 
                 newCloud.AddComponent<SpawnedObjectTag>();
                 newCloud.AddComponent<BoxCollider2D>().isTrigger = true;
 
                 var spriteRenderer = newCloud.AddComponent<SpriteRenderer>();
 
-                spriteRenderer.sprite       = _spriteClouds[spriteCloudIndex];
+                spriteRenderer.sprite = _spriteClouds[spriteIndex];
 
-                var distanceFactor = Map(sizeTypeCloudIndex, 0, numberOfCloudDistanceTypes - 1, 1f, remotenessColorFactor);
+                var distanceFactor = Map(scaleTypeCloudIndex, 0, numberOfCloudDistanceTypes - 1, 1f, remotenessColorValue);
 
                 var colorRelatedToDistance = Color.white * distanceFactor;
                 colorRelatedToDistance.a   = 1;
                 spriteRenderer.color       = colorRelatedToDistance;
 
                 spriteRenderer.sortingLayerName = CLOUD_SORTING_LAYER;
-                spriteRenderer.sortingOrder     = -sizeTypeCloudIndex;
+                spriteRenderer.sortingOrder     = -scaleTypeCloudIndex;
 
                 var newColudRigidBody = newCloud.AddComponent<Rigidbody2D>();
 
                 newColudRigidBody.bodyType = RigidbodyType2D.Kinematic;
-                newColudRigidBody.velocity = _spawnVelocity * cloudScale * Vector2.left;
+                newColudRigidBody.velocity = _spawnVelocity * scale * Vector2.left;
 
 
 
@@ -77,7 +77,7 @@ namespace Assets.Scripts
         }
 
         /// <summary>
-        /// Converts a value t in a range [a1, b1] into a value in a range [a2, b2].
+        /// Converts a value t in a range [a1, b1] into a value in range [a2, b2].
         /// </summary>
         float Map(float t, float a1, float b1, float a2, float b2) => a2 + (b2 - a2) * (t - a1)/(b1 - a1);
     }
