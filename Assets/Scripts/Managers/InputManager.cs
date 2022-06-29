@@ -73,16 +73,16 @@ namespace Assets.Scripts.Managers
 
         #endregion
     }
-}
 
 
 
-[Flags]
-enum ActionMap
-{
-    None = 0,
-    Player = 1 << 0,
-    Pause = 1 << 1,
+    [Flags]
+    enum ActionMap
+    {
+        None = 0,
+        Player = 1 << 0,
+        Pause = 1 << 1,
 
-    GamePlay = Player | Pause
+        GamePlay = Player | Pause
+    }
 }
