@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 422912846}
   - component: {fileID: 422912845}
   m_Layer: 5
-  m_Name: btnGoToMenu
+  m_Name: '#btnGoToMenu'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -624,7 +624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180d7ddc73dbc2a49a2b87924fb47d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _menuSceneName: Game
+  _menuSceneName: ChoosePlayerMenu
 --- !u!1 &676796062
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,7 +666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 800640309}
   m_Layer: 5
-  m_Name: Pause Menu
+  m_Name: '#Pause Menu'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -994,7 +994,7 @@ GameObject:
   - component: {fileID: 1089396926}
   - component: {fileID: 1089396925}
   m_Layer: 5
-  m_Name: btnTryAgain
+  m_Name: '#btnTryAgain'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1459,7 +1459,7 @@ GameObject:
   - component: {fileID: 1524036084}
   - component: {fileID: 1524036083}
   m_Layer: 5
-  m_Name: txtScore
+  m_Name: '#txtScore'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2269,7 +2269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1876531279}
   m_Layer: 5
-  m_Name: Game Over Menu
+  m_Name: '#Game Over Menu'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
