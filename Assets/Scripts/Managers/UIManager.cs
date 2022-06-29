@@ -15,7 +15,7 @@ namespace Assets.Scripts.Managers
             BtnGoToMenu_Click,
             BtnTryAgain_Click;
 
-        UIBinding _uiBinding;
+        UIGameBinding _uiBinding;
 
         #endregion
 
@@ -23,7 +23,7 @@ namespace Assets.Scripts.Managers
 
         private void Start()
         {
-            _uiBinding = UIBinding.instance;
+            _uiBinding = UIGameBinding.instance;
 
             _uiBinding.btnGoToMenu.onClick.AddListener(BtnGoToMenu_Click.Invoke);
             _uiBinding.btnTryAgain.onClick.AddListener(BtnTryAgain_Click.Invoke);

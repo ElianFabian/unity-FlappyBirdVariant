@@ -7,9 +7,9 @@ using UnityEngine.UI;
 namespace Assets.Scripts.ScriptableObjects.Data
 {
     [DisallowMultipleComponent]
-    public class UIBinding : MonoBehaviour
+    public class UIGameBinding : MonoBehaviour
     {
-        public static UIBinding instance;
+        public static UIGameBinding instance;
 
         public TextMeshProUGUI txtScore;
 
