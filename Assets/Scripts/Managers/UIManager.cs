@@ -12,8 +12,8 @@ namespace Assets.Scripts.Managers
         #region Fields
 
         public static event Action
-                BtnGoToMenu_Click,
-                BtnTryAgain_Click;
+            BtnGoToMenu_Click,
+            BtnTryAgain_Click;
 
         UIBinding _uiBinding;
 
