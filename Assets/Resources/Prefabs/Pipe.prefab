@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7103924786510758550}
   - component: {fileID: 894221371591381564}
   - component: {fileID: 3632703732776343370}
-  - component: {fileID: 3709407912648257178}
+  - component: {fileID: 6211881826370530964}
   m_Layer: 0
   m_Name: Pipe
   m_TagString: Untagged
@@ -134,7 +134,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3709407912648257178
+--- !u!114 &6211881826370530964
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,6 +143,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7837393127518600466}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe73e81e4edf47c4fb6078dc0e899eb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 9809d2340533ff545b4c1decd5ef8f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 8991685015591131200}
   - component: {fileID: 8991685015591131199}
   - component: {fileID: 3664384468371399375}
-  - component: {fileID: 5165258366468106556}
-  - component: {fileID: 6171849283036561021}
+  - component: {fileID: 2049774828384338092}
   m_Layer: 0
   m_Name: Score Zone
   m_TagString: Untagged
@@ -157,7 +156,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5165258366468106556
+--- !u!114 &2049774828384338092
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,19 +165,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8991685015591131201}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 541130d6093b1c9478e462b4bf452c46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6171849283036561021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8991685015591131201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a90bef226735ccc418c3193672b7a314, type: 3}
+  m_Script: {fileID: 11500000, guid: ec5d449cf2087ea4884266c8b188ae6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _scoreClip: {fileID: 8300000, guid: 72bd3a4f13829f841aa82c07583475ee, type: 3}
