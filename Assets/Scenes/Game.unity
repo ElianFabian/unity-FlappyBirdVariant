@@ -980,7 +980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192bfffeb42c8de4086131c5df547cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyBinding: {fileID: 11400000, guid: 64dc68825a7b32d4c9ca6084c4c20d89, type: 2}
+  _keyBinding: {fileID: 11400000, guid: 0c16cf9856c219f4381f5003806ab858, type: 2}
 --- !u!1 &1089396923
 GameObject:
   m_ObjectHideFlags: 0
