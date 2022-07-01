@@ -22,16 +22,6 @@ namespace Assets.Scripts.Characters.PlayerComponents
             _rigidbody = GetComponent<Rigidbody2D>();
         }
 
-        private void OnEnable()
-        {
-            PlayerInput.OnJump += Jump;
-        }
-
-        private void OnDisable()
-        {
-            PlayerInput.OnJump -= Jump;
-        }
-
 
 
         public void Jump()

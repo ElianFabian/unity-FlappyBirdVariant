@@ -1,5 +1,5 @@
-﻿using System;
-using Assets.Scripts.Characters.PlayerComponents;
+﻿using Assets.Scripts.Characters.PlayerComponents;
+using Assets.Scripts.Events.ScritpableObjects;
 using UnityEngine;
 
 namespace Assets.Scripts.Zones
@@ -8,7 +8,7 @@ namespace Assets.Scripts.Zones
     [RequireComponent(typeof(BoxCollider2D))]
     public class DeathZone : MonoBehaviour
     {
-        public static event Action<Player, Collider2D> OnPlayerTriggerEnter2D;
+        [SerializeField] Collider2DEventSO _onPlayerCollided;
 
         BoxCollider2D _boxCollider2D;
 
@@ -25,7 +25,7 @@ namespace Assets.Scripts.Zones
         {
             if (!collision.TryGetComponent(out Player player)) return;
 
-            OnPlayerTriggerEnter2D?.Invoke(player, collision);
+            _onPlayerCollided.RaiseEvent(collision);
         }
     }
 }

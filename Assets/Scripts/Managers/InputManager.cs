@@ -1,6 +1,6 @@
-﻿using System;
-using Assets.Scripts.Binding;
-using Assets.Scripts.Characters.PlayerComponents;
+﻿using Assets.Scripts.Data.ScriptableObjects;
+using Assets.Scripts.Events.ScriptableObjects;
+using System;
 using UnityEngine;
 
 namespace Assets.Scripts.Managers
@@ -10,27 +10,16 @@ namespace Assets.Scripts.Managers
     {
         #region Field
 
-        public static event Action OnPauseToggled;
+        [SerializeField] KeyDataSO _keyData;
+
+        [SerializeField] VoidEventChannelSO _onHandlePlayerInput;
+        [SerializeField] VoidEventChannelSO _onPauseToggled;
 
         ActionMap _currentActionMap = ActionMap.GamePlay;
 
         #endregion
 
         #region Unity event functions
-
-        private void OnEnable()
-        {
-            GameManager.OnGamePaused  += SwitchToPause;
-            GameManager.OnGameResumed += SwitchToGamePlay;
-            GameManager.OnGameOver    += SwitchToNone;
-        }
-
-        private void OnDisable()
-        {
-            GameManager.OnGamePaused  -= SwitchToPause;
-            GameManager.OnGameResumed -= SwitchToGamePlay;
-            GameManager.OnGameOver    -= SwitchToNone;
-        }
 
         private void Update()
         {
@@ -57,17 +46,14 @@ namespace Assets.Scripts.Managers
 
         void HandlePauseInput()
         {
-            if (Input.GetKeyDown(KeyBinding.keys.pauseKey)) OnPauseToggled?.Invoke();
+            if (Input.GetKeyDown(_keyData.pauseKey)) _onPauseToggled.RaiseEvent();
         }
 
-        void HandlePlayerInput()
-        {
-            PlayerInput.HandleInput();
-        }
+        void HandlePlayerInput() => _onHandlePlayerInput.RaiseEvent();
 
-        void SwitchToGamePlay() => _currentActionMap = ActionMap.GamePlay;
-        void SwitchToPause() => _currentActionMap = ActionMap.Pause;
-        void SwitchToNone() => _currentActionMap = ActionMap.None;
+        public void SwitchToGamePlay() => _currentActionMap = ActionMap.GamePlay;
+        public void SwitchToPause() => _currentActionMap = ActionMap.Pause;
+        public void SwitchToNone() => _currentActionMap = ActionMap.None;
 
         #endregion
     }

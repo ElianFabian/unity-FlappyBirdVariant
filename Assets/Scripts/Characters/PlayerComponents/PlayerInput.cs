@@ -1,18 +1,20 @@
-﻿using System;
-using Assets.Scripts.Binding;
+﻿using Assets.Scripts.Data.ScriptableObjects;
+using Assets.Scripts.Events.ScriptableObjects;
 using UnityEngine;
 
 namespace Assets.Scripts.Characters.PlayerComponents
 {
     public class PlayerInput : BasePlayerComponent
     {
-        public static event Action OnJump;
+        [SerializeField] KeyDataSO _keyData;
+
+        public VoidEventChannelSO _onJump;
 
 
 
-        public static void HandleInput()
+        public void HandleInput()
         {
-            if (Input.GetKeyDown(KeyBinding.keys.jumpKey)) OnJump?.Invoke();
+            if (Input.GetKeyDown(_keyData.jumpKey)) _onJump.RaiseEvent();
         }
     }
 }

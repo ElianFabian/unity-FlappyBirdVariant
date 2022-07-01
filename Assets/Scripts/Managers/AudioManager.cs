@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.ScriptableObjects.Data;
+﻿using Assets.Scripts.Data.ScriptableObjects;
 using UnityEngine;
 
 namespace Assets.Scripts.Managers
@@ -25,44 +25,28 @@ namespace Assets.Scripts.Managers
             _source.playOnAwake = false;
         }
 
-        private void OnEnable()
-        {
-            GameManager.OnGameOver      += OnGameOver;
-            GameManager.OnGamePaused    += OnGamePaused;
-            GameManager.OnGameResumed   += OnGameResumed;
-            GameManager.OnGameRestarted += OnGameRestarted;
-        }
-
-        private void OnDisable()
-        {
-            GameManager.OnGameOver      -= OnGameOver;
-            GameManager.OnGamePaused    -= OnGamePaused;
-            GameManager.OnGameResumed   -= OnGameResumed;
-            GameManager.OnGameRestarted -= OnGameRestarted;
-        }
-
         #endregion
 
         #region Event functions
 
-        void OnGamePaused()
+        public void OnGamePaused()
         {
             _snapshotData.paused.TransitionTo(0.1f);
         }
 
-        void OnGameResumed()
+        public void OnGameResumed()
         {
             _snapshotData.playing.TransitionTo(0.1f);
         }
 
-        void OnGameOver()
+        public void OnGameOver()
         {
             _snapshotData.gameOver.TransitionTo(2f);
 
             _source.PlayOneShot(_clipData.gameOver);
         }
 
-        void OnGameRestarted()
+        public void OnGameRestarted()
         {
             _snapshotData.playing.TransitionTo(0.01f);
         }

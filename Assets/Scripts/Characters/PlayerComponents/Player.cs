@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.ScriptableObjects.Data;
+﻿using Assets.Scripts.Data.ScriptableObjects;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -21,6 +21,8 @@ namespace Assets.Scripts.Characters.PlayerComponents
 
         [OnValueChanged(nameof(LoadPlayerData))]
         public PlayerDataSO data;
+
+
 
         SpriteRenderer _spriteRenderer;
 

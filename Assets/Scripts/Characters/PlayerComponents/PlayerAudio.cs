@@ -21,18 +21,8 @@ namespace Assets.Scripts.Characters.PlayerComponents
             source.clip = player.data.jumpClip;
         }
 
-        private void OnEnable()
-        {
-            PlayerInput.OnJump += PlayJumpSound;
-        }
-
-        private void OnDisable()
-        {
-            PlayerInput.OnJump -= PlayJumpSound;
-        }
 
 
-
-        void PlayJumpSound() => source.Play();
+        public void PlayJumpSound() => source.Play();
     }
 }

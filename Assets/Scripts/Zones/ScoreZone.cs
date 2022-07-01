@@ -1,5 +1,5 @@
-﻿using System;
-using Assets.Scripts.Characters.PlayerComponents;
+﻿using Assets.Scripts.Characters.PlayerComponents;
+using Assets.Scripts.Events.ScritpableObjects;
 using UnityEngine;
 
 namespace Assets.Scripts.Zones
@@ -11,7 +11,7 @@ namespace Assets.Scripts.Zones
     {
         [SerializeField] AudioClip _scoreClip;
 
-        public static event Action<Player, Collider2D> OnPlayerTriggerEnter2D;
+        [SerializeField] Collider2DEventSO _onPlayerScored;
 
         BoxCollider2D _boxCollider2D;
         AudioSource   _audioSource;
@@ -38,7 +38,7 @@ namespace Assets.Scripts.Zones
 
             _audioSource.Play();
 
-            OnPlayerTriggerEnter2D?.Invoke(player, collision);
+            _onPlayerScored.RaiseEvent(collision);
         }
     }
 }

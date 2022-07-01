@@ -1,6 +1,4 @@
-﻿using System;
-using Assets.Scripts.Characters.PlayerComponents;
-using Assets.Scripts.Zones;
+﻿using Assets.Scripts.Events.ScriptableObjects;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,13 +10,11 @@ namespace Assets.Scripts.Managers
     {
         #region Fields
 
-        public static event Action
-                OnGameOver,
-                OnGamePaused,
-                OnGameResumed,
-                OnGameRestarted;
-        public static event Action<string> OnSceneChanged;
-        public static event Action<int>    OnScoreChanged;
+        [SerializeField] VoidEventChannelSO _onGamePaused;
+        [SerializeField] VoidEventChannelSO _onGameResumed;
+        [SerializeField] VoidEventChannelSO _onGameOver;
+        [SerializeField] VoidEventChannelSO _onGameRestarted;
+        [SerializeField] IntEventChannelSO  _onScoreChanged;
 
         [Scene]
         [SerializeField] string _menuSceneName;
@@ -28,77 +24,14 @@ namespace Assets.Scripts.Managers
 
         #endregion
 
-        #region Unity event functions
-
-        private void OnEnable()
-        {
-            DeathZone.OnPlayerTriggerEnter2D += OnPlayerTriggerEnter2DWithDeathZone;
-            ScoreZone.OnPlayerTriggerEnter2D += OnPlayerTriggerEnter2DWithScoreZone;
-
-            UIGameManager.BtnGoToMenu_Click += GoToMenu;
-            UIGameManager.BtnTryAgain_Click += RestartGame;
-            InputManager.OnPauseToggled     += OnPauseToggled;
-        }
-
-        private void OnDisable()
-        {
-            DeathZone.OnPlayerTriggerEnter2D -= OnPlayerTriggerEnter2DWithDeathZone;
-            ScoreZone.OnPlayerTriggerEnter2D -= OnPlayerTriggerEnter2DWithScoreZone;
-
-            UIGameManager.BtnGoToMenu_Click -= GoToMenu;
-            UIGameManager.BtnTryAgain_Click -= RestartGame;
-            InputManager.OnPauseToggled     -= OnPauseToggled;
-        }
-
-        #endregion
-
-        #region Event functions
-
-        private void OnPauseToggled()
-        {
-            _gameState = ToggleGameState();
-
-            if (_gameState == GameState.Paused)
-            {
-                Pause();
-                OnGamePaused?.Invoke();
-            }
-            else if (_gameState == GameState.Playing)
-            {
-                Resume();
-                OnGameResumed?.Invoke();
-            }
-        }
-
-        private void OnPlayerTriggerEnter2DWithDeathZone(Player player, Collider2D collider)
-        {
-            SetGameOver();
-        }
-
-        private void OnPlayerTriggerEnter2DWithScoreZone(Player player, Collider2D collider)
-        {
-            IncrementScore();
-        }
-
-        #endregion
-
         #region Methods
 
-        void IncrementScore()
-        {
-            _score++;
-
-            OnScoreChanged?.Invoke(_score);
-        }
-
-        private void GoToMenu()
+        public void GoToMenu()
         {
             SceneManager.LoadSceneAsync(_menuSceneName);
-
-            OnSceneChanged?.Invoke(_menuSceneName);
         }
 
-        void RestartGame()
+        public void RestartGame()
         {
             Resume();
 
@@ -108,16 +41,32 @@ namespace Assets.Scripts.Managers
 
             _gameState = GameState.Playing;
 
-            OnGameRestarted?.Invoke();
+            _onGameRestarted.RaiseEvent();
         }
 
-        void SetGameOver()
+        public void TogglePause()
+        {
+            _gameState = ToggleGameState();
+
+            if (_gameState == GameState.Paused)
+            {
+                Pause();
+                _onGamePaused.RaiseEvent();
+            }
+            else if (_gameState == GameState.Playing)
+            {
+                Resume();
+                _onGameResumed.RaiseEvent();
+            }
+        }
+
+        public void SetGameOver()
         {
             Pause();
 
             _gameState = GameState.GameOver;
 
-            OnGameOver?.Invoke();
+            _onGameOver.RaiseEvent();
         }
 
         void Pause() => Time.timeScale = 0;

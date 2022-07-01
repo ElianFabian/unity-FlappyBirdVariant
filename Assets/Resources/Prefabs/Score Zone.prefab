@@ -169,3 +169,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scoreClip: {fileID: 8300000, guid: 72bd3a4f13829f841aa82c07583475ee, type: 3}
+  _onPlayerScored: {fileID: 11400000, guid: b3a5e3430d977894d9540311b2f7aeff, type: 2}

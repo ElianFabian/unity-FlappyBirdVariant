@@ -20,6 +20,8 @@ GameObject:
   - component: {fileID: 4052847702661822219}
   - component: {fileID: 812351709620590150}
   - component: {fileID: 286001706606319359}
+  - component: {fileID: 680481051}
+  - component: {fileID: 680481052}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -296,6 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f02b0cff738c124eb3a142e41a00c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onJump: {fileID: 0}
 --- !u!114 &286001706606319359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,3 +312,74 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 35e87c16a3cd975419aa59c3367cb586, type: 2}
+--- !u!114 &680481051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8831312701630038172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1be5a511f1b6346b0b9dfe75761d4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _channel: {fileID: 11400000, guid: 2a1ef5cc72aa43449aef6687f44eaf01, type: 2}
+  OnEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3575814584375582088}
+        m_TargetAssemblyTypeName: Assets.Scripts.Characters.PlayerComponents.PlayerAction,
+          Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4052847702661822219}
+        m_TargetAssemblyTypeName: Assets.Scripts.Characters.PlayerComponents.PlayerAudio,
+          Assembly-CSharp
+        m_MethodName: PlayJumpSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &680481052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8831312701630038172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1be5a511f1b6346b0b9dfe75761d4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _channel: {fileID: 11400000, guid: 3a316ed9d3200034e95ad90d58f132a0, type: 2}
+  OnEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 812351709620590150}
+        m_TargetAssemblyTypeName: Assets.Scripts.Characters.PlayerComponents.PlayerInput,
+          Assembly-CSharp
+        m_MethodName: HandleInput
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
