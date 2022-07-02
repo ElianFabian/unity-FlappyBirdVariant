@@ -27,10 +27,9 @@ namespace Assets.Scripts.Controllers
         {
             _score.value++;
 
-            SingleValue<int> newScore;
-            newScore.value = _score.value;
+            var newScore = _score.value;
 
-            _txtScore.SetText($"Score: {_score.value}");
+            _txtScore.SetText($"Score: {newScore}");
 
             _onScoreChanged.RaiseEvent(newScore);
         }
