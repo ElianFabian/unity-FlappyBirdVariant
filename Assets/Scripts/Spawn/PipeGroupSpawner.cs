@@ -26,21 +26,23 @@ namespace Assets.Scripts.Spawn
             StartCoroutine(SpawnPipeGroupCoroutine());
         }
 
+
+
         IEnumerator SpawnPipeGroupCoroutine()
         {
             while (true)
             {
                 yield return _waitForSpawnDelay;
 
-                var randomFactor = Random.Range(-_heightOffset, _heightOffset);
-                var randomHeight = transform.position + Vector3.up * randomFactor;
+                var height   = Random.Range(-_heightOffset, _heightOffset);
+                var position = transform.position + Vector3.up * height;
 
-                var newPipeGroup = Instantiate(_pipeGroupPrefab, randomHeight, Quaternion.identity);
+                var newPipeGroup = Instantiate(_pipeGroupPrefab, position, Quaternion.identity);
 
-                var pipeGroupRigidBody = newPipeGroup.GetComponent<Rigidbody2D>();
+                var rigidbody = newPipeGroup.GetComponent<Rigidbody2D>();
 
-                pipeGroupRigidBody.bodyType = RigidbodyType2D.Kinematic;
-                pipeGroupRigidBody.velocity = Vector2.left * _spawnVelocity;
+                rigidbody.bodyType = RigidbodyType2D.Kinematic;
+                rigidbody.velocity = Vector2.left * _spawnVelocity;
             }
         }
     }
