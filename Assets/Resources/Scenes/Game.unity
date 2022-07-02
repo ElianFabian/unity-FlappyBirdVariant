@@ -2588,7 +2588,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2124754030}
         m_TargetAssemblyTypeName: Assets.Scripts.Managers.AudioManager, Assembly-CSharp
-        m_MethodName: OnGameOver
+        m_MethodName: TransitionToGameOver
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2616,7 +2616,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2124754030}
         m_TargetAssemblyTypeName: Assets.Scripts.Managers.AudioManager, Assembly-CSharp
-        m_MethodName: OnGameResumed
+        m_MethodName: TransitionToPlaying
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2644,7 +2644,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2124754030}
         m_TargetAssemblyTypeName: Assets.Scripts.Managers.AudioManager, Assembly-CSharp
-        m_MethodName: OnGamePaused
+        m_MethodName: TransitionToPause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2672,7 +2672,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2124754030}
         m_TargetAssemblyTypeName: Assets.Scripts.Managers.AudioManager, Assembly-CSharp
-        m_MethodName: OnGameRestarted
+        m_MethodName: TransitionToPlaying
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

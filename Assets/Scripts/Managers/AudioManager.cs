@@ -27,28 +27,23 @@ namespace Assets.Scripts.Managers
 
         #endregion
 
-        #region Event functions
+        #region Methods
 
-        public void OnGamePaused()
+        public void TransitionToPause()
         {
             _snapshotData.paused.TransitionTo(0.1f);
         }
 
-        public void OnGameResumed()
+        public void TransitionToPlaying()
         {
             _snapshotData.playing.TransitionTo(0.1f);
         }
 
-        public void OnGameOver()
+        public void TransitionToGameOver()
         {
             _snapshotData.gameOver.TransitionTo(2f);
 
             _source.PlayOneShot(_clipData.gameOver);
-        }
-
-        public void OnGameRestarted()
-        {
-            _snapshotData.playing.TransitionTo(0.01f);
         }
 
         #endregion
