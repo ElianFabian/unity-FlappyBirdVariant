@@ -12,7 +12,7 @@ namespace Assets.Scripts.Characters.PlayerComponents
     [RequireComponent(typeof(PlayerMovement), typeof(PlayerCollision), typeof(PlayerAudio))]
     public class Player : MonoBehaviour
     {
-        public const float GRAVITY = -9.81f;
+        public const float Gravity = -9.81f;
 
         internal PlayerAction    action;
         internal PlayerMovement  movement;
