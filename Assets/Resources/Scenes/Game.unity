@@ -1954,11 +1954,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab44d2421c8e89a42a7db567505ed033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpawnDelayInSeconds: 4
-  _minSpawnDelayInSeconds: 2.2
+  _maxSpawnDelayInSeconds: 3.5
+  _minSpawnDelayInSeconds: 2
   _spawnDelayInSeconds: 5
   _spawnVelocity: 1.5
   _heightOffset: 4
+  _minScale: 0.3
+  _maxScale: 0.9
+  _farthestColorRate: 0.83
+  _numberOfLayers: 4
 --- !u!1 &1706723333
 GameObject:
   m_ObjectHideFlags: 0
