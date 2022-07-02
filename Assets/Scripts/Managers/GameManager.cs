@@ -34,13 +34,13 @@ namespace Assets.Scripts.Managers
         {
             Resume();
 
-            var currentScene = SceneManager.GetActiveScene();
-
-            SceneManager.LoadSceneAsync(currentScene.name);
-
             _gameState = GameState.Playing;
 
             _onGameRestarted.RaiseEvent();
+
+            var currentScene = SceneManager.GetActiveScene();
+
+            SceneManager.LoadSceneAsync(currentScene.name);
         }
 
         public void TogglePause()
