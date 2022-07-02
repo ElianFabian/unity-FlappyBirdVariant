@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Data;
-using Assets.Scripts.Data.ScriptableObjects;
+﻿using Assets.Scripts.Data.ScriptableObjects;
 using Assets.Scripts.Events.ScriptableObjects;
 using TMPro;
 using UnityEngine;
