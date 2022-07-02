@@ -5,24 +5,28 @@ namespace Assets.Scripts.Spawn
 {
     public class CloudSpawner : MonoBehaviour
     {
-        const string SpritePath        = "Images/Background/clouds";
         const string CloudSortingLayer = "Clouds";
+        const string SpritePath        = "Images/Background/clouds";
 
         [SerializeField] float _maxSpawnDelayInSeconds = 4f;
         [SerializeField] float _minSpawnDelayInSeconds = 2.2f;
         [SerializeField] float _spawnDelayInSeconds    = 5f;
         [SerializeField] float _spawnVelocity          = 1.5f;
-        [SerializeField] float _heightOffset           = 4f;
 
-        Sprite[] _spriteClouds;
+        [SerializeField] float _heightOffset      = 4f;
+        [SerializeField] float _minScale          = 0.3f;
+        [SerializeField] float _maxScale          = 0.8f;
+        [SerializeField] float _farthestColorRate = 0.83f;
 
-        readonly float[] _cloudScaleFromNearToFar = new float[] { 0.8f, 0.5f, 0.3f };
+        [SerializeField] int _numberOfLayers = 3;
+
+        Sprite[] _cloudSprites;
 
 
 
         private void Awake()
         {
-            _spriteClouds = Resources.LoadAll<Sprite>(SpritePath);
+            _cloudSprites = Resources.LoadAll<Sprite>(SpritePath);
         }
 
         private void Start()
@@ -34,42 +38,41 @@ namespace Assets.Scripts.Spawn
 
         IEnumerator SpawnCloudCoroutine()
         {
-            var numberOfDistanceTypes = _cloudScaleFromNearToFar.Length;
-            var remotenessColorRate   = 0.82f;
-
             while (true)
             {
-                var spriteIndex    = Random.Range(0, numberOfDistanceTypes);
-                var scaleTypeIndex = Random.Range(0, numberOfDistanceTypes);
-                var height         = Random.Range(-_heightOffset, _heightOffset);
+                var spriteIndex = Random.Range(0, _numberOfLayers);
+                var layer       = Random.Range(0, _numberOfLayers);
+                var height      = Random.Range(-_heightOffset, _heightOffset);
 
-                var distanceRate = Map(scaleTypeIndex, 0, numberOfDistanceTypes - 1, 1f, remotenessColorRate);
-                var position     = transform.position + Vector3.up * height;
-                var scale        = _cloudScaleFromNearToFar[scaleTypeIndex];
+                var sprite = _cloudSprites[spriteIndex];
 
-                var colorBasedOnDistance = Color.white * distanceRate;
-                colorBasedOnDistance.a   = 1;
+                var colorRateByDistance = Map(layer, 0, _numberOfLayers - 1, 1f, _farthestColorRate);
+                var scaleRateByDistance = Map(layer, 0, _numberOfLayers - 1, _maxScale, _minScale);
+                var position            = transform.position + Vector3.up * height;
+
+                var color = Color.white * colorRateByDistance;
+                color.a   = 1;
 
 
                 var newCloud = new GameObject("Spawned Cloud");
 
                 newCloud.transform.position   = position;
-                newCloud.transform.localScale = Vector3.one * scale;
+                newCloud.transform.localScale = Vector3.one * scaleRateByDistance;
 
                 newCloud.AddComponent<SpawnedObjectTag>();
                 newCloud.AddComponent<BoxCollider2D>().isTrigger = true;
 
                 var renderer = newCloud.AddComponent<SpriteRenderer>();
 
-                renderer.color            = colorBasedOnDistance;
-                renderer.sortingOrder     = -scaleTypeIndex;
+                renderer.sprite           = sprite;
+                renderer.color            = color;
+                renderer.sortingOrder     = -layer;
                 renderer.sortingLayerName = CloudSortingLayer;
-                renderer.sprite           = _spriteClouds[spriteIndex];
 
                 var rigidbody = newCloud.AddComponent<Rigidbody2D>();
 
                 rigidbody.bodyType = RigidbodyType2D.Kinematic;
-                rigidbody.velocity = _spawnVelocity * scale * Vector2.left;
+                rigidbody.velocity = _spawnVelocity * scaleRateByDistance * Vector2.left;
 
 
                 var randomDelay = Random.Range(_minSpawnDelayInSeconds, _maxSpawnDelayInSeconds);
