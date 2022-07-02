@@ -16,10 +16,13 @@ namespace Assets.Scripts.Spawn
 
 
 
-        private void Start()
+        private void Awake()
         {
             _waitForSpawnDelay = new WaitForSeconds(_spawnDelayInSeconds);
+        }
 
+        private void Start()
+        {
             StartCoroutine(SpawnPipeGroupCoroutine());
         }
 
