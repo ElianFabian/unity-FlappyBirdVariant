@@ -1,0 +1,17 @@
+{
+    "name": "Events.Listeners",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4db4f2a9f1ae7284f889ecb63cadd17f",
+        "GUID:c5736642d560cbc4b9cda4cd3810c6e7"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

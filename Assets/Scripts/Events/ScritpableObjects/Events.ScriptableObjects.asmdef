@@ -1,0 +1,16 @@
+{
+    "name": "Events.ScriptableObjects",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4db4f2a9f1ae7284f889ecb63cadd17f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
