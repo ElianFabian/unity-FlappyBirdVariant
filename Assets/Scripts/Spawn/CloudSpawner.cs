@@ -5,8 +5,8 @@ namespace Assets.Scripts.Spawn
 {
     public class CloudSpawner : MonoBehaviour
     {
-        const string SPRITE_PATH         = "Images/Background/clouds";
-        const string CLOUD_SORTING_LAYER = "Clouds";
+        const string SpritePath        = "Images/Background/clouds";
+        const string CloudSortingLayer = "Clouds";
 
         [SerializeField] float _maxSpawnDelayInSeconds = 4f;
         [SerializeField] float _minSpawnDelayInSeconds = 2.2f;
@@ -22,7 +22,7 @@ namespace Assets.Scripts.Spawn
 
         private void Awake()
         {
-            _spriteClouds = Resources.LoadAll<Sprite>(SPRITE_PATH);
+            _spriteClouds = Resources.LoadAll<Sprite>(SpritePath);
         }
 
         private void Start()
@@ -63,7 +63,7 @@ namespace Assets.Scripts.Spawn
                 colorRelatedToDistance.a   = 1;
                 spriteRenderer.color       = colorRelatedToDistance;
 
-                spriteRenderer.sortingLayerName = CLOUD_SORTING_LAYER;
+                spriteRenderer.sortingLayerName = CloudSortingLayer;
                 spriteRenderer.sortingOrder     = -scaleTypeCloudIndex;
 
                 var newColudRigidBody = newCloud.AddComponent<Rigidbody2D>();
