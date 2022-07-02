@@ -8,17 +8,17 @@ namespace Assets.Scripts.Spawn
         const string CloudSortingLayer = "Clouds";
         const string SpritePath        = "Images/Background/clouds";
 
-        [SerializeField] float _maxSpawnDelayInSeconds = 4f;
-        [SerializeField] float _minSpawnDelayInSeconds = 2.2f;
-        [SerializeField] float _spawnDelayInSeconds    = 5f;
-        [SerializeField] float _spawnVelocity          = 1.5f;
+        [Range(0, 10)][SerializeField] float _maxSpawnDelayInSeconds = 4f;
+        [Range(0, 10)][SerializeField] float _minSpawnDelayInSeconds = 2.2f;
+        [Range(0, 10)][SerializeField] float _spawnDelayInSeconds    = 5f;
+        [Range(0, 10)][SerializeField] float _spawnVelocity          = 1.5f;
 
-        [SerializeField] float _heightOffset      = 4f;
-        [SerializeField] float _minScale          = 0.3f;
-        [SerializeField] float _maxScale          = 0.8f;
-        [SerializeField] float _farthestColorRate = 0.83f;
+        [Range(0, 10)][SerializeField] float _heightOffset      = 4f;
+        [Range(0, 10)][SerializeField] float _minScale          = 0.3f;
+        [Range(0, 10)][SerializeField] float _maxScale          = 0.8f;
+        [Range(0, 10)][SerializeField] float _farthestColorRate = 0.83f;
 
-        [SerializeField] int _numberOfLayers = 3;
+        [Range(0, 10)][SerializeField] int _numberOfLayers = 3;
 
         Sprite[] _cloudSprites;
 
