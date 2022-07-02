@@ -489,6 +489,7 @@ GameObject:
   - component: {fileID: 578752561}
   - component: {fileID: 578752560}
   - component: {fileID: 578752559}
+  - component: {fileID: 578752562}
   m_Layer: 0
   m_Name: UI Manager
   m_TagString: Untagged
@@ -598,6 +599,34 @@ MonoBehaviour:
       - m_Target: {fileID: 578752558}
         m_TargetAssemblyTypeName: Assets.Scripts.Managers.UIGameManager, Assembly-CSharp
         m_MethodName: ShowMouseCursor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &578752562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578752555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1be5a511f1b6346b0b9dfe75761d4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _channel: {fileID: 11400000, guid: 6c6dc5641861a814da0eaa27c7862048, type: 2}
+  OnEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 578752558}
+        m_TargetAssemblyTypeName: Assets.Scripts.Managers.UIGameManager, Assembly-CSharp
+        m_MethodName: HideMouseCursor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -717,6 +746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180d7ddc73dbc2a49a2b87924fb47d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onGameStarted: {fileID: 11400000, guid: 6c6dc5641861a814da0eaa27c7862048, type: 2}
   _onGamePaused: {fileID: 11400000, guid: 1e8329936aaa6eb41a3f89a440b8fb54, type: 2}
   _onGameResumed: {fileID: 11400000, guid: 85bcabaebb2a68247856853aa6ad3acf, type: 2}
   _onGameOver: {fileID: 11400000, guid: 5b84ea22ffb96094a9e80e931eb9e5eb, type: 2}

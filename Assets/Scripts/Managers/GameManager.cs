@@ -10,6 +10,7 @@ namespace Assets.Scripts.Managers
     {
         #region Fields
 
+        [SerializeField] VoidEventChannelSO _onGameStarted;
         [SerializeField] VoidEventChannelSO _onGamePaused;
         [SerializeField] VoidEventChannelSO _onGameResumed;
         [SerializeField] VoidEventChannelSO _onGameOver;
@@ -20,6 +21,15 @@ namespace Assets.Scripts.Managers
         [SerializeField] string _menuSceneName;
 
         GameState _gameState = GameState.Playing;
+
+        #endregion
+
+        #region Unity events
+
+        private void Start()
+        {
+            _onGameStarted.RaiseEvent();
+        }
 
         #endregion
 
