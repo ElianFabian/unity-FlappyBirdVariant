@@ -18,10 +18,15 @@ namespace Assets.Scripts.Spawn
 
         readonly float[] _cloudScaleOrderFromNearToFar = new float[] { 0.8f, 0.5f, 0.3f };
 
-        private void Start()
+
+
+        private void Awake()
         {
             _spriteClouds = Resources.LoadAll<Sprite>(SPRITE_PATH);
+        }
 
+        private void Start()
+        {
             StartCoroutine(SpawnCloudCoroutine());
         }
 
