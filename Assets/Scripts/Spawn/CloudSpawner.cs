@@ -46,18 +46,18 @@ namespace Assets.Scripts.Spawn
 
                 var sprite = _cloudSprites[spriteIndex];
 
-                var colorRateByDistance = Map(layer, 0, _numberOfLayers - 1, 1f, _farthestColorRate);
-                var scaleRateByDistance = Map(layer, 0, _numberOfLayers - 1, _maxScale, _minScale);
-                var position            = transform.position + Vector3.up * height;
+                var colorFromDistance = Map(layer, 0, _numberOfLayers - 1, 1f, _farthestColorRate);
+                var scaleFromDistance = Map(layer, 0, _numberOfLayers - 1, _maxScale, _minScale);
+                var position          = transform.position + Vector3.up * height;
 
-                var color = Color.white * colorRateByDistance;
+                var color = Color.white * colorFromDistance;
                 color.a   = 1;
 
 
                 var newCloud = new GameObject("Spawned Cloud");
 
                 newCloud.transform.position   = position;
-                newCloud.transform.localScale = Vector3.one * scaleRateByDistance;
+                newCloud.transform.localScale = Vector3.one * scaleFromDistance;
 
                 newCloud.AddComponent<SpawnedObjectTag>();
                 newCloud.AddComponent<BoxCollider2D>().isTrigger = true;
@@ -72,7 +72,7 @@ namespace Assets.Scripts.Spawn
                 var rigidbody = newCloud.AddComponent<Rigidbody2D>();
 
                 rigidbody.bodyType = RigidbodyType2D.Kinematic;
-                rigidbody.velocity = _spawnVelocity * scaleRateByDistance * Vector2.left;
+                rigidbody.velocity = Vector2.left * (_spawnVelocity * scaleFromDistance);
 
 
                 var randomDelay = Random.Range(_minSpawnDelayInSeconds, _maxSpawnDelayInSeconds);
