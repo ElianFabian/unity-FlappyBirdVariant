@@ -20,7 +20,6 @@ namespace Assets.Scripts.Managers
         [SerializeField] string _menuSceneName;
 
         GameState _gameState = GameState.Playing;
-        int       _score     = 0;
 
         #endregion
 
