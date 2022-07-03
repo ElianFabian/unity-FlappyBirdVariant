@@ -376,7 +376,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &432561189
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -417,7 +417,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -564943457
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -437,7 +437,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 432561188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.1}
+  m_LocalPosition: {x: 0, y: 0, z: 5.6}
   m_LocalScale: {x: 20, y: 12, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2941,7 +2941,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919867880064507302, guid: ce52029f16c308743ba021a50c44529f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 919867880064507302, guid: ce52029f16c308743ba021a50c44529f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2981,7 +2981,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7665037018170307644}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.69, y: 0.01, z: 0.005200658}
+  m_LocalPosition: {x: 11.7, y: 0, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3028,6 +3028,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 286001706606319359, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 812351709620590150, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
       propertyPath: _onJump
       value: 
@@ -3039,6 +3043,10 @@ PrefabInstance:
     - target: {fileID: 812351709620590150, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
       propertyPath: _keyBinding
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8831312701630038148, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
+      propertyPath: m_BodyType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8831312701630038169, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
       propertyPath: m_RootOrder

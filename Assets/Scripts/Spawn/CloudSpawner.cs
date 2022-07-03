@@ -45,7 +45,9 @@ namespace Assets.Scripts.Spawn
                 var height      = Random.Range(-_heightOffset, _heightOffset);
 
                 var sprite   = _cloudSprites[spriteIndex];
-                var position = transform.position + Vector3.up * height;
+
+                var depth    = Map(layer, 0, _numberOfLayers - 1, 3, 10);
+                var position = transform.position + Vector3.up * height + Vector3.forward * depth;
 
                 var colorFactorFromDistance = Map(layer, 0, _numberOfLayers - 1, 1f, _farthestColorRate);
                 var scaleFactorFromDistance = Map(layer, 0, _numberOfLayers - 1, _maxScale, _minScale);
