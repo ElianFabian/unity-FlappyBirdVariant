@@ -57,15 +57,16 @@ namespace Assets.Scripts.Managers
         {
             _gameState = ToggleGameState();
 
-            if (_gameState == GameState.Paused)
+            switch (_gameState)
             {
-                Pause();
-                _onGamePaused.RaiseEvent();
-            }
-            else if (_gameState == GameState.Playing)
-            {
-                Resume();
-                _onGameResumed.RaiseEvent();
+                case GameState.Paused:
+                    Pause();
+                    _onGamePaused.RaiseEvent();
+                    break;
+                case GameState.Playing:
+                    Resume();
+                    _onGameResumed.RaiseEvent();
+                    break;
             }
         }
 
