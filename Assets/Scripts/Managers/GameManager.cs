@@ -15,7 +15,6 @@ namespace Assets.Scripts.Managers
         [SerializeField] VoidEventChannelSO _onGameResumed;
         [SerializeField] VoidEventChannelSO _onGameOver;
         [SerializeField] VoidEventChannelSO _onGameRestarted;
-        [SerializeField] IntEventChannelSO  _onScoreChanged;
 
         [Scene]
         [SerializeField] string _menuSceneName;
