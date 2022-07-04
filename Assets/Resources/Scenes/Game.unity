@@ -794,7 +794,6 @@ MonoBehaviour:
   _onGameResumed: {fileID: 11400000, guid: 85bcabaebb2a68247856853aa6ad3acf, type: 2}
   _onGameOver: {fileID: 11400000, guid: 5b84ea22ffb96094a9e80e931eb9e5eb, type: 2}
   _onGameRestarted: {fileID: 11400000, guid: 82fd60f12411c164681aee7d75a873b1, type: 2}
-  _onScoreChanged: {fileID: 11400000, guid: c29fa0d9cebf957418e9e93a4d23f098, type: 2}
   _menuSceneName: MainMenu
 --- !u!114 &632674632
 MonoBehaviour:
@@ -2981,7 +2980,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7665037018170307644}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.7, y: 0, z: 1.5}
+  m_LocalPosition: {x: 11.7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
