@@ -40,7 +40,7 @@ namespace Assets.Scripts.Spawn
         {
             while (true)
             {
-                var spriteIndex = Random.Range(0, _numberOfLayers);
+                var spriteIndex = Random.Range(0, _cloudSprites.Length);
                 var layer       = Random.Range(0, _numberOfLayers);
                 var height      = Random.Range(-_heightOffset, _heightOffset);
 
