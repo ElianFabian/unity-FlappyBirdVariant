@@ -47,9 +47,9 @@ namespace Assets.Scripts.Managers
 
             _onGameRestarted.RaiseEvent();
 
-            var currentScene = SceneManager.GetActiveScene();
+            var currentScene = SceneManager.GetActiveScene().name;
 
-            SceneManager.LoadSceneAsync(currentScene.name);
+            SceneManager.LoadSceneAsync(currentScene);
         }
 
         public void TogglePause()
