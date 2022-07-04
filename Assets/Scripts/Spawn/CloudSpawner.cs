@@ -44,13 +44,14 @@ namespace Assets.Scripts.Spawn
                 var layer       = Random.Range(0, _numberOfLayers);
                 var height      = Random.Range(-_heightOffset, _heightOffset);
 
-                var sprite   = _cloudSprites[spriteIndex];
+                var sprite = _cloudSprites[spriteIndex];
 
-                var depth    = Map(layer, 0, _numberOfLayers - 1, 3, 10);
-                var position = transform.position + Vector3.up * height + Vector3.forward * depth;
-
+                // Depth allows us to better visualize the layers and to apply the blur effect more easily
+                var depth                   = Map(layer, 0, _numberOfLayers - 1, 3f, 10f);
                 var colorFactorFromDistance = Map(layer, 0, _numberOfLayers - 1, 1f, _farthestColorRate);
                 var scaleFactorFromDistance = Map(layer, 0, _numberOfLayers - 1, _maxScale, _minScale);
+
+                var position = transform.position + Vector3.up * height + Vector3.forward * depth;
 
                 var color = Color.HSVToRGB(0, 0, colorFactorFromDistance);
 
