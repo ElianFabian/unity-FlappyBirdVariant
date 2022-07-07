@@ -2749,7 +2749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f1be5a511f1b6346b0b9dfe75761d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _channel: {fileID: 11400000, guid: 82fd60f12411c164681aee7d75a873b1, type: 2}
+  _channel: {fileID: 11400000, guid: 6c6dc5641861a814da0eaa27c7862048, type: 2}
   OnEventRaised:
     m_PersistentCalls:
       m_Calls:
@@ -3028,6 +3028,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 286001706606319359, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 35e87c16a3cd975419aa59c3367cb586, type: 2}
+    - target: {fileID: 286001706606319359, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -3094,6 +3098,14 @@ PrefabInstance:
     - target: {fileID: 8831312701630038172, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8831312701630038174, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 56281cff4cdefe448a791ac0374c7dd7, type: 3}
+    - target: {fileID: 8831312701630038174, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ce4e25dbac705241b390e85016f50c5, type: 3}

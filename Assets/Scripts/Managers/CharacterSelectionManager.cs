@@ -8,7 +8,7 @@ namespace Assets.Scripts.Managers
 {
     public class CharacterSelectionManager : MonoBehaviour
     {
-        [SerializeField] Sprite[] _characterSprites;
+        [SerializeField] PlayerConfigurationSO[] _characterConfigurations;
 
         [Scene]
         [SerializeField] string _gameScene;
@@ -21,35 +21,47 @@ namespace Assets.Scripts.Managers
 
 
 
-        Sprite CurrentCharacterSprite => _characterSprites[_currentIndex];
+        Sprite _CurrentCharacterSprite => _characterConfigurations[_currentIndex].playerSprite;
+
+
+
+        private void Awake()
+        {
+            _onUpdateSelectedCharacterSprite.RaiseEvent(_CurrentCharacterSprite);
+        }
 
 
 
         public void Next()
         {
-            _currentIndex = GetCycledIndex(_currentIndex + 1);
+            _currentIndex++;
+            _currentIndex = GetCycledIndex(_currentIndex);
 
-            _onUpdateSelectedCharacterSprite.RaiseEvent(CurrentCharacterSprite);
+            _onUpdateSelectedCharacterSprite.RaiseEvent(_CurrentCharacterSprite);
+
+            SetPlayerCharacter();
         }
 
         public void Previous()
         {
-            _currentIndex = GetCycledIndex(_currentIndex - 1);
+            _currentIndex--;
+            _currentIndex = GetCycledIndex(_currentIndex);
 
-            _onUpdateSelectedCharacterSprite.RaiseEvent(CurrentCharacterSprite);
+            _onUpdateSelectedCharacterSprite.RaiseEvent(_CurrentCharacterSprite);
+
+            SetPlayerCharacter();
         }
 
         public void GoToGame()
         {
-            SetPlayerCharacter();
-
             SceneManager.LoadSceneAsync(_gameScene);
         }
 
 
-        void SetPlayerCharacter() => _playerData.playerSprite = CurrentCharacterSprite;
 
-        int GetCycledIndex(int index) => Mod(index, _characterSprites.Length);
+        void SetPlayerCharacter() => _playerData.SetConfiguration(_characterConfigurations[_currentIndex]);
+
+        int GetCycledIndex(int index) => Mod(index, _characterConfigurations.Length);
 
         /// <summary>
         /// Modulus for negative numbers.

@@ -28,6 +28,10 @@ namespace Assets.Scripts.Managers
         private void Start()
         {
             _onGameStarted.RaiseEvent();
+
+            Resume();
+
+            _gameState = GameState.Playing;
         }
 
         #endregion

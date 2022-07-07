@@ -19,7 +19,9 @@ namespace Assets.Scripts.Characters.PlayerComponents
         internal PlayerCollision collision;
         internal PlayerAudio     audio;
 
-        [OnValueChanged(nameof(LoadPlayerData))]
+#if UNITY_EDITOR
+        [OnValueChanged(nameof(LoadPlayerDataInEditor))]
+#endif
         public PlayerDataSO data;
 
 
@@ -34,6 +36,8 @@ namespace Assets.Scripts.Characters.PlayerComponents
             movement  = GetComponent<PlayerMovement>();
             collision = GetComponent<PlayerCollision>();
             audio     = GetComponent<PlayerAudio>();
+
+            _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         private void Start()
@@ -45,10 +49,22 @@ namespace Assets.Scripts.Characters.PlayerComponents
 
         void LoadPlayerData()
         {
+            _spriteRenderer.sprite = data.playerSprite;
+            audio.source.clip      = data.jumpClip;
+
+            collision.circleCollider.offset = data.colliderOffset;
+            collision.circleCollider.radius = data.colliderRadius;
+        }
+
+
+
+#if UNITY_EDITOR
+        void LoadPlayerDataInEditor()
+        {
             _spriteRenderer = GetComponent<SpriteRenderer>();
 
             _spriteRenderer.sprite = data.playerSprite;
-            audio.source.clip      = data.jumpClip;
         }
+#endif
     }
 }

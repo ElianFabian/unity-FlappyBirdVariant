@@ -522,7 +522,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4c7cb4c5ca4359242a928b421894d9b5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 56281cff4cdefe448a791ac0374c7dd7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -629,7 +629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1088,15 +1088,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d1fab55150ab4747a990c039bc3b2a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterSprites:
-  - {fileID: 21300000, guid: 4c7cb4c5ca4359242a928b421894d9b5, type: 3}
-  - {fileID: 21300000, guid: 56281cff4cdefe448a791ac0374c7dd7, type: 3}
-  - {fileID: 21300000, guid: 05aedda2de255bc439d87ec31713a9f3, type: 3}
-  - {fileID: 21300000, guid: 760f37a1378e8e244a08b2f02489acca, type: 3}
-  - {fileID: 21300000, guid: 4dd7946d1209cd443b5b5ae994ca64ac, type: 3}
-  - {fileID: 21300000, guid: 281ebf6988497ca4787a3d6d1e088f93, type: 3}
-  - {fileID: 21300000, guid: 7823dfaf8c0861440a43ddbf6c52321e, type: 3}
-  - {fileID: 21300000, guid: ba0cc7121dbffa045a5a8edb242fd006, type: 3}
+  _characterConfigurations:
+  - {fileID: 11400000, guid: 562b09aa931184a429e97c0b87371b72, type: 2}
+  - {fileID: 11400000, guid: 7eda8f22e168e3944a8b43c3976177aa, type: 2}
+  - {fileID: 11400000, guid: 8967383e158e27740a5dc01dad041f35, type: 2}
+  - {fileID: 11400000, guid: eed9bd47269d5db4088f435be6817c8a, type: 2}
+  - {fileID: 11400000, guid: 35de3f25b74b7d0498e932ac8660dacd, type: 2}
+  - {fileID: 11400000, guid: e5ceab262ab914448b0b32eb693be1b5, type: 2}
+  - {fileID: 11400000, guid: cd447097fe8472446b8a3bc27a740a14, type: 2}
+  - {fileID: 11400000, guid: 8263b3155a77c0843b1de92024df5e7d, type: 2}
   _gameScene: Game
   _onUpdateSelectedCharacterSprite: {fileID: 11400000, guid: 4804725ef2157bc439f59c3656481e3d, type: 2}
   _playerData: {fileID: 11400000, guid: 35e87c16a3cd975419aa59c3367cb586, type: 2}
@@ -1359,7 +1359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -322, y: 0}
+  m_AnchoredPosition: {x: -304.7, y: 0}
   m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2045679400

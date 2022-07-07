@@ -5,7 +5,7 @@ namespace Assets.Scripts.Characters.PlayerComponents
     [DisallowMultipleComponent]
     public class PlayerCollision : BasePlayerComponent
     {
-        CircleCollider2D _circleCollider2D;
+        public CircleCollider2D circleCollider;
 
 
 
@@ -13,16 +13,16 @@ namespace Assets.Scripts.Characters.PlayerComponents
         {
             base.Awake();
 
-            _circleCollider2D = GetComponent<CircleCollider2D>();
+            circleCollider = GetComponent<CircleCollider2D>();
 
-            _circleCollider2D.isTrigger = true;
-            _circleCollider2D.radius    = 1.8f;
+            circleCollider.isTrigger = true;
+            circleCollider.radius    = 1.8f;
 
-            var offset = _circleCollider2D.offset;
+            var offset = circleCollider.offset;
             offset.x = -0.2f;
             offset.y = 0.2f;
 
-            _circleCollider2D.offset = offset;
+            circleCollider.offset = offset;
         }
     }
 }

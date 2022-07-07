@@ -7,12 +7,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8651a00c3c0fbcf41b27e0c7223c88fe, type: 3}
-  m_Name: PlayerData
+  m_Script: {fileID: 11500000, guid: 27068922b979bb54eb7d16d7466b0655, type: 3}
+  m_Name: PlayerConfiguration Bird Pink
   m_EditorClassIdentifier: 
-  _configuration: {fileID: 11400000, guid: 562b09aa931184a429e97c0b87371b72, type: 2}
   name: Bird Pink
   playerSprite: {fileID: 21300000, guid: 56281cff4cdefe448a791ac0374c7dd7, type: 3}
   jumpClip: {fileID: 8300000, guid: 4bafcb83b439eb1489a67a7d7a9d309f, type: 3}
