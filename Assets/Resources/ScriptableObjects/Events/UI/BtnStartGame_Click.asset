@@ -10,5 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25ba0481a9d2fa14fa248eac48c5ae3b, type: 3}
-  m_Name: BtnGoToChooseYourSkin_Click
+  m_Name: BtnStartGame_Click
   m_EditorClassIdentifier: 
+  _description: 

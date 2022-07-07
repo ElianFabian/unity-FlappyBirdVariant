@@ -505,7 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d9860b4da68a4e8d3c1a8b5cb1adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectCharacterScene: SelectCharacterMenu
+  _characterSelectionMenuScene: CharacterSelectionMenu
 --- !u!4 &825464224
 Transform:
   m_ObjectHideFlags: 0
@@ -845,7 +845,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 825464223}
         m_TargetAssemblyTypeName: Assets.Scripts.Managers.MenuManager, Assembly-CSharp
-        m_MethodName: GoToChooseYourSkin
+        m_MethodName: GoToCharacterSelectionMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

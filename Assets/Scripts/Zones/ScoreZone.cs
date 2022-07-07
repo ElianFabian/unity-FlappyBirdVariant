@@ -1,5 +1,5 @@
 ﻿using Assets.Scripts.Characters.PlayerComponents;
-using Assets.Scripts.Events.ScritpableObjects;
+using Assets.Scripts.Events.ScriptableObjects;
 using UnityEngine;
 
 namespace Assets.Scripts.Zones
@@ -11,7 +11,7 @@ namespace Assets.Scripts.Zones
     {
         [SerializeField] AudioClip _scoreClip;
 
-        [SerializeField] Collider2DEventSO _onPlayerScored;
+        [SerializeField] Collider2DEventChannelSO _onPlayerScored;
 
         BoxCollider2D _boxCollider2D;
         AudioSource   _audioSource;
