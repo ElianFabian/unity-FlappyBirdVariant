@@ -6,13 +6,13 @@ namespace Assets.Scripts.Managers
     public class MenuManager : MonoBehaviour
     {
         [Scene]
-        [SerializeField] string _chooseYourPlayerScene;
+        [SerializeField] string _selectCharacterScene;
 
 
 
-        public void GoToChooseYourSkin()
+        public void GoToSelectCharacter()
         {
-            SceneManager.LoadSceneAsync(_chooseYourPlayerScene);
+            SceneManager.LoadSceneAsync(_selectCharacterScene);
         }
 
         public void ShowHelp()

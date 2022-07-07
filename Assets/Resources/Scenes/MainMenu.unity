@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Choose your skin
+  m_text: Select character
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -505,7 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015d9860b4da68a4e8d3c1a8b5cb1adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chooseYourPlayerScene: ChooseYourSkin
+  _selectCharacterScene: SelectCharacterMenu
 --- !u!4 &825464224
 Transform:
   m_ObjectHideFlags: 0
@@ -772,7 +772,7 @@ GameObject:
   - component: {fileID: 1286510620}
   - component: {fileID: 1286510619}
   m_Layer: 5
-  m_Name: '#btnChooseYourSkin'
+  m_Name: '#btnSelectCharacter'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
