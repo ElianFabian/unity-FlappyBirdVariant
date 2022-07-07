@@ -2652,7 +2652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _snapshotData: {fileID: 11400000, guid: ac2d17fa373440f46910138571a8be61, type: 2}
-  _clipData: {fileID: 11400000, guid: bde4bdba2fc0f784d99149a66da16ab9, type: 2}
+  _gameOverClip: {fileID: 8300000, guid: 9f59d6f5047a61540a14130637978342, type: 3}
 --- !u!114 &2124754031
 MonoBehaviour:
   m_ObjectHideFlags: 0

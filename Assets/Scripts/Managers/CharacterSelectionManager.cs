@@ -1,8 +1,8 @@
-﻿using Assets.Scripts.Events.ScriptableObjects;
+﻿using Assets.Scripts.Data.ScriptableObjects;
+using Assets.Scripts.Events.ScriptableObjects;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Assets.Scripts.Data.ScriptableObjects;
 
 namespace Assets.Scripts.Managers
 {
