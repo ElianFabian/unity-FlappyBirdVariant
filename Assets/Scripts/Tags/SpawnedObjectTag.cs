@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Spawn
+namespace Assets.Scripts.Tags
 {
     class SpawnedObjectTag : MonoBehaviour { }
 }

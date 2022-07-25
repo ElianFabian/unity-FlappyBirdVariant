@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Tags;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Spawn
