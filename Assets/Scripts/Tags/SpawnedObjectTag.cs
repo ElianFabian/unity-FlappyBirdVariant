@@ -2,5 +2,5 @@
 
 namespace Assets.Scripts.Tags
 {
-    class SpawnedObjectTag : MonoBehaviour { }
+    public class SpawnedObjectTag : MonoBehaviour { }
 }

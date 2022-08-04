@@ -2,5 +2,5 @@
 
 namespace Assets.Scripts.Tags
 {
-    class PlayerTag : MonoBehaviour { }
+    public class PlayerTag : MonoBehaviour { }
 }
