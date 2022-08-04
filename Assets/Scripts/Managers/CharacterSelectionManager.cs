@@ -12,9 +12,7 @@ namespace Assets.Scripts.Managers
 
         [Scene]
         [SerializeField] string _gameScene;
-
         [SerializeField] SpriteEventChannelSO _onUpdateSelectedCharacterSprite;
-
         [SerializeField] CharacterConfigurationSO _playerCharacterData;
 
         int _currentIndex = 0;
