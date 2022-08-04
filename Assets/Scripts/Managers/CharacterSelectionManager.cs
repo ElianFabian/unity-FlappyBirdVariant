@@ -18,7 +18,6 @@ namespace Assets.Scripts.Managers
         int _currentIndex = 0;
 
 
-
         Sprite _CurrentCharacterSprite => _characterList[_currentIndex].playerSprite;
 
 
