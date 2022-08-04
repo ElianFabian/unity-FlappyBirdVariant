@@ -8,20 +8,20 @@ namespace Assets.Scripts.Managers
 {
     public class CharacterSelectionManager : MonoBehaviour
     {
-        [SerializeField] PlayerConfigurationSO[] _characterConfigurations;
+        [SerializeField] CharacterConfigurationSO[] _characterList;
 
         [Scene]
         [SerializeField] string _gameScene;
 
         [SerializeField] SpriteEventChannelSO _onUpdateSelectedCharacterSprite;
 
-        [SerializeField] PlayerDataSO _playerData;
+        [SerializeField] CharacterConfigurationSO _playerCharacterData;
 
         int _currentIndex = 0;
 
 
 
-        Sprite _CurrentCharacterSprite => _characterConfigurations[_currentIndex].playerSprite;
+        Sprite _CurrentCharacterSprite => _characterList[_currentIndex].playerSprite;
 
 
 
@@ -58,13 +58,15 @@ namespace Assets.Scripts.Managers
         }
 
 
+        void SetPlayerCharacter()
+        {
+            _playerCharacterData.SetConfiguration(_characterList[_currentIndex]);
+        }
 
-        void SetPlayerCharacter() => _playerData.SetConfiguration(_characterConfigurations[_currentIndex]);
-
-        int GetCycledIndex(int index) => Mod(index, _characterConfigurations.Length);
+        int GetCycledIndex(int index) => Mod(index, _characterList.Length);
 
         /// <summary>
-        /// Modulus for negative numbers.
+        /// Modulus that always return positive values.
         /// </summary>
         int Mod(int n, int m) => (n%m + m) % m;
     }

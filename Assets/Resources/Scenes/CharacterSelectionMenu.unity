@@ -1088,7 +1088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d1fab55150ab4747a990c039bc3b2a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterConfigurations:
+  _characterList:
   - {fileID: 11400000, guid: 562b09aa931184a429e97c0b87371b72, type: 2}
   - {fileID: 11400000, guid: 7eda8f22e168e3944a8b43c3976177aa, type: 2}
   - {fileID: 11400000, guid: 8967383e158e27740a5dc01dad041f35, type: 2}
@@ -1099,7 +1099,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8263b3155a77c0843b1de92024df5e7d, type: 2}
   _gameScene: Game
   _onUpdateSelectedCharacterSprite: {fileID: 11400000, guid: 4804725ef2157bc439f59c3656481e3d, type: 2}
-  _playerData: {fileID: 11400000, guid: 35e87c16a3cd975419aa59c3367cb586, type: 2}
+  _playerCharacterData: {fileID: 11400000, guid: dbfbd6e1684871f42bd9eacf09c59d3c, type: 2}
 --- !u!114 &2020781092
 MonoBehaviour:
   m_ObjectHideFlags: 0

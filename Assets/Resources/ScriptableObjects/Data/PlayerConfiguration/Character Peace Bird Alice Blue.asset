@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b3ca9f95d811cd498fc2491613d3efa, type: 3}
+  m_Name: Character Peace Bird Alice Blue
+  m_EditorClassIdentifier: 
+  name: Peace Bird Alice Blue
+  playerSprite: {fileID: 21300000, guid: ba0cc7121dbffa045a5a8edb242fd006, type: 3}
+  jumpClip: {fileID: 8300000, guid: 4bafcb83b439eb1489a67a7d7a9d309f, type: 3}
+  colliderOffset: {x: -0.2, y: 0.2}
+  colliderRadius: 2

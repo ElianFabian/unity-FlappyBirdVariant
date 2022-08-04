@@ -22,7 +22,7 @@ namespace Assets.Scripts.Characters.PlayerComponents
 #if UNITY_EDITOR
         [OnValueChanged(nameof(LoadPlayerDataInEditor))]
 #endif
-        public PlayerDataSO data;
+        public CharacterConfigurationSO data;
 
 
 

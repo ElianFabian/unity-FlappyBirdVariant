@@ -1,21 +1,22 @@
+﻿using Assets.Scripts.BaseClasses;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Assets.Scripts.Data.ScriptableObjects
 {
-    [CreateAssetMenu(menuName = "Data/Player Data")]
-    public class PlayerDataSO : ScriptableObject
+    [CreateAssetMenu(menuName = "Data/Character Configuration Data")]
+    public class CharacterConfigurationSO : BaseDescriptionSO
     {
-        [SerializeField] PlayerConfigurationSO _configuration;
+        public string name;
+        [ShowAssetPreview]
+        public Sprite playerSprite;
+        public AudioClip jumpClip;
+        public Vector2 colliderOffset;
+        public int colliderRadius;
 
-        [HideInInspector] public string name;
-        [HideInInspector] public Sprite playerSprite;
-        [HideInInspector] public AudioClip jumpClip;
-        [HideInInspector] public Vector2 colliderOffset;
-        [HideInInspector] public float colliderRadius;
+        CharacterConfigurationSO _configuration;
 
-
-
-        public void SetConfiguration(PlayerConfigurationSO configuration)
+        public void SetConfiguration(CharacterConfigurationSO configuration)
         {
             _configuration = configuration;
 
