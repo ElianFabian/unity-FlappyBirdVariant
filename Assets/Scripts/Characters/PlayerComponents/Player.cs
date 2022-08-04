@@ -18,7 +18,7 @@ namespace Assets.Scripts.Characters.PlayerComponents
 
 
 
-        void Awake()
+        private void Awake()
         {
             _circleCollider = GetComponent<CircleCollider2D>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
