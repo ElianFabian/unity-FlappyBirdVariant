@@ -23,9 +23,7 @@ namespace Assets.Scripts.Controllers
 
         public void UpdateScore()
         {
-            _score.value++;
-
-            var newScore = _score.value;
+            var newScore = ++_score.value;
 
             _txtScore.SetText($"Score: {newScore}");
 
