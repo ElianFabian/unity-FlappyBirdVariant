@@ -8,7 +8,6 @@ namespace Assets.Scripts.Controllers
     public class ScoreController : MonoBehaviour
     {
         [SerializeField] IntVariableSO _score;
-
         [SerializeField] IntEventChannelSO _onScoreChanged;
 
         TextMeshProUGUI _txtScore;

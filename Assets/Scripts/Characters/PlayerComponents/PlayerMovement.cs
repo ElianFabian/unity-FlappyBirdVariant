@@ -1,10 +1,15 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Interfaces;
+using UnityEngine;
 
 namespace Assets.Scripts.Characters.PlayerComponents
 {
     [DisallowMultipleComponent]
-    public class PlayerMovement : BasePlayerComponent
+    public class PlayerMovement : MonoBehaviour, IPlayeMovement
     {
+        const float Gravity = -9.81f;
+
+        [SerializeField] float _maxJumpHeight = 1.75f;
+
         Rigidbody2D _rigidBody;
 
         float _startJumpVelocity;
@@ -12,18 +17,18 @@ namespace Assets.Scripts.Characters.PlayerComponents
         Quaternion _fordwardRotation;
         Quaternion _downRotation;
 
+        public float JumpVelocity => Mathf.Sqrt(-2 * Gravity * _maxJumpHeight);
 
 
-        protected override void Awake()
+
+        private void Awake()
         {
-            base.Awake();
-
             _rigidBody = GetComponent<Rigidbody2D>();
         }
 
         private void Start()
         {
-            _startJumpVelocity = player.action.JumpVelocity;
+            _startJumpVelocity = JumpVelocity;
             _fordwardRotation  = Quaternion.identity;
             _downRotation      = Quaternion.Euler(0, 0, -90);
         }

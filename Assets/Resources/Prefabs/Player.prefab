@@ -16,12 +16,11 @@ GameObject:
   - component: {fileID: 3831502065871936228}
   - component: {fileID: 3575814584375582088}
   - component: {fileID: 6487135776226926101}
-  - component: {fileID: 3345244629401526361}
   - component: {fileID: 4052847702661822219}
   - component: {fileID: 812351709620590150}
   - component: {fileID: 286001706606319359}
-  - component: {fileID: 680481051}
   - component: {fileID: 680481052}
+  - component: {fileID: 8831312702143158500}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -85,7 +84,7 @@ SpriteRenderer:
   m_SortingLayerID: 1274426489
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 56281cff4cdefe448a791ac0374c7dd7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ba0cc7121dbffa045a5a8edb242fd006, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -249,7 +248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 983fbf4c1b558b54f91db01082857330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxJumpHeight: 1.75
 --- !u!114 &6487135776226926101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,18 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d279d18caf36074eb7c7df03499e81d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3345244629401526361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8831312701630038172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57b9a8a07ad53c54fa5e2e0ba541ab90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _maxJumpHeight: 1.75
 --- !u!114 &4052847702661822219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,6 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 597db103b90512b45ab5981826b45aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _jumpClip: {fileID: 8300000, guid: 4bafcb83b439eb1489a67a7d7a9d309f, type: 3}
 --- !u!114 &812351709620590150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,7 +286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f02b0cff738c124eb3a142e41a00c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onJump: {fileID: 0}
+  _keyData: {fileID: 11400000, guid: 0c16cf9856c219f4381f5003806ab858, type: 2}
+  _onJump: {fileID: 11400000, guid: 2a1ef5cc72aa43449aef6687f44eaf01, type: 2}
 --- !u!114 &286001706606319359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,49 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d83aaad655f47c1428ab7b31f3b5c9cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 35e87c16a3cd975419aa59c3367cb586, type: 2}
---- !u!114 &680481051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8831312701630038172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f1be5a511f1b6346b0b9dfe75761d4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _channel: {fileID: 11400000, guid: 2a1ef5cc72aa43449aef6687f44eaf01, type: 2}
-  OnEventRaised:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3575814584375582088}
-        m_TargetAssemblyTypeName: Assets.Scripts.Characters.PlayerComponents.PlayerAction,
-          Assembly-CSharp
-        m_MethodName: Jump
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4052847702661822219}
-        m_TargetAssemblyTypeName: Assets.Scripts.Characters.PlayerComponents.PlayerAudio,
-          Assembly-CSharp
-        m_MethodName: PlayJumpSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  data: {fileID: 11400000, guid: dbfbd6e1684871f42bd9eacf09c59d3c, type: 2}
 --- !u!114 &680481052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,3 +330,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8831312702143158500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8831312701630038172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa0a0ca561cc1e46bd010eab9fe5840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

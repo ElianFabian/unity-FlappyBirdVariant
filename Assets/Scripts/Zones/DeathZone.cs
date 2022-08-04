@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.Characters.PlayerComponents;
-using Assets.Scripts.Events.ScriptableObjects;
+﻿using Assets.Scripts.Events.ScriptableObjects;
+using Assets.Scripts.Tags;
 using UnityEngine;
 
 namespace Assets.Scripts.Zones
@@ -23,7 +23,7 @@ namespace Assets.Scripts.Zones
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!collision.TryGetComponent(out Player player)) return;
+            if (!collision.TryGetComponent(out PlayerTag _)) return;
 
             _onPlayerCollided.RaiseEvent(collision);
         }

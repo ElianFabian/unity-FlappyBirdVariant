@@ -1,24 +1,20 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Interfaces;
+using UnityEngine;
 
 namespace Assets.Scripts.Characters.PlayerComponents
 {
     [DisallowMultipleComponent]
-    public class PlayerAction : BasePlayerComponent
+    [RequireComponent(typeof(Rigidbody))]
+    public class PlayerAction : MonoBehaviour, IPlayerAction
     {
-        [SerializeField] float _maxJumpHeight = 1.75f;
-
         Rigidbody2D _rigidbody;
 
+        IPlayeMovement _movement;
 
 
-        internal float JumpVelocity => Mathf.Sqrt(-2f * Player.Gravity * _maxJumpHeight);
-
-
-
-        protected override void Awake()
+        protected void Awake()
         {
-            base.Awake();
-
+            _movement  = GetComponent<IPlayeMovement>();
             _rigidbody = GetComponent<Rigidbody2D>();
         }
 
@@ -28,7 +24,7 @@ namespace Assets.Scripts.Characters.PlayerComponents
         {
             var newVelocity = _rigidbody.velocity;
 
-            newVelocity.y = JumpVelocity;
+            newVelocity.y = _movement.JumpVelocity;
 
             _rigidbody.velocity = newVelocity;
         }

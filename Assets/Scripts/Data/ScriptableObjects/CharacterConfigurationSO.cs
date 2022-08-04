@@ -10,7 +10,6 @@ namespace Assets.Scripts.Data.ScriptableObjects
         public string name;
         [ShowAssetPreview]
         public Sprite playerSprite;
-        public AudioClip jumpClip;
         public Vector2 colliderOffset;
         public int colliderRadius;
 
@@ -27,7 +26,6 @@ namespace Assets.Scripts.Data.ScriptableObjects
         {
             name           = _configuration.name;
             playerSprite   = _configuration.playerSprite;
-            jumpClip       = _configuration.jumpClip;
             colliderOffset = _configuration.colliderOffset;
             colliderRadius = _configuration.colliderRadius;
         }

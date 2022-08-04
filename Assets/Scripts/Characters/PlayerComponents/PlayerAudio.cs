@@ -1,28 +1,26 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Interfaces;
+using UnityEngine;
 
 namespace Assets.Scripts.Characters.PlayerComponents
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(AudioSource))]
-    public class PlayerAudio : BasePlayerComponent
+    public class PlayerAudio : MonoBehaviour, IPlayerAudio
     {
-        internal AudioSource source;
+        [SerializeField] AudioClip _jumpClip;
+
+        AudioSource _source;
 
 
 
-        protected override void Awake()
+        private void Awake()
         {
-            base.Awake();
-
-            source = GetComponent<AudioSource>();
-
-            source.playOnAwake = false;
-
-            source.clip = player.data.jumpClip;
+            _source = GetComponent<AudioSource>();
+            _source.playOnAwake = false;
         }
 
 
 
-        public void PlayJumpSound() => source.Play();
+        public void PlayJumpSound() => _source.PlayOneShot(_jumpClip);
     }
 }
